@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SubMenuController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -19,4 +20,5 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('menu', MenuController::class)->middleware('auth');
+Route::post('sub-menu-store', [MenuController::class, 'subMenuStore'])->name('subMenuStore')->middleware('auth');
 require __DIR__.'/auth.php';

@@ -20,14 +20,17 @@
 
     @foreach ($fields as $field)
         <div class="relative z-0 w-full mb-5 group">
-            <input type="{{ $field['type'] }}" name="{{ $field['name'] }}" id="{{ $field['id'] }}"
-                placeholder="{{ $field['placeholder'] }}"
-                @if ($field['value']) value="{{ $field['value'] }}" @endif
-                @if ($field['class']) class="{{ $field['class'] }}" @endif />
+            <input type="{{ $field['type'] }}" name="{{ $field['name'] }}"
+                @if (isset($field['id'])) id="{{ $field['id'] }}" @endif
+                @if (isset($field['placeholder'])) placeholder="{{ $field['placeholder'] }}" @endif
+                @if (isset($field['value'])) value="{{ $field['value'] }}" 
+                @else
+                    value="{{ old($field['name']) }}" @endif
+                @if (isset($field['class'])) class="{{ $field['class'] }}" @endif />
 
             @if ($field['type'] != 'hidden')
                 <label for="{{ $field['id'] }}"
-                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 capitalize">{{ $field['label'] }}</label>
+                    class="{{ $field['label']['class'] }}">{{ $field['label']['name'] }}</label>
 
                 @error($field['name'])
                     <p class="text-red-600" style="text-shadow:3px 5px 4px black">{{ $message }}</p>

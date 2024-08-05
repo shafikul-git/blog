@@ -1,27 +1,26 @@
-@props([
+{{-- @props([
     'menu' => [
         [
             'text' => 'home',
             'link' => 'www.youtube.com',
             'icon' => '',
-           
         ],
         [
             'text' => 'home',
             'link' => '#',
             'icon' => '',
             'sub_link' => [
-               [
-                'text' => 'home',
-                'link' => 'www.youtube.com',
-                'icon' => '<i class="fa-solid fa-arrow-right"></i>',
+                [
+                    'text' => 'home',
+                    'link' => 'www.youtube.com',
+                    'icon' => '<i class="fa-solid fa-arrow-right"></i>',
                 ],
                 [
-                'text' => 'home',
-                'link' => 'www.youtube.com',
-                'icon' => '',
+                    'text' => 'home',
+                    'link' => 'www.youtube.com',
+                    'icon' => '',
                 ],
-            ]
+            ],
         ],
         [
             'text' => 'home',
@@ -34,7 +33,42 @@
             'link' => 'http://127.0.0.1:8000/',
         ],
     ],
-])
+]) --}}
+
+
+
+
+@props(['menu' =>[]] )
+
+<pre>
+@php
+// return $allMenuData;
+    // function renderMenu($menuItems) {
+    //     $html = '';
+    //     foreach ($menuItems as $item) {
+    //         if (isset($item['text'])) {
+    //             $html .= '<li class="' . (isset($item['sub_link']) ? 'group max-lg:border-b max-lg:px-3 max-lg:py-3 relative' : 'max-lg:border-b max-lg:px-3 max-lg:py-3') . '">';
+    //             if (isset($item['sub_link'])) {
+    //                 $html .= '<a href="' . $item['link'] . '" class="hover:text-[#007bff] hover:fill-[#007bff] text-gray-600 font-semibold text-[15px] block capitalize">';
+    //                 $html .= $item['text'] . ' <i class="fa-solid fa-angle-down mr-4 inline-block"></i></a>';
+    //                 $html .= '<ul class="absolute top-5 max-lg:top-8 left-0 z-50 block space-y-2 shadow-lg bg-white max-h-0 overflow-hidden min-w-[250px] group-hover:opacity-100 group-hover:max-h-[700px] px-6 group-hover:pb-4 group-hover:pt-6 transition-all duration-500">';
+    //                 $html .= renderMenu($item['sub_link']);
+    //                 $html .= '</ul>';
+    //             } else {
+    //                 $html .= '<a href="' . $item['link'] . '" class="hover:text-[#007bff] text-[#007bff] font-semibold block text-[15px] capitalize">';
+    //                 $html .= $item['text'] . '</a>';
+    //             }
+    //             $html .= '</li>';
+    //         } elseif (isset($item['logo'])) {
+    //             $html .= '<li class="logo-item">';
+    //             $html .= '<a href="' . $item['link'] . '"><img src="' . $item['logo'] . '" alt="' . $item['alt'] . '"></a>';
+    //             $html .= '</li>';
+    //         }
+    //     }
+    //     return $html;
+    // }
+@endphp
+</pre>
 <header class='shadow-md bg-white font-[sans-serif] tracking-wide relative z-50'>
 
     {{-- Top Section --}}
@@ -154,38 +188,44 @@
                 @foreach ($menu as $menuContent)
                     @if (isset($menuContent['logo']))
                         <li class='max-lg:border-b max-lg:pb-4 px-3 lg:hidden'>
-                            <a href="{{$menuContent['link']}}">
+                            <a href="{{ $menuContent['link'] }}">
                                 <img src="{{ $menuContent['logo'] }}" alt="{{ $menuContent['alt'] }}" class='w-36' />
                             </a>
                         </li>
                     @endif
                     @if (isset($menuContent['text']))
-                        <li class="{{ isset($menuContent['sub_link']) ? 'group max-lg:border-b max-lg:px-3 max-lg:py-3 relative' : 'max-lg:border-b max-lg:px-3 max-lg:py-3' }}">
+                        <li
+                            class="{{ isset($menuContent['sub_link']) ? 'group max-lg:border-b max-lg:px-3 max-lg:py-3 relative' : 'max-lg:border-b max-lg:px-3 max-lg:py-3' }}">
                             @if (isset($menuContent['sub_link']))
-                                <a href="{{ $menuContent['link'] }}" class='hover:text-[#007bff] hover:fill-[#007bff] text-gray-600 font-semibold text-[15px] block capitalize'> 
+                                <a href="{{ $menuContent['link'] }}"
+                                    class='hover:text-[#007bff] hover:fill-[#007bff] text-gray-600 font-semibold text-[15px] block capitalize'>
                                     {{ $menuContent['text'] }}
                                     <i class="fa-solid fa-angle-down mr-4 inline-block"></i>
                                 </a>
-                                <ul class='absolute top-5 max-lg:top-8 left-0 z-50 block space-y-2 shadow-lg bg-white max-h-0 overflow-hidden min-w-[250px] group-hover:opacity-100 group-hover:max-h-[700px] px-6 group-hover:pb-4 group-hover:pt-6 transition-all duration-500'>
+                                <ul
+                                    class='absolute top-5 max-lg:top-8 left-0 z-50 block space-y-2 shadow-lg bg-white max-h-0 overflow-hidden min-w-[250px] group-hover:opacity-100 group-hover:max-h-[700px] px-6 group-hover:pb-4 group-hover:pt-6 transition-all duration-500'>
                                     @foreach ($menuContent['sub_link'] as $sub_link)
                                         <li class='border-b py-3'>
-                                            <a href="{{ $sub_link['link'] }}" class='hover:text-[#007bff] hover:fill-[#007bff] text-gray-600 font-semibold text-[15px] block capitalize'>
+                                            <a href="{{ $sub_link['link'] }}"
+                                                class='hover:text-[#007bff] hover:fill-[#007bff] text-gray-600 font-semibold text-[15px] block capitalize'>
                                                 @if (isset($sub_link['icon']))
                                                     {!! $sub_link['icon'] !!}
                                                 @endif
-                                                {{$sub_link['text']}}
+                                                {{ $sub_link['text'] }}
                                             </a>
                                         </li>
                                     @endforeach
                                 </ul>
                             @else
-                                <a href="{{$menuContent['link']}}" class="hover:text-[#007bff] text-[#007bff] font-semibold block text-[15px] capitalize" class=''> {{$menuContent['text']}} </a>
+                                <a href="{{ $menuContent['link'] }}"
+                                    class="hover:text-[#007bff] text-[#007bff] font-semibold block text-[15px] capitalize">
+                                    {{ $menuContent['text'] }} </a>
                             @endif
                         </li>
                     @endif
                 @endforeach
+                {{-- {!! renderMenu($menu) !!} --}}
 
-              
             </ul>
         </div>
 

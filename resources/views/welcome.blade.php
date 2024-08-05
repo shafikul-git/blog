@@ -22,11 +22,73 @@
 </head>
 
 <body> --}}
+
+    @php
+       $menu = [
+        [
+            'text' => 'home',
+            'link' => 'www.youtube.com',
+            'icon' => '',
+        ],
+        [
+            'text' => 'home',
+            'link' => '#',
+            'icon' => '',
+            'sub_link' => [
+                [
+                    'text' => 'home',
+                    'link' => 'www.youtube.com',
+                    'icon' => '<i class="fa-solid fa-arrow-right"></i>',
+                    'sub_link' => [
+                        [
+                            'text' => 'home',
+                            'link' => 'www.youtube.com',
+                            'icon' => '<i class="fa-solid fa-arrow-right"></i>',
+                            'sub_link' => [
+                                [
+                                    'text' => 'home',
+                                    'link' => 'www.youtube.com',
+                                    'icon' => '<i class="fa-solid fa-arrow-right"></i>',
+                                ],
+                                [
+                                    'text' => 'home',
+                                    'link' => 'www.youtube.com',
+                                    'icon' => '<i class="fa-solid fa-arrow-right"></i>',
+                                ]
+                            ]
+                        ],
+                        [
+                            'text' => 'home',
+                            'link' => 'www.youtube.com',
+                            'icon' => '<i class="fa-solid fa-arrow-right"></i>',
+                        ]
+                    ]
+                ],
+                [
+                    'text' => 'home',
+                    'link' => 'www.youtube.com',
+                    'icon' => '',
+                ],
+            ],
+        ],
+        [
+            'text' => 'home',
+            'link' => 'www.youtube.com',
+            'icon' => '',
+        ],
+        [
+            'logo' => 'https://readymadeui.com/readymadeui.svg',
+            'alt' => 'logo',
+            'link' => 'http://127.0.0.1:8000/',
+        ],
+];
+
+    @endphp
 @extends('header')
 @section('title', 'Home')
 @section('otherConetent')
 
-    <x-navbar></x-navbar>
+    <x-navbar :menu="$menu"></x-navbar>
 
 
     <!-- Hero Section -->
