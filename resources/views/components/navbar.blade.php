@@ -1,4 +1,43 @@
+@props([
+    'menu' => [
+        [
+            'text' => 'home',
+            'link' => 'www.youtube.com',
+            'icon' => '',
+           
+        ],
+        [
+            'text' => 'home',
+            'link' => '#',
+            'icon' => '',
+            'sub_link' => [
+               [
+                'text' => 'home',
+                'link' => 'www.youtube.com',
+                'icon' => '<i class="fa-solid fa-arrow-right"></i>',
+                ],
+                [
+                'text' => 'home',
+                'link' => 'www.youtube.com',
+                'icon' => '',
+                ],
+            ]
+        ],
+        [
+            'text' => 'home',
+            'link' => 'www.youtube.com',
+            'icon' => '',
+        ],
+        [
+            'logo' => 'https://readymadeui.com/readymadeui.svg',
+            'alt' => 'logo',
+            'link' => 'http://127.0.0.1:8000/',
+        ],
+    ],
+])
 <header class='shadow-md bg-white font-[sans-serif] tracking-wide relative z-50'>
+
+    {{-- Top Section --}}
     <section
         class='flex items-center flex-wrap lg:justify-center gap-4 py-3 sm:px-10 px-4 border-gray-200 border-b min-h-[75px]'>
         {{-- Left Side Top Menu --}}
@@ -101,89 +140,52 @@
         </div>
     </section>
 
+    {{-- Next Section --}}
     <div class='flex flex-wrap justify-center px-10 py-3 relative'>
         {{-- Mobile Button Close --}}
-        <div id="collapseMenu" class='max-lg:hidden lg:!block max-lg:before:fixed max-lg:before:bg-black max-lg:before:opacity-40 max-lg:before:inset-0 max-lg:before:z-50'>
+        <div id="collapseMenu"
+            class='max-lg:hidden lg:!block max-lg:before:fixed max-lg:before:bg-black max-lg:before:opacity-40 max-lg:before:inset-0 max-lg:before:z-50'>
             <button id="toggleClose" class='lg:hidden fixed top-2 right-4 z-[100] rounded-full bg-white p-3'>
                 <i class="fa-solid fa-xmark w-4 fill-black font-bold"></i>
             </button>
 
             <ul
                 class='lg:flex lg:gap-x-10 max-lg:space-y-3 max-lg:fixed max-lg:bg-white max-lg:w-2/3 max-lg:min-w-[300px] max-lg:top-0 max-lg:left-0 max-lg:p-4 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50'>
-                <li class='max-lg:border-b max-lg:pb-4 px-3 lg:hidden'>
-                    <a href="#">
-                        <img src="https://readymadeui.com/readymadeui.svg" alt="logo" class='w-36' />
-                    </a>
-                </li>
-                <li class='max-lg:border-b max-lg:px-3 max-lg:py-3'>
-                    <a href='#'
-                        class='hover:text-[#007bff] text-[#007bff] font-semibold block text-[15px]'>Home</a>
-                </li>
-                <li class='group max-lg:border-b max-lg:px-3 max-lg:py-3 relative '>
-                    <a href='#'
-                        class='hover:text-[#007bff] hover:fill-[#007bff] text-gray-600 font-semibold text-[15px] block'>Store
-                        <i class="fa-solid fa-angle-down mr-4 inline-block"></i>
-                    </a>
-                    <ul
-                        class='absolute top-5 max-lg:top-8 left-0 z-50 block space-y-2 shadow-lg bg-white max-h-0 overflow-hidden min-w-[250px] group-hover:opacity-100 group-hover:max-h-[700px] px-6 group-hover:pb-4 group-hover:pt-6 transition-all duration-500'>
-                        <li class='border-b py-3'>
-                            <a href='#'
-                                class='hover:text-[#007bff] hover:fill-[#007bff] text-gray-600 font-semibold text-[15px] block'>
-                                <i class="fa-brands fa-google-scholar mr-4 inline-block"></i>
-                                Furniture Store
+                @foreach ($menu as $menuContent)
+                    @if (isset($menuContent['logo']))
+                        <li class='max-lg:border-b max-lg:pb-4 px-3 lg:hidden'>
+                            <a href="{{$menuContent['link']}}">
+                                <img src="{{ $menuContent['logo'] }}" alt="{{ $menuContent['alt'] }}" class='w-36' />
                             </a>
                         </li>
-                        <li class='border-b py-3'>
-                            <a href='#'
-                                class='hover:text-[#007bff] hover:fill-[#007bff] text-gray-600 font-semibold text-[15px] block'>
-                                <i class="fa-solid fa-umbrella mr-4 inline-block"></i>
-                                Electronic Store
-                            </a>
+                    @endif
+                    @if (isset($menuContent['text']))
+                        <li class="{{ isset($menuContent['sub_link']) ? 'group max-lg:border-b max-lg:px-3 max-lg:py-3 relative' : 'max-lg:border-b max-lg:px-3 max-lg:py-3' }}">
+                            @if (isset($menuContent['sub_link']))
+                                <a href="{{ $menuContent['link'] }}" class='hover:text-[#007bff] hover:fill-[#007bff] text-gray-600 font-semibold text-[15px] block capitalize'> 
+                                    {{ $menuContent['text'] }}
+                                    <i class="fa-solid fa-angle-down mr-4 inline-block"></i>
+                                </a>
+                                <ul class='absolute top-5 max-lg:top-8 left-0 z-50 block space-y-2 shadow-lg bg-white max-h-0 overflow-hidden min-w-[250px] group-hover:opacity-100 group-hover:max-h-[700px] px-6 group-hover:pb-4 group-hover:pt-6 transition-all duration-500'>
+                                    @foreach ($menuContent['sub_link'] as $sub_link)
+                                        <li class='border-b py-3'>
+                                            <a href="{{ $sub_link['link'] }}" class='hover:text-[#007bff] hover:fill-[#007bff] text-gray-600 font-semibold text-[15px] block capitalize'>
+                                                @if (isset($sub_link['icon']))
+                                                    {!! $sub_link['icon'] !!}
+                                                @endif
+                                                {{$sub_link['text']}}
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            @else
+                                <a href="{{$menuContent['link']}}" class="hover:text-[#007bff] text-[#007bff] font-semibold block text-[15px] capitalize" class=''> {{$menuContent['text']}} </a>
+                            @endif
                         </li>
-                        <li class='border-b py-3'>
-                            <a href='#'
-                                class='hover:text-[#007bff] hover:fill-[#007bff] text-gray-600 font-semibold text-[15px] block'>
-                                <i class="fa-solid fa-headphones mr-4 inline-block"></i>
-                                Fashion Store
-                            </a>
-                        </li>
-                        <li class='border-b py-3'>
-                            <a href='#'
-                                class='hover:text-[#007bff] hover:fill-[#007bff] text-gray-600 font-semibold text-[15px] block'>
-                                <i class="fa-brands fa-windows mr-4 inline-block"></i>
-                                Shoes Store
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class='max-lg:border-b max-lg:px-3 max-lg:py-3'>
-                    <a href='#'
-                        class='hover:text-[#007bff] text-gray-600 font-semibold text-[15px] block'>Feature</a>
-                </li>
-                <li class='max-lg:border-b max-lg:px-3 max-lg:py-3'>
-                    <a href='#'
-                        class='hover:text-[#007bff] text-gray-600 font-semibold text-[15px] block'>Blog</a>
-                </li>
-                <li class='max-lg:border-b max-lg:px-3 max-lg:py-3'>
-                    <a href='#'
-                        class='hover:text-[#007bff] text-gray-600 font-semibold text-[15px] block'>About</a>
-                </li>
-                <li class='max-lg:border-b max-lg:px-3 max-lg:py-3'>
-                    <a href='#'
-                        class='hover:text-[#007bff] text-gray-600 font-semibold text-[15px] block'>Contact</a>
-                </li>
-                <li class='max-lg:border-b max-lg:px-3 max-lg:py-3'>
-                    <a href='#'
-                        class='hover:text-[#007bff] text-gray-600 font-semibold text-[15px] block'>Source</a>
-                </li>
-                <li class='max-lg:border-b max-lg:px-3 max-lg:py-3'>
-                    <a href='#'
-                        class='hover:text-[#007bff] text-gray-600 font-semibold text-[15px] block'>Partner</a>
-                </li>
-                <li class='max-lg:border-b max-lg:px-3 max-lg:py-3'>
-                    <a href='#'
-                        class='hover:text-[#007bff] text-gray-600 font-semibold text-[15px] block'>More</a>
-                </li>
+                    @endif
+                @endforeach
+
+              
             </ul>
         </div>
 

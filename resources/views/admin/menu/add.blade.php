@@ -2,8 +2,11 @@
 @section('title', 'Category View')
 @section('adminContent')
 
+@php
+    $inputStyle = 'block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer';
+@endphp
 
-    <x-form action="{{ route('menu.store') }}" submit="Working" method="POST" formHeading="Menu Add Form" :fields="[
+    <x-form action="{{ route('menu.store') }}" animationBtn="Working" method="POST" formHeading="Menu Add Form" :fields="[
         [
             'type' => 'text',
             'name' => 'menu',
@@ -11,6 +14,7 @@
             'placeholder' => '',
             'label' => 'Enter Your Menu Name here',
             'value' => '',
+            'class' => $inputStyle
         ],
         [
             'type' => 'text',
@@ -19,6 +23,7 @@
             'placeholder' => '',
             'label' => 'Enter Your sub menu Name here',
             'value' => '',
+            'class' => $inputStyle
         ],
         [
             'type' => 'text',
@@ -27,8 +32,9 @@
             'placeholder' => '',
             'label' => 'Enter Your menu Link Name here',
             'value' => Route('home') . '/',
+            'class' => $inputStyle
         ],
-    ]">
+    ]" class="max-w-md mx-auto">
         <label for="main_menu_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white capitalize">Select Main
             menu <sub class="text-green-500">(if you need)</sub> </label>
         <select id="main_menu_id" name="main_menu_id"
