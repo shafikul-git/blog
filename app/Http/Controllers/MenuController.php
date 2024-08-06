@@ -9,19 +9,16 @@ use Illuminate\Support\Facades\Auth;
 
 class MenuController extends Controller
 {
-    // public $userId = Auth::user()->id;
-    // protected $userName = Auth::user()->name;
-    // protected $userEmail = Auth::user()->email;
-
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $allMenuData = Menu::get();
+        // $mainMenu = Menu::with('subMenu')->get();
+        $mainMenu = Menu::with('subMenu')->whereNull('main_menu_id')->get();
 
 
-        return $allMenuData;
+        return $mainMenu;
     }
 
     /**
@@ -29,13 +26,9 @@ class MenuController extends Controller
      */
     public function create()
     {
-        $userId = Auth::user()->id;
-        $mainMenu = Menu::where('user_id', $userId)->get(['id', 'menu_name']);
+        $mainMenu = Menu::get();
         return view('admin.menu.add', compact('mainMenu'));
-
-        // where('menus.user_id', $userId)
-        // // ->join('sub_menus', 'menus.id', '=', 'sub_menus.main_menu_id')
-        // ->get(['menus.id', 'menus.menu_name']);
+        // return $mainMenu;
     }
 
     /**
@@ -43,41 +36,38 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
+        if (empty($request->menu_name) && empty($request->sub_menu_name)) {
+            return redirect()->back()->with('error', 'Please fillup menu or submenu');
+        }
+        if (!empty($request->menu_name) && !empty($request->sub_menu_name)) {
+            return redirect()->back()->with('error', 'Please fillup One Menu');
+        }
+
+        if (!empty($request->sub_menu_name)) {
+            $request->validate([
+                'main_menu_id' => 'required',
+            ]);
+        }
+
         $request->validate([
-            'menu_link' => 'required|unique:menus,menu_link',
+            'menu_link' => [
+                'required',
+                'unique:menus,menu_link',
+                'regex:/^\/\S*$/'
+            ],
         ]);
 
         $menuCreate = Menu::create([
             'menu_name' => $request->menu_name,
+            'sub_menu_name' => $request->sub_menu_name,
             'menu_link' => $request->menu_link,
+            'main_menu_id' =>  $request->main_menu_id,
             'user_id' => Auth::user()->id,
             'menu_icon' => $request->menu_icon,
         ]);
 
         if ($menuCreate) {
             return redirect()->back()->with('success', 'Menu Addded Successful');
-        } else {
-            return redirect()->back()->with('error', 'Someting Want wrong Please try again');
-        }
-    }
-
-    public function subMenuStore(Request $request)
-    {
-        $request->validate([
-            'menu_link' => 'required|unique:menus,menu_link',
-            'main_menu_id' => 'required',
-        ]);
-
-        $menuCreate = SubMenu::create([
-            'menu_name' => $request->menu_name,
-            'menu_link' => $request->menu_link,
-            'main_menu_id' => $request->main_menu_id,
-            'user_id' => Auth::user()->id,
-            'menu_icon' => $request->menu_icon,
-        ]);
-
-        if ($menuCreate) {
-            return redirect()->back()->with('success', 'Sub Menu Addded Successful');
         } else {
             return redirect()->back()->with('error', 'Someting Want wrong Please try again');
         }
@@ -115,3 +105,4 @@ class MenuController extends Controller
         //
     }
 }
+

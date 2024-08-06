@@ -1,0 +1,96 @@
+[
+    {
+        "id": 15,
+        "menu_name": "Home",
+        "sub_menu_name": null,
+        "menu_link": "/",
+        "main_menu_id": null,
+        "sub_menu": [
+            {
+                "id": 18,
+                "menu_name": null,
+                "sub_menu_name": "home page 1",
+                "menu_link": "/page-1",
+                "main_menu_id": 15
+            },
+            {
+                "id": 19,
+                "menu_name": null,
+                "sub_menu_name": "home page 2",
+                "menu_link": "/page-2",
+                "main_menu_id": 15
+            }
+        ]
+    },
+    {
+        "id": 16,
+        "menu_name": "About",
+        "sub_menu_name": null,
+        "menu_link": "/about",
+        "main_menu_id": null,
+        "sub_menu": [
+            {
+                "id": 20,
+                "menu_name": null,
+                "sub_menu_name": "about page 1",
+                "menu_link": "/about/page-1",
+                "main_menu_id": 16,
+                "sub_menu": [
+                    {
+                        "id": 25,
+                        "menu_name": null,
+                        "sub_menu_name": "about sub page 1",
+                        "menu_link": "/about/page-1/page-1",
+                        "main_menu_id": 20
+                    },
+                    {
+                        "id": 26,
+                        "menu_name": null,
+                        "sub_menu_name": "about sub page 2",
+                        "menu_link": "/about/page-1/page-2",
+                        "main_menu_id": 20
+                    }
+                ]
+            },
+            {
+                "id": 21,
+                "menu_name": null,
+                "sub_menu_name": "about page 2",
+                "menu_link": "/about/page-2",
+                "main_menu_id": 16
+            },
+            {
+                "id": 24,
+                "menu_name": null,
+                "sub_menu_name": "about page 3",
+                "menu_link": "/about/page-3",
+                "main_menu_id": 16
+            }
+        ]
+    },
+    {
+        "id": 17,
+        "menu_name": "Contact",
+        "sub_menu_name": null,
+        "menu_link": "/contact",
+        "main_menu_id": null,
+        "sub_menu": [
+            {
+                "id": 22,
+                "menu_name": null,
+                "sub_menu_name": "contact page 1",
+                "menu_link": "/contact/page-1",
+                "main_menu_id": 17
+            }
+        ]
+    },
+    {
+        "id": 28,
+        "menu_name": "Other Check",
+        "sub_menu_name": null,
+        "menu_link": "/other-check",
+        "main_menu_id": null,
+        "sub_menu": []
+    }
+]
+

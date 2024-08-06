@@ -31,11 +31,11 @@
             ],
             [
                 'type' => 'text',
-                'name' => 'menu_icon',
-                'id' => 'menu_icon',
+                'name' => 'sub_menu_name',
+                'id' => 'sub_menu_name',
                 'placeholder' => '',
                 'label' => [
-                    'name' => 'Enter Your menu icon here',
+                    'name' => 'Enter Your Sub menu Name here',
                     'class' => $labelClass,
                 ],
                 'class' => $inputStyle,
@@ -51,13 +51,25 @@
                 ],
                 'class' => $inputStyle,
             ],
+            [
+                'type' => 'text',
+                'name' => 'menu_icon',
+                'id' => 'menu_icon',
+                'placeholder' => '',
+                'label' => [
+                    'name' => 'Enter Your menu icon here',
+                    'class' => $labelClass,
+                ],
+                'class' => $inputStyle,
+            ],
+           
         ]" class="max-w-md mx-auto">
-        <div class="hidden subMenuShow">
-            <label for="main_menu_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white capitalize">Select Main menu </label>
+        <div class="subMenuShow">
+            <label for="main_menu_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white capitalize">Select Main menu <sub class="text-green-400">( if you need )</sub> </label>
             <select id="main_menu_id" name="main_menu_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 <option selected disabled>Select Menu</option>
                 @foreach ($mainMenu as $menus)
-                    <option value="{{ $menus['id'] }}"> {{ $menus['menu_name'] }} </option>
+                    <option value="{{ $menus['id'] }}"> {{ ($menus['menu_name'] == null) ? $menus['sub_menu_name'] : $menus['menu_name'] }} </option>
                 @endforeach
             </select>
         </div>
@@ -75,20 +87,20 @@
     @enderror
 
     <script>
-        let selectAction = document.getElementById('selectAction');
+        //let selectAction = document.getElementById('selectAction');
 
-        function mainMenu() {
-            const subMenuShow = document.querySelector('.subMenuShow');
-            subMenuShow.classList.add('hidden');
-            selectAction.removeAttribute('action');
-            selectAction.setAttribute('action', '{{ route('menu.store') }}');
-        }
+        // function mainMenu() {
+        //     const subMenuShow = document.querySelector('.subMenuShow');
+        //     subMenuShow.classList.add('hidden');
+        //     selectAction.removeAttribute('action');
+        //     selectAction.setAttribute('action', '{{ route('menu.store') }}');
+        // }
 
-        function subMenu() {
-            const subMenuShow = document.querySelector('.subMenuShow');
-            subMenuShow.classList.remove('hidden');
-            selectAction.removeAttribute('action');
-            selectAction.setAttribute('action', '{{ route('subMenuStore') }}');
-        }
+        // function subMenu() {
+        //     const subMenuShow = document.querySelector('.subMenuShow');
+        //     subMenuShow.classList.remove('hidden');
+        //     selectAction.removeAttribute('action');
+        //     selectAction.setAttribute('action', '{{ route('subMenuStore') }}');
+        // }
     </script>
 @endsection

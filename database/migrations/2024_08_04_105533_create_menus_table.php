@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('menus', function (Blueprint $table) {
             $table->id();
-            $table->string('menu_name');
+            $table->string('menu_name')->nullable();
+            $table->string('sub_menu_name')->nullable();
             $table->string('menu_link')->unique();
-            $table->integer('user_id');
             $table->string('menu_icon')->nullable();
+            $table->integer('main_menu_id')->nullable();
+            $table->foreignId('user_id')->references('id')->on('users')->cascadeOnDelete();
             $table->timestamps();
         });
     }
