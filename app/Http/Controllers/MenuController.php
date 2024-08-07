@@ -16,11 +16,19 @@ class MenuController extends Controller
     {
         // $mainMenu = Menu::with('subMenu')->get();
         $mainMenu = Menu::with('subMenu')->whereNull('main_menu_id')->get();
+        // return $mainMenu;
+        $html = "";
+        
 
-
+        
         return $mainMenu;
     }
 
+    public function check()
+    {
+        $mainMenu = Menu::with('subMenu')->whereNull('main_menu_id')->get();
+        return $mainMenu; 
+    }
     /**
      * Show the form for creating a new resource.
      */

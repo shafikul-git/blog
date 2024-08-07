@@ -21,4 +21,5 @@ Route::middleware('auth')->group(function () {
 
 Route::resource('menu', MenuController::class)->middleware('auth');
 Route::post('sub-menu-store', [MenuController::class, 'subMenuStore'])->name('subMenuStore')->middleware('auth');
+Route::get('check', [MenuController::class, 'check'])->name('check');
 require __DIR__.'/auth.php';

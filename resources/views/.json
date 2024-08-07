@@ -5,20 +5,25 @@
         "sub_menu_name": null,
         "menu_link": "/",
         "main_menu_id": null,
+        "menu_icon": "<i class=\"fa-solid fa-house\"></i>",
         "sub_menu": [
             {
                 "id": 18,
                 "menu_name": null,
                 "sub_menu_name": "home page 1",
                 "menu_link": "/page-1",
-                "main_menu_id": 15
+                "main_menu_id": 15,
+                "menu_icon": "<i class=\"fa-solid fa-file\"></i>",
+                "sub_menu": []
             },
             {
                 "id": 19,
                 "menu_name": null,
                 "sub_menu_name": "home page 2",
                 "menu_link": "/page-2",
-                "main_menu_id": 15
+                "main_menu_id": 15,
+                "menu_icon": null,
+                "sub_menu": []
             }
         ]
     },
@@ -28,6 +33,7 @@
         "sub_menu_name": null,
         "menu_link": "/about",
         "main_menu_id": null,
+        "menu_icon": "<i class=\"fa-solid fa-cloud\"></i>",
         "sub_menu": [
             {
                 "id": 20,
@@ -35,20 +41,25 @@
                 "sub_menu_name": "about page 1",
                 "menu_link": "/about/page-1",
                 "main_menu_id": 16,
+                "menu_icon": null,
                 "sub_menu": [
                     {
                         "id": 25,
                         "menu_name": null,
                         "sub_menu_name": "about sub page 1",
                         "menu_link": "/about/page-1/page-1",
-                        "main_menu_id": 20
+                        "main_menu_id": 20,
+                        "menu_icon": null,
+                        "sub_menu": []
                     },
                     {
                         "id": 26,
                         "menu_name": null,
                         "sub_menu_name": "about sub page 2",
                         "menu_link": "/about/page-1/page-2",
-                        "main_menu_id": 20
+                        "main_menu_id": 20,
+                        "menu_icon": null,
+                        "sub_menu": []
                     }
                 ]
             },
@@ -57,14 +68,18 @@
                 "menu_name": null,
                 "sub_menu_name": "about page 2",
                 "menu_link": "/about/page-2",
-                "main_menu_id": 16
+                "main_menu_id": 16,
+                "menu_icon": null,
+                "sub_menu": []
             },
             {
                 "id": 24,
                 "menu_name": null,
                 "sub_menu_name": "about page 3",
                 "menu_link": "/about/page-3",
-                "main_menu_id": 16
+                "main_menu_id": 16,
+                "menu_icon": null,
+                "sub_menu": []
             }
         ]
     },
@@ -74,13 +89,16 @@
         "sub_menu_name": null,
         "menu_link": "/contact",
         "main_menu_id": null,
+        "menu_icon": "<i class=\"fa-brands fa-slack\"></i>",
         "sub_menu": [
             {
                 "id": 22,
                 "menu_name": null,
                 "sub_menu_name": "contact page 1",
                 "menu_link": "/contact/page-1",
-                "main_menu_id": 17
+                "main_menu_id": 17,
+                "menu_icon": null,
+                "sub_menu": []
             }
         ]
     },
@@ -90,7 +108,47 @@
         "sub_menu_name": null,
         "menu_link": "/other-check",
         "main_menu_id": null,
-        "sub_menu": []
+        "menu_icon": null,
+        "sub_menu": [
+            {
+                "id": 29,
+                "menu_name": null,
+                "sub_menu_name": "other cehck",
+                "menu_link": "/ot",
+                "main_menu_id": 28,
+                "menu_icon": null,
+                "sub_menu": [
+                    {
+                        "id": 30,
+                        "menu_name": null,
+                        "sub_menu_name": "other check sub 1",
+                        "menu_link": "/oter-sub",
+                        "main_menu_id": 29,
+                        "menu_icon": null,
+                        "sub_menu": [
+                            {
+                                "id": 31,
+                                "menu_name": null,
+                                "sub_menu_name": "again check",
+                                "menu_link": "/again-checl",
+                                "main_menu_id": 30,
+                                "menu_icon": null,
+                                "sub_menu": [
+                                    {
+                                        "id": 32,
+                                        "menu_name": null,
+                                        "sub_menu_name": "again 2",
+                                        "menu_link": "/again-3",
+                                        "main_menu_id": 31,
+                                        "menu_icon": null,
+                                        "sub_menu": []
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
     }
 ]
-

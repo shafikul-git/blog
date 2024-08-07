@@ -38,37 +38,202 @@
 
 
 
-@props(['menu' =>[]] )
-
-<pre>
 @php
-// return $allMenuData;
-    // function renderMenu($menuItems) {
-    //     $html = '';
-    //     foreach ($menuItems as $item) {
-    //         if (isset($item['text'])) {
-    //             $html .= '<li class="' . (isset($item['sub_link']) ? 'group max-lg:border-b max-lg:px-3 max-lg:py-3 relative' : 'max-lg:border-b max-lg:px-3 max-lg:py-3') . '">';
-    //             if (isset($item['sub_link'])) {
-    //                 $html .= '<a href="' . $item['link'] . '" class="hover:text-[#007bff] hover:fill-[#007bff] text-gray-600 font-semibold text-[15px] block capitalize">';
-    //                 $html .= $item['text'] . ' <i class="fa-solid fa-angle-down mr-4 inline-block"></i></a>';
-    //                 $html .= '<ul class="absolute top-5 max-lg:top-8 left-0 z-50 block space-y-2 shadow-lg bg-white max-h-0 overflow-hidden min-w-[250px] group-hover:opacity-100 group-hover:max-h-[700px] px-6 group-hover:pb-4 group-hover:pt-6 transition-all duration-500">';
-    //                 $html .= renderMenu($item['sub_link']);
-    //                 $html .= '</ul>';
-    //             } else {
-    //                 $html .= '<a href="' . $item['link'] . '" class="hover:text-[#007bff] text-[#007bff] font-semibold block text-[15px] capitalize">';
-    //                 $html .= $item['text'] . '</a>';
-    //             }
-    //             $html .= '</li>';
-    //         } elseif (isset($item['logo'])) {
-    //             $html .= '<li class="logo-item">';
-    //             $html .= '<a href="' . $item['link'] . '"><img src="' . $item['logo'] . '" alt="' . $item['alt'] . '"></a>';
-    //             $html .= '</li>';
-    //         }
-    //     }
-    //     return $html;
-    // }
+
+    $menu = [
+        [
+            'id' => 15,
+            'menu_name' => 'Home',
+            'sub_menu_name' => null,
+            'menu_link' => '# ',
+            'main_menu_id' => null,
+            'menu_icon' => "<i class=\"fa-solid fa-house\"></i>",
+            'sub_menu' => [
+                [
+                    'id' => 18,
+                    'menu_name' => null,
+                    'sub_menu_name' => 'home page 1',
+                    'menu_link' => '/page-1',
+                    'main_menu_id' => 15,
+                    'menu_icon' => "<i class=\"fa-solid fa-file\"></i>",
+                    'sub_menu' => [],
+                ],
+                [
+                    'id' => 19,
+                    'menu_name' => null,
+                    'sub_menu_name' => 'home page 2',
+                    'menu_link' => '/page-2',
+                    'main_menu_id' => 15,
+                    'menu_icon' => null,
+                    'sub_menu' => [],
+                ],
+            ],
+        ],
+        [
+            'id' => 16,
+            'menu_name' => 'About',
+            'sub_menu_name' => null,
+            'menu_link' => '/about',
+            'main_menu_id' => null,
+            'menu_icon' => "<i class=\"fa-solid fa-cloud\"></i>",
+            'sub_menu' => [
+                [
+                    'id' => 20,
+                    'menu_name' => null,
+                    'sub_menu_name' => 'about page 1',
+                    'menu_link' => '/about/page-1',
+                    'main_menu_id' => 16,
+                    'menu_icon' => null,
+                    'sub_menu' => [
+                        [
+                            'id' => 25,
+                            'menu_name' => null,
+                            'sub_menu_name' => 'about sub page 1',
+                            'menu_link' => '/about/page-1/page-1',
+                            'main_menu_id' => 20,
+                            'menu_icon' => null,
+                            'sub_menu' => [],
+                        ],
+                        [
+                            'id' => 26,
+                            'menu_name' => null,
+                            'sub_menu_name' => 'about sub page 2',
+                            'menu_link' => '/about/page-1/page-2',
+                            'main_menu_id' => 20,
+                            'menu_icon' => null,
+                            'sub_menu' => [],
+                        ],
+                    ],
+                ],
+                [
+                    'id' => 21,
+                    'menu_name' => null,
+                    'sub_menu_name' => 'about page 2',
+                    'menu_link' => '/about/page-2',
+                    'main_menu_id' => 16,
+                    'menu_icon' => null,
+                    'sub_menu' => [],
+                ],
+                [
+                    'id' => 24,
+                    'menu_name' => null,
+                    'sub_menu_name' => 'about page 3',
+                    'menu_link' => '/about/page-3',
+                    'main_menu_id' => 16,
+                    'menu_icon' => null,
+                    'sub_menu' => [],
+                ],
+            ],
+        ],
+        [
+            'id' => 17,
+            'menu_name' => 'Contact',
+            'sub_menu_name' => null,
+            'menu_link' => '/contact',
+            'main_menu_id' => null,
+            'menu_icon' => "<i class=\"fa-brands fa-slack\"></i>",
+            'sub_menu' => [
+                [
+                    'id' => 22,
+                    'menu_name' => null,
+                    'sub_menu_name' => 'contact page 1',
+                    'menu_link' => '/contact/page-1',
+                    'main_menu_id' => 17,
+                    'menu_icon' => null,
+                    'sub_menu' => [],
+                ],
+            ],
+        ],
+        [
+            'id' => 28,
+            'menu_name' => 'Other Check',
+            'sub_menu_name' => null,
+            'menu_link' => '/other-check',
+            'main_menu_id' => null,
+            'menu_icon' => null,
+            'sub_menu' => [
+                [
+                    'id' => 29,
+                    'menu_name' => null,
+                    'sub_menu_name' => 'other cehck',
+                    'menu_link' => '/ot',
+                    'main_menu_id' => 28,
+                    'menu_icon' => null,
+                    'sub_menu' => [
+                        [
+                            'id' => 30,
+                            'menu_name' => null,
+                            'sub_menu_name' => 'other check sub 1',
+                            'menu_link' => '/oter-sub',
+                            'main_menu_id' => 29,
+                            'menu_icon' => null,
+                            'sub_menu' => [
+                                [
+                                    'id' => 31,
+                                    'menu_name' => null,
+                                    'sub_menu_name' => 'again check',
+                                    'menu_link' => '/again-checl',
+                                    'main_menu_id' => 30,
+                                    'menu_icon' => null,
+                                    'sub_menu' => [
+                                        [
+                                            'id' => 32,
+                                            'menu_name' => null,
+                                            'sub_menu_name' => 'again 2',
+                                            'menu_link' => '/again-3',
+                                            'main_menu_id' => 31,
+                                            'menu_icon' => null,
+                                            'sub_menu' => [],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ],
+        [
+            'id' => 135,
+            'menu_name' => 'Check Empty',
+            'sub_menu_name' => null,
+            'menu_link' => '/Empty',
+            'main_menu_id' => null,
+            'menu_icon' => "<i class=\"fa-solid fa-house\"></i>",
+            'sub_menu' => [],
+        ],
+    ];
+
+
+    function renderMenu($menu) {
+        $html = '';
+
+        foreach ($menu as $menuContent) {
+            $hasSubMenu = !empty($menuContent['sub_menu']);
+            $menuClass = $hasSubMenu ? 'group max-lg:border-b max-lg:px-3 max-lg:py-3 relative' : 'max-lg:border-b max-lg:px-3 max-lg:py-3';
+            $linkClass = $hasSubMenu ? 'hover:text-[#007bff] hover:fill-[#007bff] text-gray-600 font-semibold text-[15px] block capitalize' : 'hover:text-[#007bff] text-[#007bff] font-semibold block text-[15px] capitalize';
+
+            $html .= '<li class="' . $menuClass . '">';
+            $html .= '<a href="' . $menuContent['menu_link'] . '" class="' . $linkClass . '">';
+            $html .= $menuContent['menu_name'] ? $menuContent['menu_name'] : $menuContent['sub_menu_name'];
+            if ($hasSubMenu) {
+                $html .= ' <i class="fa-solid fa-angle-down mr-4 inline-block"></i>';
+            }
+            $html .= '</a>';
+
+            if ($hasSubMenu) {
+                $html .= '<ul class="absolute top-5 max-lg:top-8 left-0 z-50 block space-y-2 shadow-lg bg-white max-h-0 overflow-hidden min-w-[250px] group-hover:opacity-100 group-hover:max-h-[700px] px-6 group-hover:pb-4 group-hover:pt-6 transition-all duration-500">';
+                $html .= renderMenu($menuContent['sub_menu']);
+                $html .= '</ul>';
+            }
+
+            $html .= '</li>';
+        }
+
+        return $html;
+    }
 @endphp
-</pre>
+
 <header class='shadow-md bg-white font-[sans-serif] tracking-wide relative z-50'>
 
     {{-- Top Section --}}
@@ -184,48 +349,40 @@
             </button>
 
             <ul
-                class='lg:flex lg:gap-x-10 max-lg:space-y-3 max-lg:fixed max-lg:bg-white max-lg:w-2/3 max-lg:min-w-[300px] max-lg:top-0 max-lg:left-0 max-lg:p-4 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50'>
-                @foreach ($menu as $menuContent)
-                    @if (isset($menuContent['logo']))
-                        <li class='max-lg:border-b max-lg:pb-4 px-3 lg:hidden'>
-                            <a href="{{ $menuContent['link'] }}">
-                                <img src="{{ $menuContent['logo'] }}" alt="{{ $menuContent['alt'] }}" class='w-36' />
+                class='lg:flex lg:gap-x-10 max-lg:space-y-3 max-lg:fixed max-lg:bg-white max-lg:w-2/3 max-lg:min-w-[300px] max-lg:top-0 max-lg:left-0 max-lg:p-4 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50 '>
+                <li class='max-lg:border-b max-lg:pb-4 px-3 lg:hidden'>
+                    <a href="#">
+                        <img src="" alt="" class='w-36' />
+                    </a>
+                </li>
+                {{-- @foreach ($menu as $menuContent)
+                    <li
+                        class="{{ $menuContent['sub_menu'] ? 'group max-lg:border-b max-lg:px-3 max-lg:py-3 relative' : 'max-lg:border-b max-lg:px-3 max-lg:py-3' }}">
+                        @if ($menuContent['sub_menu'])
+                            <a href="{{ $menuContent['menu_link'] }}"
+                                class='hover:text-[#007bff] hover:fill-[#007bff] text-gray-600 font-semibold text-[15px] block capitalize'>
+                                {{ $menuContent['menu_name'] }}
+                                <i class="fa-solid fa-angle-down mr-4 inline-block"></i>
                             </a>
-                        </li>
-                    @endif
-                    @if (isset($menuContent['text']))
-                        <li
-                            class="{{ isset($menuContent['sub_link']) ? 'group max-lg:border-b max-lg:px-3 max-lg:py-3 relative' : 'max-lg:border-b max-lg:px-3 max-lg:py-3' }}">
-                            @if (isset($menuContent['sub_link']))
-                                <a href="{{ $menuContent['link'] }}"
-                                    class='hover:text-[#007bff] hover:fill-[#007bff] text-gray-600 font-semibold text-[15px] block capitalize'>
-                                    {{ $menuContent['text'] }}
-                                    <i class="fa-solid fa-angle-down mr-4 inline-block"></i>
-                                </a>
-                                <ul
-                                    class='absolute top-5 max-lg:top-8 left-0 z-50 block space-y-2 shadow-lg bg-white max-h-0 overflow-hidden min-w-[250px] group-hover:opacity-100 group-hover:max-h-[700px] px-6 group-hover:pb-4 group-hover:pt-6 transition-all duration-500'>
-                                    @foreach ($menuContent['sub_link'] as $sub_link)
-                                        <li class='border-b py-3'>
-                                            <a href="{{ $sub_link['link'] }}"
-                                                class='hover:text-[#007bff] hover:fill-[#007bff] text-gray-600 font-semibold text-[15px] block capitalize'>
-                                                @if (isset($sub_link['icon']))
-                                                    {!! $sub_link['icon'] !!}
-                                                @endif
-                                                {{ $sub_link['text'] }}
-                                            </a>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            @else
-                                <a href="{{ $menuContent['link'] }}"
-                                    class="hover:text-[#007bff] text-[#007bff] font-semibold block text-[15px] capitalize">
-                                    {{ $menuContent['text'] }} </a>
-                            @endif
-                        </li>
-                    @endif
-                @endforeach
-                {{-- {!! renderMenu($menu) !!} --}}
-
+                            <ul
+                                class='absolute top-5 max-lg:top-8 left-0 z-50 block space-y-2 shadow-lg bg-white max-h-0 overflow-hidden min-w-[250px] group-hover:opacity-100 group-hover:max-h-[700px] px-6 group-hover:pb-4 group-hover:pt-6 transition-all duration-500'>
+                                @foreach ($menuContent['sub_menu'] as $many_sub_menu)
+                                    <li class='border-b py-3'>
+                                        <a href="{{ $many_sub_menu['menu_link'] }}"
+                                            class='hover:text-[#007bff] hover:fill-[#007bff] text-gray-600 font-semibold text-[15px] block capitalize'>
+                                            {!! $many_sub_menu['menu_icon'] !!} {{ $many_sub_menu['sub_menu_name'] }}
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        @else
+                            <a href="{{ $menuContent['menu_link'] }}"
+                                class="hover:text-[#007bff] text-[#007bff] font-semibold block text-[15px] capitalize">
+                                {{ $menuContent['menu_name'] }} </a>
+                        @endif
+                    </li>
+                @endforeach --}}
+                {!! renderMenu($menu) !!}
             </ul>
         </div>
 
