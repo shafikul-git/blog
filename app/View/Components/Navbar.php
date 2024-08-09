@@ -22,7 +22,7 @@ class Navbar extends Component
      */
     public function render(): View|Closure|string
     {
-        $allMenuData = Menu::get();
+        $allMenuData = Menu::with('subMenu')->whereNull('main_menu_id')->get();
         return view('components.navbar', compact('allMenuData'));
     }
 }

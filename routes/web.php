@@ -6,7 +6,7 @@ use App\Http\Controllers\SubMenuController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 })->name('home');
 
 Route::get('/dashboard', function () {
@@ -20,6 +20,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('menu', MenuController::class)->middleware('auth');
-Route::post('sub-menu-store', [MenuController::class, 'subMenuStore'])->name('subMenuStore')->middleware('auth');
-Route::get('check', [MenuController::class, 'check'])->name('check');
+Route::post('menu/sub/store', [MenuController::class, 'subMenuStore'])->name('subMenuStore')->middleware('auth');
+
+
 require __DIR__.'/auth.php';
