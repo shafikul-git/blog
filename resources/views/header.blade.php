@@ -19,6 +19,12 @@
 
     @yield('otherConetent')
 
+    @once
+        @if (session('success') || session('error'))
+            <x-alert :success="session('success')" :error="session('error')"></x-alert>
+        @endif
+    @endonce
+
     <script src="https://kit.fontawesome.com/ed5a9b6893.js" crossorigin="anonymous"></script>
 </body>
 

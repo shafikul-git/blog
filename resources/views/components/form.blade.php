@@ -6,6 +6,7 @@
     'formHeading' => '',
     'animationBtn' => '',
     'simpleBtn' => '',
+    'iconBtn' => '',
 ])
 
 <form action="{{ $action }}" method="{{ $method === 'GET' ? 'GET' : 'POST' }}" {{ $attributes }}>
@@ -58,4 +59,11 @@
     @if ($simpleBtn)
         <input type="submit" value="{{ $simpleBtn }}" class="cursor-pointer">
     @endif
+
+    @if ($iconBtn)
+        <button type="submit">
+            {!! $iconBtn !!}
+        </button>
+    @endif
+    
 </form>

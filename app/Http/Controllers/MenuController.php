@@ -64,7 +64,7 @@ class MenuController extends Controller
         ]);
 
         if ($menuCreate) {
-            return redirect()->back()->with('success', 'Menu Addded Successful');
+            return redirect()->route('menu.index')->with('success', 'Menu Addded Successful');
         } else {
             return redirect()->back()->with('error', 'Someting Want wrong Please try again');
         }
@@ -83,7 +83,7 @@ class MenuController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('admin.menu.edit', compact('id'));
     }
 
     /**
@@ -99,7 +99,14 @@ class MenuController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $subMenuDelete = Menu::where('main_menu_id', $id)->delete();
+        $deleteMenu = Menu::where('id', $id)->delete();
+        if ($deleteMenu && $subMenuDelete) {
+            return redirect()->back()->with('success', 'Menu Delete Successful');
+        } else {
+            return redirect()->back()->with('error', 'Someting went wrong');
+        }
+        
     }
 }
 

@@ -76,12 +76,6 @@
     </x-form>
 
 
-    @once
-        @if (session('success') || session('error'))
-            <x-alert :success="session('success')" :error="session('error')"></x-alert>
-        @endif
-    @endonce
-
     @error('main_menu_id')
         <x-alert error="please select main menu"></x-alert>
     @enderror
