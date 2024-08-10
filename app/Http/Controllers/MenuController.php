@@ -14,14 +14,8 @@ class MenuController extends Controller
      */
     public function index()
     {
-        // $mainMenu = Menu::with('subMenu')->get();
-        $mainMenu = Menu::with('subMenu')->whereNull('main_menu_id')->get();
-        // return $mainMenu;
-        $html = "";
-        
-
-        
-        return $mainMenu;
+        $allMenuView = Menu::with('subMenu')->whereNull('main_menu_id')->get();
+        return view('admin.menu.view', compact('allMenuView'));
     }
 
     /**
