@@ -83,7 +83,9 @@ class MenuController extends Controller
      */
     public function edit(string $id)
     {
-        return view('admin.menu.edit', compact('id'));
+        $menuData = Menu::where('id', $id)->get();
+        // return $menuData[0]->id;
+        return view('admin.menu.edit', compact('menuData'));
     }
 
     /**
@@ -91,7 +93,32 @@ class MenuController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        if (empty($request->menu_name)) {
+            return redirect()->back()->with('error', 'Please fillup Input box');
+        }
+        if (empty($request->sub_menu_name)) {
+            return redirect()->back()->with('error', 'Please fillup Input box');
+        }
+
+        $request->validate([
+            'menu_link' => [
+                'required',
+                'unique:menus,menu_link',
+                'regex:/^\/\S*$/'
+            ],
+        ]);
+        $menuUpdate = Menu::where('id', $id)->update([
+            'menu_name' => $request->menu_name,
+            'sub_menu_name' => $request->sub_menu_name,
+            'menu_link' => $request->menu_link,
+            'menu_icon' => $request->menu_icon,
+        ]);
+
+        if ($menuUpdate) {
+            return redirect()->route('menu.index')->with('success', 'Menu Update Successful');
+        } else {
+            return redirect()->back()->with('error', 'Someting Want wrong Please try again');
+        }
     }
 
     /**
@@ -106,7 +133,5 @@ class MenuController extends Controller
         } else {
             return redirect()->back()->with('error', 'Someting went wrong');
         }
-        
     }
 }
-
