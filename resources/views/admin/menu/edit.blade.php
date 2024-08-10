@@ -43,12 +43,25 @@
             'id' => 'menu_link',
             'placeholder' => '',
             'label' => [
-                'name' => 'Enter Your  menu Name here',
+                'name' => 'Enter Your  menu link here',
                 'class' => $labelClass,
             ],
             'class' => $inputStyle,
             'value' => $menuData[0]->menu_link
         ],
+        [
+            'type' => 'text',
+            'name' => 'menu_icon',
+            'id' => 'menu_icon',
+            'placeholder' => '',
+            'label' => [
+                'name' => 'Enter Your  menu icon here',
+                'class' => $labelClass,
+            ],
+            'class' => $inputStyle,
+            'value' => $menuData[0]->menu_icon
+        ],
+        
     ]" animationBtn="Submit">
 
     </x-form>

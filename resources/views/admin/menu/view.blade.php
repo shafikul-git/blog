@@ -15,7 +15,7 @@
                 </div>
             </div>
             @if ($menus->subMenu->isNotEmpty())
-            <x-adminAllMenu :menuItem="$menus->subMenu"></x-adminAllMenu>
+                <x-adminAllMenu :menuItem="$menus->subMenu"></x-adminAllMenu>
             @endif
         </li>
     </ul>    

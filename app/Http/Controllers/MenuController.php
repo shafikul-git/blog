@@ -58,7 +58,7 @@ class MenuController extends Controller
             'menu_name' => $request->menu_name,
             'sub_menu_name' => $request->sub_menu_name,
             'menu_link' => $request->menu_link,
-            'main_menu_id' =>  $request->main_menu_id,
+            'main_menu_id' =>  $request->menu_name ? null : $request->main_menu_id,
             'user_id' => Auth::user()->id,
             'menu_icon' => $request->menu_icon,
         ]);
@@ -84,6 +84,7 @@ class MenuController extends Controller
     public function edit(string $id)
     {
         $menuData = Menu::where('id', $id)->get();
+        // $menuData = Menu::find($id);
         // return $menuData[0]->id;
         return view('admin.menu.edit', compact('menuData'));
     }
@@ -93,20 +94,27 @@ class MenuController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        if (empty($request->menu_name)) {
-            return redirect()->back()->with('error', 'Please fillup Input box');
+        // Validate menu_name if it's not null
+        if ($request->has('menu_name')) {
+            $request->validate([
+                'menu_name' => 'required',
+            ]);
         }
-        if (empty($request->sub_menu_name)) {
-            return redirect()->back()->with('error', 'Please fillup Input box');
+
+        // Validate sub_menu_name if it's not null
+        if ($request->has('sub_menu_name')) {
+            $request->validate([
+                'sub_menu_name' => 'required',
+            ]);
         }
 
         $request->validate([
             'menu_link' => [
                 'required',
-                'unique:menus,menu_link',
-                'regex:/^\/\S*$/'
+                'regex:/^\/\S*$/',
             ],
         ]);
+
         $menuUpdate = Menu::where('id', $id)->update([
             'menu_name' => $request->menu_name,
             'sub_menu_name' => $request->sub_menu_name,
@@ -128,7 +136,7 @@ class MenuController extends Controller
     {
         $subMenuDelete = Menu::where('main_menu_id', $id)->delete();
         $deleteMenu = Menu::where('id', $id)->delete();
-        if ($deleteMenu && $subMenuDelete) {
+        if ($deleteMenu) {
             return redirect()->back()->with('success', 'Menu Delete Successful');
         } else {
             return redirect()->back()->with('error', 'Someting went wrong');

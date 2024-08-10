@@ -4,7 +4,7 @@
     'error' => '',
     'warning' => ''
 ])
-<div class="font-[sans-serif] space-y-6 mx-auto w-max mt-4 fixed bottom-3 right-3">
+<div class="font-[sans-serif] space-y-6 mx-auto w-max mt-4 fixed bottom-3 right-3 cursor-pointer" {{ $attributes }}>
 
     @if ($success)
     <div class="bg-white shadow-[0_3px_10px_-3px_rgba(6,81,237,0.3)] border-t-4 border-green-500 text-gray-800 flex items-center w-max max-w-sm p-4 rounded-md"
