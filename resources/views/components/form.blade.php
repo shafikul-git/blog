@@ -29,14 +29,16 @@
                     value="{{ old($field['name']) }}" @endif
                 @if (isset($field['class'])) class="{{ $field['class'] }}" @endif />
 
-            @if ($field['type'] != 'hidden')
-                <label for="{{ $field['id'] }}"
-                    class="{{ $field['label']['class'] }}">{{ $field['label']['name'] }}</label>
+                @if (isset($field['label']))
+                    @if ($field['type'] != 'hidden')
+                        <label for="{{ $field['id'] }}"
+                            class="{{ $field['label']['class'] }}">{{ $field['label']['name'] }}</label>
 
-                @error($field['name'])
-                    <p class="text-red-600" style="text-shadow:3px 5px 4px black">{{ $message }}</p>
-                @enderror
-            @endif
+                        @error($field['name'])
+                            <p class="text-red-600" style="text-shadow:3px 5px 4px black">{{ $message }}</p>
+                        @enderror
+                    @endif
+                @endif 
         </div>
     @endforeach
 

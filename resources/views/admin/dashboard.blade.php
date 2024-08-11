@@ -4,6 +4,13 @@
 
 @php
     $currentURL = request()->path();
+    function activeMenu($url,$value) {
+        if (strpos($url, $value) !== false) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 @endphp
     {{-- Top Part User Profile and logo --}}
     <nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
@@ -117,31 +124,15 @@
                             class="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">3</span>
                     </a>
                 </li>
-                <li class="relative" onclick="showMenubar()">
-                    <a  class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group cursor-pointer">
+                <li class="relative">
+                    <a href="{{ route('menu.index') }}" class="{{ activeMenu($currentURL, 'menu') ? 'bg-gray-600' : '' }} flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer">
                         <i class="fa-brands text-xl fa-mendeley flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
                         <span class="flex-1 ms-3 whitespace-nowrap">Menu</span>
-                        <span class="inline-flex items-center justify-center p-2 ms-3 text-sm font-medium text-gray-800 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300">
-                        <i class="fa-solid fa-plus"></i></span>
                     </a>
-                    <ul class="{{ strpos($currentURL, 'menu') !== false ? '' : 'hidden absolute' }} ml-3 top-[-4rem] left-0 transition-all menusWork">
-                        <li>
-                            <a href="{{ route('menu.create') }}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                                <i class="fa-regular fa-snowflake text-xl flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
-                                <span class="flex-1 ms-3 whitespace-nowrap">Add Menu</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('menu.index') }}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                                <i class="fa-solid fa-list text-xl flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
-                                <span class="flex-1 ms-3 whitespace-nowrap">View All Menu</span>
-                            </a>
-                        </li>
-                    </ul>
                 </li>
                 <li>
-                    <a href="#"
-                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <a href="{{ route('users.index') }}"
+                        class="{{ activeMenu($currentURL, 'users') ? 'bg-gray-600' : '' }} flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                         <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
                             <path
@@ -220,13 +211,6 @@
         function userMenu() {
             const userMenu = document.querySelector('.userMenu')
             userMenu.classList.toggle('hidden');
-        }
-
-        // menu show and hide 
-        function showMenubar(){
-            const menusWork = document.querySelector('.menusWork');
-            menusWork.classList.toggle('hidden');
-            menusWork.classList.remove('absolute');
         }
     </script>
 @endsection
