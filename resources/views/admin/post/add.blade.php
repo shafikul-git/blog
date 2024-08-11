@@ -89,11 +89,11 @@
             ],
         ]" class="max-w-md mx-auto">
         <div class="mt-4">
-            <select name="status" id="status">
-                <option class="capitalize" value="published">published</option>
-                <option class="capitalize" value="pending">pending</option>
-                <option class="capitalize" value="draft">draft</option>
-                <option class="capitalize" value="archived">archived</option>
+            <select class="capitalize" name="status" id="status">
+                <option value="published">published</option>
+                <option value="pending">pending</option>
+                <option value="draft">draft</option>
+                <option class="" value="archived">archived</option>
             </select>
             @error('status')
                 <p class="text-red-500">{{ $message }}</p>

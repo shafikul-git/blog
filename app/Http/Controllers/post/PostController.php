@@ -37,15 +37,15 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required',
-            'slug' => 'required',
-            'meta_title' => 'required',
-            'status' => 'required',
+            'title' => 'required|max:255',
+            'slug' => 'required|max:255',
+            'meta_title' => 'required|max:255',
+            'status' => 'required|in:draft,published,archived,pending',
             'meta_keywords' => 'required',
             'meta_description' => 'required',
             'content' => 'required',
-            'featured_image' => 'required',
-            'published_at' => 'required',
+            'featured_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp,avif|max:10000',
+            'published_at' => 'required|date',
         ]);
 
         if ($request->hasFile('featured_image')) {
@@ -75,7 +75,7 @@ class PostController extends Controller
             'author_id' => Auth::user()->id,
         ]);
 
-        return $this->returnRoute($store, null, 'Post create successfull', 'Someting want wrong');
+        return $this->returnRoute($store, 'post.index', 'Post create successfull', 'Someting want wrong');
     }
 
     /**
@@ -101,17 +101,21 @@ class PostController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'title' => 'required',
-            'slug' => 'required',
-            'meta_title' => 'required',
-            'status' => 'required',
+            'title' => 'required|max:255',
+            'slug' => 'required|max:255',
+            'meta_title' => 'required|max:255',
+            'status' => 'required|in:draft,published,archived,pending',
             'meta_keywords' => 'required',
             'meta_description' => 'required',
             'content' => 'required',
-            'published_at' => 'required',
+            'published_at' => 'required|date',
         ]);
 
         if ($request->hasFile('featured_image')) {
+            $request->validate([
+                'featured_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp,avif|max:10000',
+            ]);
+            
             $file = $request->file('featured_image');
             $altName = $file->getClientOriginalName();
             $fileEx = $file->getClientOriginalExtension();

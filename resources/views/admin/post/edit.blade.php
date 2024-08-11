@@ -110,14 +110,14 @@
             ],
         ]" class="max-w-md mx-auto">
         <div class="mt-4">
-            <select name="status" id="status">
-                <option {{ $postData->status == 'published' ? 'selected' : '' }} class="capitalize" value="published">
+            <select class="capitalize" name="status" id="status">
+                <option {{ $postData->status == 'published' ? 'selected' : '' }} value="published">
                     published</option>
-                <option {{ $postData->status == 'pending' ? 'selected' : '' }} class="capitalize" value="pending">pending
+                <option {{ $postData->status == 'pending' ? 'selected' : '' }} value="pending">pending
                 </option>
-                <option {{ $postData->status == 'draft' ? 'selected' : '' }} class="capitalize" value="draft">draft
+                <option {{ $postData->status == 'draft' ? 'selected' : '' }} value="draft">draft
                 </option>
-                <option {{ $postData->status == 'archived' ? 'selected' : '' }} class="capitalize" value="archived">
+                <option {{ $postData->status == 'archived' ? 'selected' : '' }} value="archived">
                     archived</option>
             </select>
             @error('status')
