@@ -68,4 +68,5 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 `composer install`
 `cp .env.example .env`
 `php artisan key:generate`
-`composer require laravel/breeze --dev`
+`composer require laravel/breeze --dev` <br>
+`https://chatgpt.com/share/012e1244-660b-42bd-8600-b9f41aa70085`
