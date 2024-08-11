@@ -1,5 +1,5 @@
 @extends('admin.dashboard')
-@section('title', 'Users')
+@section('title', 'Posts')
 @section('adminContent')
 @php
     $updownIcon = '<i class="fa-solid fa-up-down w-3 h-3 fill-gray-500 inline cursor-pointer ml-2"></i>';
@@ -33,26 +33,34 @@
             </label>
           </th>
           <th class="p-4 text-left text-sm font-semibold text-gray-800 dark:text-white uppercase">
-            Name
+            Title
           </th>
           <th class="p-4 text-left text-sm font-semibold text-gray-800 dark:text-white uppercase">
-            Email
+            slug
             {!! $updownIcon !!}
           </th>
           <th class="p-4 text-left text-sm font-semibold text-gray-800 dark:text-white uppercase">
-            Role
+            meta title
             {!! $updownIcon !!}
           </th>
           <th class="p-4 text-left text-sm font-semibold text-gray-800 dark:text-white uppercase">
-            last Login
+            status
             {!! $updownIcon !!}
           </th>
           <th class="p-4 text-left text-sm font-semibold text-gray-800 dark:text-white uppercase">
-            join date
+            meta keywords
             {!! $updownIcon !!}
           </th>
           <th class="p-4 text-left text-sm font-semibold text-gray-800 dark:text-white uppercase">
-            Rating
+            meta description
+            {!! $updownIcon !!}
+          </th>
+          <th class="p-4 text-left text-sm font-semibold text-gray-800 dark:text-white uppercase">
+            content
+            {!! $updownIcon !!}
+          </th>
+          <th class="p-4 text-left text-sm font-semibold text-gray-800 dark:text-white uppercase">
+            published at
             {!! $updownIcon !!}
           </th>
           <th class="p-4 text-left text-sm font-semibold text-gray-800 dark:text-white uppercase">
@@ -62,11 +70,11 @@
       </thead>
 
       <tbody class="whitespace-nowrap ">
-        {{-- @foreach ($allUsers as $user)
+        @foreach ($allData as $data)
         <tr class=" dark:bg-gray-800 hover:shadow-[0px_7px_16px_2px_#667eea] hover:bg-indigo-600 transition-all my-3">
           <td class="pl-4 w-8">
-            <input id="checkBoxId{{ $user->id }}" name="allId[]" type="checkbox" class="hidden peer" value="{{ $user->id }}"/>
-            <label for="checkBoxId{{ $user->id }}" class="relative flex items-center justify-center p-0.5 peer-checked:before:hidden before:block before:absolute before:w-full before:h-full before:bg-white w-5 h-5 cursor-pointer bg-blue-500 border border-gray-400 rounded overflow-hidden">
+            <input id="checkBoxId{{ $data->id }}" name="allId[]" type="checkbox" class="hidden peer" value="{{ $data->id }}"/>
+            <label for="checkBoxId{{ $data->id }}" class="relative flex items-center justify-center p-0.5 peer-checked:before:hidden before:block before:absolute before:w-full before:h-full before:bg-white w-5 h-5 cursor-pointer bg-blue-500 border border-gray-400 rounded overflow-hidden">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-full fill-white" viewBox="0 0 520 520">
                 <path
                   d="M79.423 240.755a47.529 47.529 0 0 0-36.737 77.522l120.73 147.894a43.136 43.136 0 0 0 36.066 16.009c14.654-.787 27.884-8.626 36.319-21.515L486.588 56.773a6.13 6.13 0 0 1 .128-.2c2.353-3.613 1.59-10.773-3.267-15.271a13.321 13.321 0 0 0-19.362 1.343q-.135.166-.278.327L210.887 328.736a10.961 10.961 0 0 1-15.585.843l-83.94-76.386a47.319 47.319 0 0 0-31.939-12.438z"
@@ -76,40 +84,46 @@
           </td>
           <td class="p-4 text-sm text-gray-800 dark:text-white">
             <div class="flex items-center cursor-pointer">
-                <img src='https://picsum.photos/200/300?random={{ rand(5,20) }}' class="w-7 h-7 rounded-full shrink-0" />
+                <img src="{{ asset( 'storage/' . $data->featured_image) }}" class="w-7 h-7 rounded-full shrink-0" alt="{{ $data->alt_name }}"/>
                 <div class="ml-4 ">
-                  <p class="text-sm text-gray-800 dark:text-white">{{ $user->name }}</p>
+                  <p class="text-sm text-gray-800 dark:text-white">
+                    <div class="w-[100px] md:w-[200px] whitespace-nowrap overflow-hidden text-ellipsis">{{ $data->title }}</div>
+                  </p>
                 </div>
               </div>
           </td>
           <td class="p-4 text-sm text-gray-800 dark:text-white">
-            {{ $user->email }}
+            <div class="w-[100px] md:w-[200px] whitespace-nowrap overflow-hidden text-ellipsis"> {{ $data->slug }}</div>
           </td>
           <td class="p-4 text-sm text-gray-800 dark:text-white">
-            user
+            <div class="w-[100px] md:w-[200px] whitespace-nowrap overflow-hidden text-ellipsis">{{ $data->meta_title }}</div>
           </td>
           <td class="p-4 text-sm text-gray-800 dark:text-white">
-            8066
+            {{ $data->status }}
           </td>
           <td class="p-4 text-sm text-gray-800 dark:text-white">
-            {{ $user->created_at }}
+            <div class="w-[100px] md:w-[200px] whitespace-nowrap overflow-hidden text-ellipsis">{{ $data->meta_keywords }}</div>
           </td>
-          <td class="p-4 dark:text-white">
-            <i class="fa-solid fa-rotate"></i><i class="fa-solid fa-rotate"></i><i class="fa-solid fa-rotate"></i>
+          <td class="p-4 text-sm text-gray-800 dark:text-white">
+            <div class="w-[100px] md:w-[200px] whitespace-nowrap overflow-hidden text-ellipsis"> {{ $data->meta_description }}</div>
+          </td>
+          <td class="p-4 text-sm text-gray-800 dark:text-white">
+            <div class="w-[100px] md:w-[200px] whitespace-nowrap overflow-hidden text-ellipsis"> {{ $data->content }} </div>
+          </td>
+          <td class="p-4 text-sm text-gray-800 dark:text-white">
+            {{ $data->published_at }}
           </td>
           <td class="p-4 dark:text-white">
            <div class="flex justify-around">
-               <a href="{{ route('users.edit', $user->id) }}"><i class="fa-regular fa-pen-to-square text-green-400 hover:text-green-600"></i></a>
-               @if (Auth::user()->id != $user->id)
-                <x-form action="{{ route('users.destroy', $user->id) }}" method="DELETE" iconBtn='<i class="fa-solid fa-trash-can text-red-500 hover:text-red-600"></i>'></x-form>
-               @endif
+               <a href="{{ route('post.edit', $data->id) }}"><i class="fa-regular fa-pen-to-square text-green-400 hover:text-green-600"></i></a>
+                <x-form action="{{ route('post.destroy', $data->id) }}" method="DELETE" iconBtn='<i class="fa-solid fa-trash-can text-red-500 hover:text-red-600"></i>'></x-form>
            </div>
           </td>
         </tr>
-        @endforeach --}}
+        @endforeach
       </tbody>
     </table>
-    {{-- {{ $allUsers->links() }} --}}
+    {{ $allData->links() }}
   </div>
 
   <script>

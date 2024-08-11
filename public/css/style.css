@@ -1275,6 +1275,26 @@ select {
   width: max-content;
 }
 
+.w-\[100px\] {
+  width: 100px;
+}
+
+.w-\[50px\] {
+  width: 50px;
+}
+
+.w-\[80px\] {
+  width: 80px;
+}
+
+.w-\[140px\] {
+  width: 140px;
+}
+
+.w-\[120px\] {
+  width: 120px;
+}
+
 .min-w-0 {
   min-width: 0px;
 }
@@ -1602,6 +1622,10 @@ select {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.text-ellipsis {
+  text-overflow: ellipsis;
 }
 
 .whitespace-nowrap {
@@ -3163,6 +3187,14 @@ select {
 
   .md\:w-\[170px\] {
     width: 170px;
+  }
+
+  .md\:w-\[300px\] {
+    width: 300px;
+  }
+
+  .md\:w-\[200px\] {
+    width: 200px;
   }
 
   .md\:min-w-64 {

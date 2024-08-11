@@ -1,5 +1,5 @@
 @extends('admin.dashboard')
-@section('title', 'User Create')
+@section('title', 'Post Create')
 @section('adminContent')
     @php
         $inputStyle =
