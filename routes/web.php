@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TagController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
@@ -31,6 +32,9 @@ Route::resource('post', PostController::class)->middleware('auth');
 
 // Category Route
 Route::resource('category', CategoryController::class)->middleware('auth');
+
+// Tag Route
+Route::resource('tag', TagController::class)->middleware('auth');
 
 
 require __DIR__.'/auth.php';

@@ -1,5 +1,5 @@
 @extends('admin.dashboard')
-@section('title', 'User Create')
+@section('title', 'Tag Create')
 @section('adminContent')
     @php
         $inputStyle =
@@ -8,7 +8,7 @@
             'peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 capitalize';
     @endphp
 
-    <x-form action="{{ route('users.store') }}" animationBtn="Submit" method="POST" formHeading="User Add Form"
+    <x-form action="{{ route('tag.store') }}" animationBtn="Submit" method="POST" formHeading="Tag Add Form"
         :fields="[
             [
                 'type' => 'text',
@@ -16,40 +16,18 @@
                 'id' => 'name',
                 'placeholder' => '',
                 'label' => [
-                    'name' => 'Enter Your  Name here',
+                    'name' => 'Enter Tag Name ',
                     'class' => $labelClass,
                 ],
                 'class' => $inputStyle,
             ],
             [
                 'type' => 'text',
-                'name' => 'email',
-                'id' => 'email',
+                'name' => 'slug',
+                'id' => 'slug',
                 'placeholder' => '',
                 'label' => [
-                    'name' => 'Enter Your  Email here',
-                    'class' => $labelClass,
-                ],
-                'class' => $inputStyle,
-            ],
-            [
-                'type' => 'text',
-                'name' => 'password',
-                'id' => 'password',
-                'placeholder' => '',
-                'label' => [
-                    'name' => 'Enter Your  Password here',
-                    'class' => $labelClass,
-                ],
-                'class' => $inputStyle,
-            ],
-            [
-                'type' => 'text',
-                'name' => 'password_confirmation',
-                'id' => 'password_confirmation',
-                'placeholder' => '',
-                'label' => [
-                    'name' => 'Enter Your Re Password here',
+                    'name' => 'Enter Slug',
                     'class' => $labelClass,
                 ],
                 'class' => $inputStyle,
