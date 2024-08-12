@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\post\PostController;
 Route::get('/', function () {
     return view('home');
@@ -27,6 +28,9 @@ Route::resource('users', UserController::class)->middleware('auth');
 
 // Post Route
 Route::resource('post', PostController::class)->middleware('auth');
+
+// Category Route
+Route::resource('category', CategoryController::class)->middleware('auth');
 
 
 require __DIR__.'/auth.php';

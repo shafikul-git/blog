@@ -1,5 +1,5 @@
 @extends('admin.dashboard')
-@section('title', 'User Edit')
+@section('title', 'Category Edit')
 @section('adminContent')
 @php
     $inputStyle =
@@ -8,28 +8,41 @@
         'peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 capitalize';
 @endphp
 
-<x-form action="{{ route('users.update', $userData->id) }}" animationBtn="update" method="PUT" formHeading="User Details Update Form"
+<x-form action="{{ route('category.update', $categoryData->id) }}" animationBtn="update" method="PUT" formHeading="Category Update Form"
     :fields="[
         [
             'type' => 'text',
             'name' => 'name',
             'id' => 'name',
             'placeholder' => '',
-            'value' => $userData->name,
+            'value' => $categoryData->name,
             'label' => [
-                'name' => 'Enter Your  Name here',
+                'name' => 'Edit Category Name here',
                 'class' => $labelClass,
             ],
             'class' => $inputStyle,
         ],
         [
             'type' => 'text',
-            'name' => 'email',
-            'id' => 'email',
+            'name' => 'slug',
+            'id' => 'slug',
             'placeholder' => '',
-            'value' => $userData->email,
+            'value' => $categoryData->slug,
             'label' => [
-                'name' => 'Enter Your  Email here',
+                'name' => 'Edit Slug here',
+                'class' => $labelClass,
+            ],
+            'class' => $inputStyle,
+        ],
+
+        [
+            'type' => 'text',
+            'name' => 'description',
+            'id' => 'description',
+            'placeholder' => '',
+            'value' => $categoryData->description,
+            'label' => [
+                'name' => 'Edit Description here',
                 'class' => $labelClass,
             ],
             'class' => $inputStyle,

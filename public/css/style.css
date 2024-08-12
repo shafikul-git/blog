@@ -1254,6 +1254,10 @@ select {
   width: 2rem;
 }
 
+.w-\[100px\] {
+  width: 100px;
+}
+
 .w-\[18px\] {
   width: 18px;
 }
@@ -1273,26 +1277,6 @@ select {
 .w-max {
   width: -moz-max-content;
   width: max-content;
-}
-
-.w-\[100px\] {
-  width: 100px;
-}
-
-.w-\[50px\] {
-  width: 50px;
-}
-
-.w-\[80px\] {
-  width: 80px;
-}
-
-.w-\[140px\] {
-  width: 140px;
-}
-
-.w-\[120px\] {
-  width: 120px;
 }
 
 .min-w-0 {
@@ -3189,10 +3173,6 @@ select {
     width: 170px;
   }
 
-  .md\:w-\[300px\] {
-    width: 300px;
-  }
-
   .md\:w-\[200px\] {
     width: 200px;
   }
@@ -3431,11 +3411,6 @@ select {
 
   .dark\:bg-red-500\/20 {
     background-color: rgb(239 68 68 / 0.2);
-  }
-
-  .dark\:bg-gray-600 {
-    --tw-bg-opacity: 1;
-    background-color: rgb(75 85 99 / var(--tw-bg-opacity));
   }
 
   .dark\:text-blue-300 {
