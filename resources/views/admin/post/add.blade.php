@@ -186,9 +186,15 @@
                 </div>
                 <div class="mb-4">
                     <x-tags></x-tags>
+                    @error('tags')
+                        <p class="text-red-500">{{ $message }}</p>
+                    @enderror
                 </div>
                 <div class="mb-4">
                     <x-category></x-category>
+                    @error('category')
+                        <p class="text-red-500">{{ $message }}</p>
+                    @enderror
                 </div>
                 
             </div>

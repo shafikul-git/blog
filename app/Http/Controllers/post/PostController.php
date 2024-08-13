@@ -5,6 +5,8 @@ namespace App\Http\Controllers\post;
 use App\Models\post\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\Tag;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -36,7 +38,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        // return $request;
+       
         $request->validate([
             'title' => 'required|max:255',
             'slug' => 'required|max:255',
@@ -71,15 +73,50 @@ class PostController extends Controller
             $path = $file->storeAs('post', uniqid() . time() . '.' . $fileEx, 'public');
         }
 
-        // Replace non-alphanumeric characters with hyphens
-        $cleanedString = preg_replace('/[^a-zA-Z0-9]/', '-', $request->slug);
-        // Remove multiple hyphens (optional)
-        $cleanedString = preg_replace('/-+/', '-', $cleanedString);
-        $createSlug = trim($cleanedString, '-');
-
+        // Category
+        if ($request->category) {
+            $request->validate([
+                'category' => 'required|array'
+            ]);
+            foreach ($request->category as $category) {
+                $category = Category::updateOrCreate(
+                    [
+                        'name' => $category,
+                    ],
+                    [
+                        'name' => $category,
+                        'slug' => $this->slugCreate($category),
+                        'description' => $category,
+                        'author_id' => Auth::user()->id,
+                    ]
+                );
+            }
+        }
+       
+        // Tag
+        if ($request->tags != null) {
+            $request->validate([
+                'tags' => 'required|string'
+            ]);
+            $tagAll = explode(',', $request->tags);
+            foreach ($tagAll as $tag) {
+                $tags = Tag::updateOrCreate(
+                    [
+                        'name' => $tag,
+                    ],
+                    [
+                        'name' => $tag,
+                        'slug' => $this->slugCreate($tag),
+                        'author_id' => Auth::user()->id,
+                    ]
+                );
+            }
+        }
+        
+        // Post
         $store = Post::create([
             'title' => $request->title,
-            'slug' => $createSlug,
+            'slug' => $this->slugCreate($request->slug),
             'meta_title' => $request->meta_title,
             'status' => $request->status,
             'meta_keywords' => $request->meta_keywords,
@@ -90,7 +127,7 @@ class PostController extends Controller
             'published_at' => $request->published_at,
             'author_id' => Auth::user()->id,
         ]);
-
+        return $store;
         return $this->returnRoute($store, 'post.index', 'Post create successfull', 'Someting want wrong');
     }
 
@@ -183,5 +220,14 @@ class PostController extends Controller
     {
         $checkRoute = ($route == null) ? redirect()->back() : redirect()->route($route);
         return $val ? $checkRoute->with('success', $success) : $checkRoute->with('error', $error);
+    }
+
+    private function slugCreate($value)
+    {
+        // Replace non-alphanumeric characters with hyphens
+        $cleanedString = preg_replace('/[^a-zA-Z0-9]/', '-', $value);
+        // Remove multiple hyphens (optional)
+        $cleanedString = preg_replace('/-+/', '-', $cleanedString);
+        return trim($cleanedString, '-');
     }
 }
