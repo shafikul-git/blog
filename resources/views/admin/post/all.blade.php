@@ -4,11 +4,11 @@
 @php
     $updownIcon = '<i class="fa-solid fa-up-down w-3 h-3 fill-gray-500 inline cursor-pointer ml-2"></i>';
 @endphp
-<div class="text-3xl font-bold text-center capitalize dark:text-white">All users</div>
+<div class="text-3xl font-bold text-center capitalize dark:text-white">All Posts</div>
 <div class="md:flex justify-between my-4">
       <div class="">
         <form method="get" action="{{ route('post.index') }}">
-          <input type="text" name="search" placeholder="Search User Name ..." value="{{ request()->input('search') }}" />
+          <input type="text" name="search" placeholder="Search Post Title ..." value="{{ request()->input('search') }}" />
           <button type="submit"></button>
       </form>
       </div>
@@ -108,7 +108,7 @@
             <div class="w-[100px] md:w-[200px] whitespace-nowrap overflow-hidden text-ellipsis"> {{ $data->meta_description }}</div>
           </td>
           <td class="p-4 text-sm text-gray-800 dark:text-white">
-            <div class="w-[100px] md:w-[200px] whitespace-nowrap overflow-hidden text-ellipsis"> {{ $data->content }} </div>
+            <div class="w-[100px] md:w-[200px] whitespace-nowrap overflow-hidden text-ellipsis"> {{ strip_tags($data->content) }} </div>
           </td>
           <td class="p-4 text-sm text-gray-800 dark:text-white">
             {{ $data->published_at }}

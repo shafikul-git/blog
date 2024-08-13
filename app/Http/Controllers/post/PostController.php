@@ -48,6 +48,21 @@ class PostController extends Controller
             'published_at' => 'required|date',
         ]);
 
+        $content = $request->content;
+        // Regular expression to match base64-encoded images with specific formats
+        $pattern = '/data:image\/(jpeg|png|gif|avif|jpg|webp);base64,([^\"]*)/';
+
+        // Use preg_match_all to find all matches
+        preg_match_all($pattern, $content, $matches, PREG_SET_ORDER);
+        foreach ($matches as $match) {
+            $fileType = $match[1]; //file Extention ...
+            $fileData = base64_decode($match[2]); //Base64 Decode
+            $renameFile = uniqid() . time() . '.' . $fileType;
+            $filePath = 'post/' . $renameFile;
+            Storage::disk('public')->put($filePath, $fileData);
+            $content = str_replace($match[0], asset('storage/' . $filePath), $content);
+        }
+
         if ($request->hasFile('featured_image')) {
             $file = $request->file('featured_image');
             $altName = $file->getClientOriginalName();
@@ -68,7 +83,7 @@ class PostController extends Controller
             'status' => $request->status,
             'meta_keywords' => $request->meta_keywords,
             'meta_description' => $request->meta_description,
-            'content' => $request->content,
+            'content' => $content,
             'featured_image' => $path,
             'alt_name' => $altName,
             'published_at' => $request->published_at,
@@ -115,7 +130,7 @@ class PostController extends Controller
             $request->validate([
                 'featured_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp,avif|max:10000',
             ]);
-            
+
             $file = $request->file('featured_image');
             $altName = $file->getClientOriginalName();
             $fileEx = $file->getClientOriginalExtension();
@@ -155,7 +170,7 @@ class PostController extends Controller
     public function destroy(string $id)
     {
         $fileName = Post::find($id);
-        if(Storage::disk('public')->exists($fileName->featured_image)){
+        if (Storage::disk('public')->exists($fileName->featured_image)) {
             Storage::disk('public')->delete($fileName->featured_image);
         }
         $deleteData = Post::where('id', $id)->delete();

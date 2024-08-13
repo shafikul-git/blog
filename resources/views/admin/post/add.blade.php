@@ -8,7 +8,7 @@
             'peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 capitalize';
     @endphp
 
-    <x-form action="{{ route('post.store') }}" animationBtn="Submit" method="POST" formHeading="Post Data Form" enctype="multipart/form-data"
+    <x-form action="{{ route('post.store') }}" animationBtn="Submit" method="POST" formHeading="Post Data Form" enctype="multipart/form-data" class="formSubmit"
         :fields="[
             [
                 'type' => 'text',
@@ -87,7 +87,7 @@
                 ],
                 'class' => $inputStyle,
             ],
-        ]" class="max-w-md mx-auto">
+        ]" >
         <div class="mt-4">
             <select class="capitalize" name="status" id="status">
                 <option value="published">published</option>
@@ -99,11 +99,15 @@
                 <p class="text-red-500">{{ $message }}</p>
             @enderror
         </div>
-        <div class="mt-4">
+        {{-- <div class="mt-4">
             <textarea name="content" id="content" cols="30" rows="10">{{ old('content') }}</textarea>
             @error('content')
                 <p class="text-red-500">{{ $message }}</p>
             @enderror
-        </div>
+        </div> --}}
+        {{-- <x-forms.tinymce-editor/> --}}
+        <x-tiny.tiny name="content" rows="20" cols="40"></x-tiny.tiny>
     </x-form>
+
+    
 @endsection
