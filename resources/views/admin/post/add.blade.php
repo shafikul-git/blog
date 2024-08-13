@@ -149,11 +149,7 @@
             <!-- Right Side: 1/4 of the page -->
             <div class="lg:w-1/4 w-full">
                 <div class="mb-4">
-                    <label for="meta_keywords" class="block text-gray-700 dark:text-gray-300">Meta Keyword</label>
-                    <input value="{{ old('meta_keywords') }}" type="text" name="meta_keywords" id="meta_keywords" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Meta Keyword">
-                    @error('meta_keywords')
-                        <p class="text-red-500">{{ $message }}</p>
-                    @enderror
+                    <button type="submit" class="w-full px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-blue-700 dark:hover:bg-blue-800"> Submit </button>
                 </div>
                 <div class="mb-4">
                     <label for="status" class="block text-gray-700 dark:text-gray-300 capitalize">select Status</label>
@@ -164,6 +160,13 @@
                         <option value="pending">pending</option>
                     </select>
                     @error('status')
+                        <p class="text-red-500">{{ $message }}</p>
+                    @enderror
+                </div>
+                <div class="mb-4">
+                    <label for="meta_keywords" class="block text-gray-700 dark:text-gray-300">Meta Keyword</label>
+                    <input value="{{ old('meta_keywords') }}" type="text" name="meta_keywords" id="meta_keywords" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Meta Keyword">
+                    @error('meta_keywords')
                         <p class="text-red-500">{{ $message }}</p>
                     @enderror
                 </div>
@@ -182,8 +185,12 @@
                     @enderror
                 </div>
                 <div class="mb-4">
-                    <button type="submit" class="w-full px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-blue-700 dark:hover:bg-blue-800"> Submit </button>
+                    <x-tags></x-tags>
                 </div>
+                <div class="mb-4">
+                    <x-category></x-category>
+                </div>
+                
             </div>
         </div>
     </div>

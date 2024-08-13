@@ -36,6 +36,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        // return $request;
         $request->validate([
             'title' => 'required|max:255',
             'slug' => 'required|max:255',
