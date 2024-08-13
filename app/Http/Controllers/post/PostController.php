@@ -38,7 +38,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-       
+
         $request->validate([
             'title' => 'required|max:255',
             'slug' => 'required|max:255',
@@ -73,48 +73,8 @@ class PostController extends Controller
             $path = $file->storeAs('post', uniqid() . time() . '.' . $fileEx, 'public');
         }
 
-        // Category
-        if ($request->category) {
-            $request->validate([
-                'category' => 'required|array'
-            ]);
-            foreach ($request->category as $category) {
-                $category = Category::updateOrCreate(
-                    [
-                        'name' => $category,
-                    ],
-                    [
-                        'name' => $category,
-                        'slug' => $this->slugCreate($category),
-                        'description' => $category,
-                        'author_id' => Auth::user()->id,
-                    ]
-                );
-            }
-        }
-       
-        // Tag
-        if ($request->tags != null) {
-            $request->validate([
-                'tags' => 'required|string'
-            ]);
-            $tagAll = explode(',', $request->tags);
-            foreach ($tagAll as $tag) {
-                $tags = Tag::updateOrCreate(
-                    [
-                        'name' => $tag,
-                    ],
-                    [
-                        'name' => $tag,
-                        'slug' => $this->slugCreate($tag),
-                        'author_id' => Auth::user()->id,
-                    ]
-                );
-            }
-        }
-        
         // Post
-        $store = Post::create([
+        $post = Post::create([
             'title' => $request->title,
             'slug' => $this->slugCreate($request->slug),
             'meta_title' => $request->meta_title,
@@ -127,8 +87,70 @@ class PostController extends Controller
             'published_at' => $request->published_at,
             'author_id' => Auth::user()->id,
         ]);
-        return $store;
-        return $this->returnRoute($store, 'post.index', 'Post create successfull', 'Someting want wrong');
+
+        // Category
+        $categoryIds = [];
+        if ($request->category) {
+            $request->validate([
+                'category' => 'required|array'
+            ]);
+
+            foreach ($request->category as $category) {
+                $category = Category::updateOrCreate(
+                    [
+                        'name' => $category,
+                    ],
+                    [
+                        'name' => $category,
+                        'slug' => $this->slugCreate($category),
+                        'description' => $category,
+                        'author_id' => Auth::user()->id,
+                    ]
+                );
+                array_push($categoryIds, $category->id);
+            }
+        } else{
+            $category = Category::updateOrCreate(
+                [
+                    'name' => 'uncategory',
+                ],
+                [
+                    'name' => 'uncategory',
+                    'slug' => $this->slugCreate('uncategory'),
+                    'description' => 'uncategory',
+                    'author_id' => Auth::user()->id,
+                ]
+            );
+            array_push($categoryIds, $category->id);
+        }
+        $post->categories()->sync($categoryIds);
+
+        // Tag
+        if ($request->tags != null) {
+            $request->validate([
+                'tags' => 'required|string'
+            ]);
+
+            $tagAll = explode(',', $request->tags);
+            $tagId = [];
+
+            foreach ($tagAll as $tag) {
+                $tags = Tag::updateOrCreate(
+                    [
+                        'name' => $tag,
+                    ],
+                    [
+                        'name' => $tag,
+                        'slug' => $this->slugCreate($tag),
+                        'author_id' => Auth::user()->id,
+                    ]
+                );
+                array_push($tagId, $tags->id);
+            }
+            $post->tags()->sync($tagId);
+        }
+        
+        return $post ? redirect()->route('post.index')->with('success', 'Post create successfull') : redirect()->back()->with('error', 'Someting want wrong');
     }
 
     /**
