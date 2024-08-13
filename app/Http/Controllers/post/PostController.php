@@ -47,7 +47,7 @@ class PostController extends Controller
             'featured_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp,avif|max:10000',
             'published_at' => 'required|date',
         ]);
-
+        // return $request;
         $content = $request->content;
         // Regular expression to match base64-encoded images with specific formats
         $pattern = '/data:image\/(jpeg|png|gif|avif|jpg|webp);base64,([^\"]*)/';

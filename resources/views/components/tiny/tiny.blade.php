@@ -48,10 +48,10 @@
             "See docs to implement AI Assistant")),
     });
     // Store the editor content before form submission
-    document.querySelector('.formSubmit').addEventListener('submit', function(event) {
-        sessionStorage.setItem('tinymce_content', tinymce.get('texteditor').getContent());
+    // document.querySelector('.formSubmit').addEventListener('submit', function(event) {
+    //     sessionStorage.setItem('tinymce_content', tinymce.get('texteditor').getContent());
 
-          // Clear sessionStorage after submission
-          sessionStorage.removeItem('tinymce_content');
-    });
+    //       // Clear sessionStorage after submission
+    //       sessionStorage.removeItem('tinymce_content');
+    // });
 </script>
