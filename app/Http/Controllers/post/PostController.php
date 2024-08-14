@@ -21,8 +21,15 @@ class PostController extends Controller
         if ($search = request()->input('search')) {
             $query->where('title', 'LIKE', '%' . $search . '%');
         }
-        $allData = $query->paginate(10)->appends(['search' => $search]);
+
+        $allData = $query->with(['categories', 'tags'])->paginate(10)->appends(['search' => $search]);
+        // return $allData;
         return view('admin.post.all', compact('allData'));
+          // if ($categoryId = request()->input('category_id')) {
+        //     $query->whereHas('categories', function($q) use ($categoryId) {
+        //         $q->where('id', $categoryId);
+        //     });
+        // }
     }
 
     /**
@@ -30,7 +37,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.post.add');
+        $categories = Category::get();
+        return view('admin.post.add', compact('categories'));
     }
 
     /**
@@ -38,7 +46,6 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-
         $request->validate([
             'title' => 'required|max:255',
             'slug' => 'required|max:255',
@@ -51,12 +58,13 @@ class PostController extends Controller
             'published_at' => 'required|date',
         ]);
         // return $request;
+
+        // Editor Content Check File Exits?
         $content = $request->content;
         // Regular expression to match base64-encoded images with specific formats
         $pattern = '/data:image\/(jpeg|png|gif|avif|jpg|webp);base64,([^\"]*)/';
-
-        // Use preg_match_all to find all matches
         preg_match_all($pattern, $content, $matches, PREG_SET_ORDER);
+
         foreach ($matches as $match) {
             $fileType = $match[1]; //file Extention ...
             $fileData = base64_decode($match[2]); //Base64 Decode
@@ -66,6 +74,7 @@ class PostController extends Controller
             $content = str_replace($match[0], asset('storage/' . $filePath), $content);
         }
 
+        // file
         if ($request->hasFile('featured_image')) {
             $file = $request->file('featured_image');
             $altName = $file->getClientOriginalName();
@@ -149,7 +158,7 @@ class PostController extends Controller
             }
             $post->tags()->sync($tagId);
         }
-        
+
         return $post ? redirect()->route('post.index')->with('success', 'Post create successfull') : redirect()->back()->with('error', 'Someting want wrong');
     }
 
@@ -244,6 +253,7 @@ class PostController extends Controller
         return $val ? $checkRoute->with('success', $success) : $checkRoute->with('error', $error);
     }
 
+    // Create Slug
     private function slugCreate($value)
     {
         // Replace non-alphanumeric characters with hyphens

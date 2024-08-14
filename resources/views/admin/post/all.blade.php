@@ -60,6 +60,14 @@
             {!! $updownIcon !!}
           </th>
           <th class="p-4 text-left text-sm font-semibold text-gray-800 dark:text-white uppercase">
+            Categorys
+            {!! $updownIcon !!}
+          </th>
+          <th class="p-4 text-left text-sm font-semibold text-gray-800 dark:text-white uppercase">
+            Tags
+            {!! $updownIcon !!}
+          </th>
+          <th class="p-4 text-left text-sm font-semibold text-gray-800 dark:text-white uppercase">
             published at
             {!! $updownIcon !!}
           </th>
@@ -110,6 +118,38 @@
           <td class="p-4 text-sm text-gray-800 dark:text-white">
             <div class="w-[100px] md:w-[200px] whitespace-nowrap overflow-hidden text-ellipsis"> {{ strip_tags($data->content) }} </div>
           </td>
+          <td class="p-4 text-sm text-gray-800 dark:text-white relative">
+            <div class="group relative">
+                <p class="absolute top-0 left-[20%] dark:text-white transform translate-y-4 opacity-0 transition-all duration-300 group-hover:-translate-y-6 group-hover:opacity-100">
+                    Total {{ count($data->categories) }}
+                </p>
+                <div class="max-w-[100px] md:max-w-[150px] whitespace-nowrap overflow-hidden text-ellipsis">
+                    @foreach ($data->categories as $key => $category)
+                        @if ($key <= 0)
+                            {{ $category->name }}
+                        @else
+                            {{ $category->name }},
+                        @endif
+                    @endforeach
+                </div>
+            </div>
+          </td>
+          <td class="p-4 text-sm text-gray-800 dark:text-white relative">
+            <div class="group relative">
+                <p class="absolute top-0 left-[20%] dark:text-white transform translate-y-4 opacity-0 transition-all duration-300 group-hover:-translate-y-6 group-hover:opacity-100">
+                    Total {{ count($data->tags) }}
+                </p>
+                <div class="max-w-[100px] md:max-w-[150px] whitespace-nowrap overflow-hidden text-ellipsis">
+                    @foreach ($data->tags as $key => $tag)
+                        @if ($key <= 0)
+                            {{ $tag->name }}
+                        @else
+                            {{ $tag->name }},
+                        @endif
+                    @endforeach
+                </div>
+            </div>
+          </td>
           <td class="p-4 text-sm text-gray-800 dark:text-white">
             {{ $data->published_at }}
           </td>
@@ -130,10 +170,10 @@
      function allChecked() {
         // Get the state of the "allSelected" checkbox
         const isChecked = document.getElementById('allSelected').checked;
-        
+
         // Get all checkboxes with the name "messageId[]"
         const checkboxes = document.querySelectorAll('input[name="allId[]"]');
-        
+
         // Loop through each checkbox and set its checked property to the state of the "allSelected" checkbox
         checkboxes.forEach(checkbox => {
             checkbox.checked = isChecked;

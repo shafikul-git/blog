@@ -191,7 +191,7 @@
                     @enderror
                 </div>
                 <div class="mb-4">
-                    <x-category></x-category>
+                    <x-category :categories="$categories"></x-category>
                     @error('category')
                         <p class="text-red-500">{{ $message }}</p>
                     @enderror

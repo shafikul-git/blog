@@ -1,3 +1,4 @@
+@props(['categories'])
 <div class="w-full max-w-xs border rounded-lg shadow-sm p-4 dark:bg-gray-800 dark:border-gray-700">
     <!-- Header -->
     <div class="flex justify-between items-center border-b pb-2 mb-2 dark:border-gray-700">
@@ -12,6 +13,14 @@
 
     <div class="addCategorys h-40 overflow-y-scroll border p-2 rounded mb-4 dark:border-gray-700 dark:bg-gray-900">
         <!-- Category All -->
+        @foreach ($categories as $category)
+            @if ($category->name != 'uncategory')
+                <label class="block dark:text-gray-200">
+                    <input value="{{ $category->name }}" name="category[]" type="checkbox" class="mr-2 dark:bg-gray-700 dark:border-gray-600 dark:checked:bg-blue-500">
+                        <span class="capitalize">{{ $category->name }}</span>
+                </label>
+            @endif
+        @endforeach
         <label class="block dark:text-gray-200">
             <input value="uncategory" name="category[]" type="checkbox" class="mr-2 dark:bg-gray-700 dark:border-gray-600 dark:checked:bg-blue-500">
                 <span class="capitalize">uncategory</span>
