@@ -119,7 +119,7 @@
                             $groupId = uniqid();
                         @endphp
                         <li class='group/{{ $groupId }} relative max-lg:border-b max-lg:px-3 max-lg:py-3'>
-                            <a href='#' class='hover:text-[#007bff] hover:fill-[#007bff] text-gray-600 font-semibold text-[15px] block'>
+                            <a href="{{ $menu->menu_link }}" class='hover:text-[#007bff] hover:fill-[#007bff] text-gray-600 font-semibold text-[15px] block'>
                                 {!! $menu->menu_icon !!}    
                                 {{ $menu->menu_name }}
                                 @if ($menu->subMenu->isNotEmpty())

@@ -37,4 +37,14 @@ Route::resource('category', CategoryController::class)->middleware('auth');
 Route::resource('tag', TagController::class)->middleware('auth');
 
 
+
+
+// Other Route
+Route::get('about', function (){
+    return view('about');
+});
+Route::get('contact', function (){
+    return view('contact');
+});
+
 require __DIR__.'/auth.php';
