@@ -6,10 +6,12 @@ use App\Http\Controllers\MenuController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\FrontEnd\AboutController;
+use App\Http\Controllers\FrontEnd\BlogController;
+use App\Http\Controllers\FrontEnd\ContactController;
 use App\Http\Controllers\post\PostController;
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+use App\Http\Controllers\FrontEnd\HomeController;
+
 
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
@@ -40,11 +42,11 @@ Route::resource('tag', TagController::class)->middleware('auth');
 
 
 // Other Route
-Route::get('about', function (){
-    return view('about');
-});
-Route::get('contact', function (){
-    return view('contact');
-});
+Route::get('/', [HomeController::class, 'home'])->name('home');
+Route::get('about', [AboutController::class, 'about'])->name('about');
+Route::get('blog', [BlogController::class, 'blog'])->name('blog');
+Route::get('contact', [ContactController::class, 'contact'])->name('contact');
+
+
 
 require __DIR__.'/auth.php';
