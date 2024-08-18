@@ -2,17 +2,59 @@
 @section('title', $singlePostData->title)
 @section('otherConetent')
 
+{{-- Highlight cosde --}}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
 <style>
-    .blogContentUnTailwindCss * {
-        all: unset; /* Unsets all styles applied by any CSS */
-        display: revert; /* Reverts elements to their display default (e.g., block for <p>, <h1>, etc.) */
-        font-family: inherit;
-        color: inherit;
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box; /* Maintain box-sizing */
+    .prose {
+       max-width: 100%
+    }
+    .customCss a{
+        color: #1885c9;
+    }
+    .customCss a:hover{
+        color: blue;
+    }
+    .customCss h2, .customCss h1, .customCss h3, .customCss h4{
+        color: black;
+    }
+    .customCss iframe, .customCss img{
+        max-width: 100% !important;
+    }
+    .customCss table {
+        max-width: 100%;
+        overflow-x: auto;
+        display: block;
+    }
+    .customCss pre {
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 1em;
+        overflow-x: auto;
+        background-color: #f5f5f5; /* Light gray background */
+    }
+
+    .customCss code {
+        font-family: 'Fira Code', monospace; /* Use a font that is easy to read for code */
+        color: #2d3748; /* Darker text color */
+    }
+
+    @media (prefers-color-scheme: dark) {
+        .customCss strong, .customCss h1, .customCss h2, .customCss h3, .customCss h4, .customCss p {
+            color: white;
+        }
+        .customCss table{
+            color: rgb(255, 255, 255);
+        }
+        .customCss a{
+            color: #2573A4;
+        }
+        .customCss a:hover{
+            color: #1c8fd7;
+        }
     }
 </style>
+
     <!-- Nav Section -->
     <x-navbar></x-navbar>
 
@@ -30,13 +72,13 @@
         <div class="container mx-auto py-8 px-4 lg:flex">
             <!-- Blog Content -->
             <div class="lg:w-3/4 lg:pr-8">
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-3">
                     <h2 class="text-2xl font-bold mb-4">
                         {{ $singlePostData->title }}
                     </h2>
-                    <p class="mb-4 dark:text-white blogContentUnTailwindCss">
+                    <div class="prose customCss">
                         {!! $singlePostData->content !!}
-                    </p>
+                    </div>
                 </div>
             </div>
 
@@ -74,6 +116,11 @@
     <!-- Footer Section -->
     <x-footer></x-footer>
 
+
+    {{-- Highlight Code  --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+    <script>hljs.highlightAll();</script>
 @endsection
 
 

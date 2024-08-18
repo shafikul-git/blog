@@ -125,14 +125,14 @@
                     </a>
                 </li>
                 <li class="relative">
-                    <a href="{{ route('menu.index') }}" class="{{ activeMenu($currentURL, 'menu') ? 'bg-gray-600' : '' }} flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer">
+                    <a href="{{ route('menu.index') }}" class="{{ activeMenu($currentURL, 'menu') ? 'dark:bg-gray-600 bg-gray-200' : '' }} flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer">
                         <i class="fa-brands text-xl fa-mendeley flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
                         <span class="flex-1 ms-3 whitespace-nowrap">Menu</span>
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('users.index') }}"
-                        class="{{ activeMenu($currentURL, 'users') ? 'bg-gray-600' : '' }} flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        class="{{ activeMenu($currentURL, 'users') ? 'dark:bg-gray-600 bg-gray-200' : '' }} flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                         <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
                             <path
@@ -142,19 +142,19 @@
                     </a>
                 </li>
                 <li class="relative">
-                    <a href="{{ route('post.index') }}" class="{{ activeMenu($currentURL, 'post') ? 'bg-gray-600' : '' }} flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer">
+                    <a href="{{ route('post.index') }}" class="{{ activeMenu($currentURL, 'post') ? 'dark:bg-gray-600 bg-gray-200' : '' }} flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer">
                         <i class="fa-regular fa-pen-to-square text-xl flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
                         <span class="flex-1 ms-3 whitespace-nowrap capitalize">post</span>
                     </a>
                 </li>
                 <li class="relative">
-                    <a href="{{ route('category.index') }}" class="{{ activeMenu($currentURL, 'category') ? 'bg-gray-600' : '' }} flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer">
+                    <a href="{{ route('category.index') }}" class="{{ activeMenu($currentURL, 'category') ? 'dark:bg-gray-600 bg-gray-200' : '' }} flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer">
                         <i class="fa-brands fa-nfc-directional text-xl flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
                         <span class="flex-1 ms-3 whitespace-nowrap capitalize">Cateogry</span>
                     </a>
                 </li>
                 <li class="relative">
-                    <a href="{{ route('tag.index') }}" class="{{ activeMenu($currentURL, 'tag') ? 'bg-gray-600' : '' }} flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer">
+                    <a href="{{ route('tag.index') }}" class="{{ activeMenu($currentURL, 'tag') ? 'dark:bg-gray-600 bg-gray-200' : '' }} flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer">
                         <i class="fa-solid fa-tags text-xl flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
                         <span class="flex-1 ms-3 whitespace-nowrap capitalize">Tag</span>
                     </a>
@@ -206,7 +206,7 @@
         <div class="p-4 sm:ml-64">
             <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14 min-h-[100vh]">
                 @yield('adminContent')
-                
+
                 {{-- session check
                 <pre>{{ json_encode(session()->all(), JSON_PRETTY_PRINT) }}</pre> --}}
             </div>
@@ -215,7 +215,7 @@
 
 
     <script>
-        // Mobile menu toggle 
+        // Mobile menu toggle
         function mobileMenu() {
             const loginIconToggle = document.querySelector('.mobileMenuOpen');
             if (loginIconToggle.classList.contains('-translate-x-full') && loginIconToggle.classList.contains(

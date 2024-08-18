@@ -91,14 +91,14 @@
             </label>
           </td>
           <td class="p-4 text-sm text-gray-800 dark:text-white">
-            <div class="flex items-center cursor-pointer">
+            <a href="{{ route('singlePost', $data->slug) }}" class="flex items-center ">
                 <img src="{{ asset( 'storage/' . $data->featured_image) }}" class="w-7 h-7 rounded-full shrink-0" alt="{{ $data->alt_name }}"/>
                 <div class="ml-4 ">
                   <p class="text-sm text-gray-800 dark:text-white">
                     <div class="w-[100px] md:w-[200px] whitespace-nowrap overflow-hidden text-ellipsis">{{ $data->title }}</div>
                   </p>
                 </div>
-              </div>
+              </a>
           </td>
           <td class="p-4 text-sm text-gray-800 dark:text-white">
             <div class="w-[100px] md:w-[200px] whitespace-nowrap overflow-hidden text-ellipsis"> {{ $data->slug }}</div>
