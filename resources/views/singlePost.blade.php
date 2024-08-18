@@ -10,7 +10,10 @@
         /* background-color: #2E3440 !important; */
         color: #D8DEE9 !important;
     }
-
+    code{
+        color: rgb(11, 9, 9) !important;
+        background: #c0c6ca;
+    }
     .prose {
        max-width: 100%
     }
