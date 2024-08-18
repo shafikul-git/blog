@@ -2,10 +2,15 @@
 @section('title', $singlePostData->title)
 @section('otherConetent')
 
-{{-- Highlight cosde --}}
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+{{-- Highlight code --}}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/tomorrow-night-bright.min.css">
 
 <style>
+    pre code {
+        /* background-color: #2E3440 !important; */
+        color: #D8DEE9 !important;
+    }
+
     .prose {
        max-width: 100%
     }
@@ -119,8 +124,14 @@
 
     {{-- Highlight Code  --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
-    <script>hljs.highlightAll();</script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', (event) => {
+        document.querySelectorAll('pre code').forEach((block) => {
+        hljs.highlightElement(block);
+        });
+    });
+    </script>
 @endsection
 
 
