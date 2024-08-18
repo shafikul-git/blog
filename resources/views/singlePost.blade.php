@@ -3,65 +3,7 @@
 @section('otherConetent')
 
 {{-- Highlight code --}}
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/tomorrow-night-bright.min.css">
-
-<style>
-    pre code {
-        /* background-color: #2E3440 !important; */
-        color: #D8DEE9 !important;
-    }
-    code{
-        color: rgb(11, 9, 9) !important;
-        background: #c0c6ca;
-    }
-    .prose {
-       max-width: 100%
-    }
-    .customCss a{
-        color: #1885c9;
-    }
-    .customCss a:hover{
-        color: blue;
-    }
-    .customCss h2, .customCss h1, .customCss h3, .customCss h4{
-        color: black;
-    }
-    .customCss iframe, .customCss img{
-        max-width: 100% !important;
-    }
-    .customCss table {
-        max-width: 100%;
-        overflow-x: auto;
-        display: block;
-    }
-    .customCss pre {
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        padding: 1em;
-        overflow-x: auto;
-        background-color: #f5f5f5; /* Light gray background */
-    }
-
-    .customCss code {
-        font-family: 'Fira Code', monospace; /* Use a font that is easy to read for code */
-        color: #2d3748; /* Darker text color */
-    }
-
-    @media (prefers-color-scheme: dark) {
-        .customCss strong, .customCss h1, .customCss h2, .customCss h3, .customCss h4, .customCss p {
-            color: white;
-        }
-        .customCss table{
-            color: rgb(255, 255, 255);
-        }
-        .customCss a{
-            color: #2573A4;
-        }
-        .customCss a:hover{
-            color: #1c8fd7;
-        }
-    }
-</style>
+<link rel="stylesheet" href="{{ asset('css/singlepost.css') }}">
 
     <!-- Nav Section -->
     <x-navbar></x-navbar>
@@ -95,9 +37,7 @@
                 <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg mb-6">
                     <h3 class="text-xl font-bold mb-4">Recent Posts</h3>
                     <ul>
-                        <li class="mb-2"><a href="#" class="text-blue-500 dark:text-blue-400 hover:underline">Post 1</a></li>
-                        <li class="mb-2"><a href="#" class="text-blue-500 dark:text-blue-400 hover:underline">Post 2</a></li>
-                        <li class="mb-2"><a href="#" class="text-blue-500 dark:text-blue-400 hover:underline">Post 3</a></li>
+                        <x-recent-post></x-recent-post>
                     </ul>
                 </div>
 
@@ -121,11 +61,12 @@
             </div>
         </div>
     </div>
+
     <!-- Footer Section -->
     <x-footer></x-footer>
 
 
-    {{-- Highlight Code  --}}
+    {{-- Highlight Code show  --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 
     <script>

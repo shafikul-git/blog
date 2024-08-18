@@ -1,0 +1,74 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/base16/colors.min.css');
+.prose {
+    max-width: 100%
+}
+
+.customCss a {
+    color: #1885c9;
+}
+
+.customCss a:hover {
+    color: blue;
+}
+
+.customCss h2,
+.customCss h1,
+.customCss h3,
+.customCss h4 {
+    color: black;
+}
+
+.customCss iframe,
+.customCss img {
+    max-width: 100% !important;
+}
+
+.customCss table {
+    max-width: 100%;
+    overflow-x: auto;
+    display: block;
+}
+
+.customCss pre {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 1em;
+    overflow-x: auto;
+    background-color: #f5f5f5;
+}
+
+.customCss code {
+    font-family: 'Fira Code', monospace;
+    color: rgb(11, 9, 9) !important;
+    background: #c0c6ca;
+}
+
+.customCss pre code {
+    background-color: #15171b !important;
+    color: #D8DEE9 !important;
+}
+
+
+@media (prefers-color-scheme: dark) {
+
+    .customCss strong,
+    .customCss h1,
+    .customCss h2,
+    .customCss h3,
+    .customCss h4,
+    .customCss p {
+        color: white;
+    }
+
+    .customCss table {
+        color: rgb(255, 255, 255);
+    }
+
+    .customCss a {
+        color: #2573A4;
+    }
+
+    .customCss a:hover {
+        color: #1c8fd7;
+    }
+}
