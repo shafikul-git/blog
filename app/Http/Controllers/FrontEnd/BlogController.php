@@ -11,10 +11,17 @@ class BlogController extends Controller
 {
     public function blog(){
         $blogDatas = Category::with(['users', 'posts' => function($query){
-            $query->limit('4');
+            $query->orderBy('id', 'DESC')->limit('4');
         }])->get();
         // return $allDataBlog;
         return view('blog', compact('blogDatas'));
+    }
+
+    public function singlePost($slug){
+        $datas = Post::where('slug', $slug)->get();
+        $singlePostData = $datas[0];
+        // return $singlePostData;
+        return view('singlePost', compact('singlePostData'));
     }
 
 // All POst LOad

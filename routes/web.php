@@ -45,6 +45,7 @@ Route::resource('tag', TagController::class)->middleware('auth');
 Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('about', [AboutController::class, 'about'])->name('about');
 Route::get('blog', [BlogController::class, 'blog'])->name('blog');
+Route::get('blog/{slug}', [BlogController::class, 'singlePost'])->name('singlePost');
 Route::get('contact', [ContactController::class, 'contact'])->name('contact');
 
 
