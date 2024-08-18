@@ -53,9 +53,7 @@
                 <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
                     <h3 class="text-xl font-bold mb-4">Other Categories</h3>
                     <ul>
-                        <li class="mb-2"><a href="#" class="text-blue-500 dark:text-blue-400 hover:underline">Category 1</a></li>
-                        <li class="mb-2"><a href="#" class="text-blue-500 dark:text-blue-400 hover:underline">Category 2</a></li>
-                        <li class="mb-2"><a href="#" class="text-blue-500 dark:text-blue-400 hover:underline">Category 3</a></li>
+                        <x-other-category></x-other-category>
                     </ul>
                 </div>
             </div>

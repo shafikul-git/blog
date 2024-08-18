@@ -13,14 +13,20 @@ class BlogController extends Controller
         $blogDatas = Category::with(['users', 'posts' => function($query){
             $query->orderBy('id', 'DESC')->limit('4');
         }])->get();
+        if($blogDatas->isEmpty()){
+            return abort(404);
+        }
         // return $allDataBlog;
         return view('blog', compact('blogDatas'));
     }
 
     public function singlePost($slug){
         $datas = Post::where('slug', $slug)->get();
+        if($datas->isEmpty()){
+            return abort(404);
+        }
         $singlePostData = $datas[0];
-        // return $singlePostData;
+        // return $datas;
         return view('singlePost', compact('singlePostData'));
     }
 

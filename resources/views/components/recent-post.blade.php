@@ -8,7 +8,7 @@
                     <img src="{{ asset('storage/' . $posts->featured_image) }}" class="w-10 h-10 rounded-full" />
                     <div class="ml-4 flex-1">
                         <p
-                            class="text-sm text-gray-800 dark:text-gray-200 font-semibold w-[150px] sm:w-[240px] md:w-[120px] whitespace-nowrap overflow-hidden text-ellipsis group-hover:underline">
+                            class="text-sm text-gray-800 dark:text-gray-200 font-semibold w-[150px] sm:w-[240px] md:w-[120px] whitespace-nowrap overflow-hidden text-ellipsis group-hover:underline capitalize">
                             {{ $posts->title }}
                         </p>
                         <p
@@ -16,7 +16,7 @@
                             {{ strip_tags($posts->content) }}
                         </p>
                         <div class="text-xs text-gray-400 dark:text-gray-500 mt-1 flex items-center">
-                            <span class="mr-2">by {{ $posts->users[0]->name }}</span>
+                            <span class="mr-2 capitalize">by {{ $posts->users[0]->name }}</span>
                             <span>{{ $posts->created_at->format('M d, Y') }}</span>
                         </div>
                     </div>
