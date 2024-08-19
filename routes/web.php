@@ -8,6 +8,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FrontEnd\AboutController;
 use App\Http\Controllers\FrontEnd\BlogController;
+use App\Http\Controllers\FrontEnd\CategoryController as FrontEndCategoryController;
 use App\Http\Controllers\FrontEnd\ContactController;
 use App\Http\Controllers\post\PostController;
 use App\Http\Controllers\FrontEnd\HomeController;
@@ -43,10 +44,31 @@ Route::resource('tag', TagController::class)->middleware('auth');
 
 // Other Route
 Route::get('/', [HomeController::class, 'home'])->name('home');
-Route::get('about', [AboutController::class, 'about'])->name('about');
-Route::get('blog', [BlogController::class, 'blog'])->name('blog');
-Route::get('blog/{slug}', [BlogController::class, 'singlePost'])->name('singlePost');
-Route::get('contact', [ContactController::class, 'contact'])->name('contact');
+
+// About Prefix Group
+Route::prefix('about')->group(function (){
+    Route::get('/', [AboutController::class, 'about'])->name('about');
+    // Route::get('/{id}', [AboutController::class, 'ohter'])->name('ohter');
+});
+
+// Contact Prefix Group
+Route::prefix('contact')->name('contact.')->group(function (){
+    Route::get('/', [ContactController::class, 'index'])->name('index');
+});
+
+// Blog Controller Groupp
+Route::controller(BlogController::class)->group(function(){
+    Route::get('blog', 'blog')->name('blog');
+    Route::get('blog/{slug}', 'singlePost')->name('singlePost');
+});
+
+// Category Controller & prefix Group
+Route::prefix('categories')->name('categories.')->controller(FrontEndCategoryController::class)->group(function () {
+    Route::get('/', 'index')->name('index');
+    // Route::get('/', 'index')->name('index');
+});
+
+
 
 
 

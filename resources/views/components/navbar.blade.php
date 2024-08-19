@@ -196,15 +196,21 @@
                 </li>
                 <li class='max-lg:border-b max-lg:px-3 max-lg:py-3'>
                     <a href='{{ route('blog') }}'
-                        class='hover:text-[#007bff] text-gray-600 font-semibold text-[15px] block'>Blog</a>
+                        class='hover:text-[#007bff] text-gray-600 font-semibold text-[15px] block'>Blog
+                    </a>
                 </li>
                 <li class='max-lg:border-b max-lg:px-3 max-lg:py-3'>
                     <a href='{{ route('about') }}'
                         class='hover:text-[#007bff] text-gray-600 font-semibold text-[15px] block'>About</a>
                 </li>
+                <li class='max-lg:border-b max-lg:px-3 max-lg:py-3'>
+                    <a href='{{ route('categories.index') }}'
+                        class='hover:text-[#007bff] text-gray-600 font-semibold text-[15px] block'>Category
+                    </a>
+                </li>
 
                 <li class='max-lg:border-b max-lg:px-3 max-lg:py-3'>
-                    <a href='{{ route('contact') }}'
+                    <a href='{{ route('contact.index') }}'
                         class='hover:text-[#007bff] text-gray-600 font-semibold text-[15px] block'>Contact</a>
                 </li>
                 <li class='max-lg:border-b max-lg:px-3 max-lg:py-3'>
