@@ -1,6 +1,6 @@
 @foreach ($otherAllCategory as $categorys)
 <li class="mb-2">
-    <a href="{{ route('singlePost', $categorys->slug) }}" class="block group">
+    <a href="{{ route('categories.signleCateogry', $categorys->slug) }}" class="block group">
         <div
             class="bg-white dark:bg-gray-800 shadow-[0_4px_12px_-5px_rgba(0,0,0,0.4)] dark:shadow-[0_4px_12px_-5px_rgba(0,0,0,0.7)] w-full max-w-sm rounded-lg font-[sans-serif] overflow-hidden mx-auto transition-transform transform group-hover:scale-105">
             <div

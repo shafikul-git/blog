@@ -2,31 +2,26 @@
 
 namespace App\Http\Controllers\FrontEnd;
 
+use Carbon\Carbon;
 use App\Models\Category;
 use App\Models\post\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 
 class BlogController extends Controller
 {
     public function blog(){
-        $blogDatas = Category::with(['users', 'posts' => function($query){
-            $query->orderBy('id', 'DESC')->limit('4');
-        }])->get();
-        if($blogDatas->isEmpty()){
-            return abort(404);
-        }
-        // return $allDataBlog;
+        $blogDatas =  Post::with('users')->orderByDesc('id')->paginate(10);
+        // return $blogDatas;
         return view('blog', compact('blogDatas'));
     }
 
     public function singlePost($slug){
-        $datas = Post::where('slug', $slug)->get();
-        if($datas->isEmpty()){
-            return abort(404);
-        }
-        $singlePostData = $datas[0];
-        // return $datas;
+        $singlePostData = Post::where('slug', $slug)->orderByDesc('id')->firstOrFail();
+
+        $suggestedPostStore = Session::put(['suggestedPost' => $slug]);
+        // return $singlePostData;
         return view('singlePost', compact('singlePostData'));
     }
 

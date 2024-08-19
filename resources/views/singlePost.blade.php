@@ -35,26 +35,32 @@
             <!-- Sidebar -->
             <div class="lg:w-1/4 lg:pl-8 mt-8 lg:mt-0">
                 <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg mb-6">
-                    <h3 class="text-xl font-bold mb-4">Recent Posts</h3>
+
+                    <div class="flex justify-between">
+                        <h3 class="text-xl font-bold mb-4">Recent Posts</h3>
+                        <a href="{{ route('blog') }}" class="text-indigo-400 hover:text-indigo-600 underline  font-bold">More</a>
+                    </div>
                     <ul>
                         <x-recent-post></x-recent-post>
                     </ul>
                 </div>
 
                 <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg mb-6">
-                    <h3 class="text-xl font-bold mb-4">Suggested Posts</h3>
+                        <h3 class="text-xl font-bold mb-4">Suggested Posts</h3>
                     <ul>
-                        <li class="mb-2"><a href="#" class="text-blue-500 dark:text-blue-400 hover:underline">Post 4</a></li>
-                        <li class="mb-2"><a href="#" class="text-blue-500 dark:text-blue-400 hover:underline">Post 5</a></li>
-                        <li class="mb-2"><a href="#" class="text-blue-500 dark:text-blue-400 hover:underline">Post 6</a></li>
+                       <x-suggested-post></x-suggested-post>
                     </ul>
                 </div>
 
                 <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
-                    <h3 class="text-xl font-bold mb-4">Other Categories</h3>
+                    <div class="flex justify-between">
+                        <h3 class="text-xl font-bold mb-4">Other Categories</h3>
+                        <a href="{{ route('categories.index') }}" class="text-indigo-400 hover:text-indigo-600 underline  font-bold">More</a>
+                    </div>
                     <ul>
                         <x-other-category></x-other-category>
                     </ul>
+
                 </div>
             </div>
         </div>

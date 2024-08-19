@@ -65,7 +65,7 @@ Route::controller(BlogController::class)->group(function(){
 // Category Controller & prefix Group
 Route::prefix('categories')->name('categories.')->controller(FrontEndCategoryController::class)->group(function () {
     Route::get('/', 'index')->name('index');
-    // Route::get('/', 'index')->name('index');
+    Route::get('/{slug}', 'signleCateogry')->name('signleCateogry');
 });
 
 

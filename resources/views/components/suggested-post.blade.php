@@ -1,4 +1,9 @@
-@foreach ($recentPost as $posts)
+@foreach ($datas as $posts)
+@php
+    if($posts->slug === request()->route('slug')){
+        continue;
+    }
+@endphp
     <li class="mb-2">
         <a href="{{ route('singlePost', $posts->slug) }}" class="block group">
             <div

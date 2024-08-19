@@ -22,7 +22,7 @@ class otherCategory extends Component
      */
     public function render(): View|Closure|string
     {
-        $otherAllCategory = Category::limit(5)->get();
+        $otherAllCategory = Category::limit(7)->get();
         return view('components.other-category', compact('otherAllCategory'));
     }
 }

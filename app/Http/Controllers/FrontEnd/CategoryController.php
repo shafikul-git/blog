@@ -18,4 +18,11 @@ class CategoryController extends Controller
         // return $allDataBlog;
         return view('categories', compact('allCategorys'));
     }
+
+    public function signleCateogry($slug){
+        $datas = Category::where('slug', $slug)->firstOrFail();
+        // return $datas;
+        $post = $datas->posts()->orderBy('id', 'DESC')->paginate(5);
+        return view('signleCateogry', compact('datas', 'post'));
+    }
 }
