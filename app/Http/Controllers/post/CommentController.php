@@ -44,11 +44,18 @@ class CommentController extends Controller
             'comment' => 'required',
         ]);
 
+        if($request->reply){
+            $request->validate([
+                'reply' => 'required|numeric'
+            ]);
+        }
+
        $comment = Comment::create([
             'name' => $request->name,
             'email' => $request->email,
             'website' => $request->website,
             'comment' => $request->comment,
+            'reply_id' => $request->reply,
             'user_id' => Auth::user()->id,
         ]);
 

@@ -90,7 +90,7 @@
                             <span class="text-xs text-gray-500 dark:text-gray-400">{{ Carbon\Carbon::parse($comments->created_at)->diffForHumans() }}</span>
                         </div>
                         <!-- Comment Text -->
-                        <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">
+                        <p class="mt-2 text-sm text-gray-600 dark:text-gray-300 break-all ">
                             {{ $comments->comment }}
                         </p>
                         <!-- Like and Reply -->

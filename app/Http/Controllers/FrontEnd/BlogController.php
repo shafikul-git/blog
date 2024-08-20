@@ -20,6 +20,7 @@ class BlogController extends Controller
     public function singlePost($slug){
         $singlePostData = Post::where('slug', $slug)->with(['comments' => function($query){
             $query->orderBy('id', 'DESC');
+            // $query->orderBy('id', 'DESC')->with('replyComments');
         }])->orderByDesc('id')->firstOrFail();
 
         $suggestedPostStore = Session::put(['suggestedPost' => $slug]);
