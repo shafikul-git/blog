@@ -103,7 +103,16 @@
 
     <!-- Next Menu -->
     <div class='flex flex-wrap justify-center px-10 py-3 relative'>
-
+@php
+    $currentUrl = request()->path();
+    function activeMenu($url, $value){
+        if(strpos($url, $value) !== false){
+            return 'text-[#007bff]';
+        } else{
+            return 'text-gray-600';
+        }
+    }
+@endphp
         <div id="collapseMenu"
             class='max-lg:hidden lg:!block max-lg:before:fixed max-lg:before:bg-black max-lg:before:opacity-40 max-lg:before:inset-0 max-lg:before:z-50'>
             <button id="toggleClose" class='lg:hidden fixed top-2 right-4 z-[100] rounded-full bg-white p-3'>
@@ -119,7 +128,7 @@
                 </li>
                 <li class='max-lg:border-b max-lg:px-3 max-lg:py-3'>
                     <a href="{{ route('home') }}"
-                        class='hover:text-[#007bff] text-[#007bff] font-semibold block text-[15px]'>Home</a>
+                        class='{{ activeMenu($currentUrl, '/') }} hover:text-[#007bff]  font-semibold text-[15px] block '>Home</a>
                 </li>
                 <li class='group max-lg:border-b max-lg:px-3 max-lg:py-3 relative'>
                     <a href='javascript:void(0)'
@@ -192,26 +201,26 @@
                 </li>
                 <li class='max-lg:border-b max-lg:px-3 max-lg:py-3'>
                     <a href='javascript:void(0)'
-                        class='hover:text-[#007bff] text-gray-600 font-semibold text-[15px] block'>Feature</a>
+                        class='{{ activeMenu($currentUrl, 'feature') }} hover:text-[#007bff] font-semibold text-[15px] block'>Feature</a>
                 </li>
                 <li class='max-lg:border-b max-lg:px-3 max-lg:py-3'>
                     <a href='{{ route('blog') }}'
-                        class='hover:text-[#007bff] text-gray-600 font-semibold text-[15px] block'>Blog
+                        class='{{ activeMenu($currentUrl, 'blog')}} hover:text-[#007bff] font-semibold text-[15px] block'>Blog
                     </a>
                 </li>
                 <li class='max-lg:border-b max-lg:px-3 max-lg:py-3'>
                     <a href='{{ route('about') }}'
-                        class='hover:text-[#007bff] text-gray-600 font-semibold text-[15px] block'>About</a>
+                        class='{{ activeMenu($currentUrl, 'about') }} hover:text-[#007bff] font-semibold text-[15px] block'>About</a>
                 </li>
                 <li class='max-lg:border-b max-lg:px-3 max-lg:py-3'>
                     <a href='{{ route('categories.index') }}'
-                        class='hover:text-[#007bff] text-gray-600 font-semibold text-[15px] block'>Category
+                        class='hover:text-[#007bff] {{ activeMenu($currentUrl, 'categories') }} font-semibold text-[15px] block'>Category
                     </a>
                 </li>
 
                 <li class='max-lg:border-b max-lg:px-3 max-lg:py-3'>
                     <a href='{{ route('contact.index') }}'
-                        class='hover:text-[#007bff] text-gray-600 font-semibold text-[15px] block'>Contact</a>
+                        class='hover:text-[#007bff] {{ activeMenu($currentUrl, 'contact')  }} font-semibold text-[15px] block'>Contact</a>
                 </li>
                 <li class='max-lg:border-b max-lg:px-3 max-lg:py-3'>
                     <a href='javascript:void(0)'

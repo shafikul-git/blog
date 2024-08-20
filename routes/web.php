@@ -12,7 +12,7 @@ use App\Http\Controllers\FrontEnd\CategoryController as FrontEndCategoryControll
 use App\Http\Controllers\FrontEnd\ContactController;
 use App\Http\Controllers\post\PostController;
 use App\Http\Controllers\FrontEnd\HomeController;
-
+use App\Http\Controllers\post\CommentController;
 
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
@@ -39,7 +39,9 @@ Route::resource('category', CategoryController::class)->middleware('auth');
 // Tag Route
 Route::resource('tag', TagController::class)->middleware('auth');
 
-
+// Post Comment Route
+Route::resource('comment', CommentController::class);
+Route::post('postComment/{postId}', [CommentController::class, 'postComment'])->name('postComment');
 
 
 // Other Route
