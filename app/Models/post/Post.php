@@ -24,10 +24,9 @@ class Post extends Model
     public function users(){
         return $this->hasMany(User::class, 'id', 'author_id');
     }
-    // public function replyComments(){
-    //     return $this->hasMany(Comment::class, 'id', 'reply_id')->whereNull('reply_id')->with('replyComments');
-    // }
 
+
+    // Database Data Get `UCWORDS`
     protected function Title(): Attribute
     {
         return Attribute::make(
