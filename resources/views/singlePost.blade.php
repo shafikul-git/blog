@@ -4,7 +4,14 @@
 
 {{-- Highlight code --}}
 <link rel="stylesheet" href="{{ asset('css/singlepost.css') }}">
-
+<style>
+    #replyMessage pre {
+    white-space: pre-wrap; /* Allows the text to wrap inside the <pre> tag */
+    word-wrap: break-word; /* Breaks long words to prevent overflow */
+    overflow-wrap: break-word; /* Ensures content doesn't overflow */
+    max-width: 100%; /* Ensures the <pre> content respects the container's width */
+}
+</style>
     <!-- Nav Section -->
     <x-navbar></x-navbar>
 
@@ -66,52 +73,110 @@
         </div>
     </div>
 
+    <!-- Comment Section -->
+    <div class="my-4 max-w-full mx-auto p-4 bg-white dark:bg-gray-800 text-gray-800 dark:text-white shadow-lg rounded-lg">
+        <!-- Show All Comment -->
+        @foreach ($singlePostData->comments as $comments)
+            <div class="p-4 mb-4 bg-gray-100 dark:bg-gray-700 rounded-lg">
+                <!-- User Info -->
+                <div class="flex items-start space-x-4">
+                    <!-- User Avatar -->
+                    <img src="https://loremflickr.com/200/200?random={{ rand(10, 200) }}" alt="User Avatar" class="w-10 h-10 rounded-full">
+                    <!-- Comment Content -->
+                    <div class="flex-1">
+                        <!-- User Name and Timestamp -->
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-sm font-semibold text-gray-800 dark:text-white">{{ $comments->name }}</h3>
+                            <span class="text-xs text-gray-500 dark:text-gray-400">{{ Carbon\Carbon::parse($comments->created_at)->diffForHumans() }}</span>
+                        </div>
+                        <!-- Comment Text -->
+                        <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">
+                            {{ $comments->comment }}
+                        </p>
+                        <!-- Like and Reply -->
+                        <div class="mt-4 flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400">
+                            <button class="flex items-center space-x-1 hover:text-gray-800 dark:hover:text-white">
+                                <i class="fas fa-heart"></i>
+                                <span>11 Likes</span>
+                            </button>
+                            <button type="button" onclick="commentReply('{{ json_encode($comments->comment) }}',{{ $comments->id }})" class="hover:text-gray-800 dark:hover:text-white">Reply</button>
+                        </div>
+                    </div>
+                    <!-- Dropdown Menu Only Admin Or Editor -->
+                    <div class="relative">
+                        <button class="text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-white">
+                            <i class="fas fa-ellipsis-h" onclick="showCommentAction()"></i>
+                        </button>
+                        <!-- Dropdown Content -->
+                        <div id="showActionComment" class="hidden absolute right-0 mt-2 w-32 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg shadow-lg z-10">
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600">Edit</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600">Remove</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600">Report</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+        <!-- Repeat for additional comments -->
+    </div>
+
 
     <div class="max-w-lg mx-auto p-6 bg-white dark:bg-gray-800 shadow-md rounded-lg">
-        <h2 class="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-200">Contact Us</h2>
+        @php
+            $inputStyle =
+                'block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer';
+            $labelClass =
+                'peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 capitalize';
+        @endphp
+        <h2 class="text-xl dark:text-white py-3 font-bold text-center">Post Comment</h2>
 
-        <form action="{{ route('postComment',  $singlePostData->id) }}" method="post">
-            @csrf
-            <!-- Name Field -->
-            <div class="mb-4">
-                <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Name</label>
-                <input type="text" id="name" name="name"
-                       class="mt-1 block w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-gray-300"
-                       placeholder="John Doe">
+        <!-- Reply Message Show When Reply Button hit -->
+        <div id="replyMessage" class="max-w-full text-wrap relative rounded-md  bg-gray-700 p-2 my-3 ">
+            <div id="commentClose" class="hidden commentClose">
+                <i class=" fa-solid fa-xmark text-red-500 text-3xl  font-extrabold cursor-pointer absolute top-2 right-2 z-30 " onclick="closeComment()"></i>
             </div>
+        </div>
 
-            <!-- Email Field -->
-            <div class="mb-4">
-                <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Email</label>
-                <input type="email" id="email" name="email"
-                       class="mt-1 block w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-gray-300"
-                       placeholder="you@example.com">
-            </div>
+        <x-form id="actionChange" action="{{ route('postComment',  $singlePostData->id) }}" animationBtn="Submit" method="POST"
+            :fields="[
+                [
+                    'type' => 'text',
+                    'name' => 'name',
+                    'id' => 'name',
+                    'placeholder' => '',
+                    'label' => [
+                        'name' => 'Enter Name*',
+                        'class' => $labelClass,
+                    ],
+                    'class' => $inputStyle,
+                ],
+                [
+                    'type' => 'text',
+                    'name' => 'email',
+                    'id' => 'email',
+                    'placeholder' => '',
+                    'label' => [
+                        'name' => 'Enter Email*',
+                        'class' => $labelClass,
+                    ],
+                    'class' => $inputStyle,
+                ],
+                [
+                    'type' => 'text',
+                    'name' => 'website',
+                    'id' => 'website',
+                    'placeholder' => '',
+                    'label' => [
+                        'name' => 'Enter Website',
+                        'class' => $labelClass,
+                    ],
+                    'class' => $inputStyle,
+                ],
+            ]" class="max-w-full">
 
-            <!-- Website Field -->
-            <div class="mb-4">
-                <label for="website" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Website</label>
-                <input type="url" id="website" name="website"
-                       class="mt-1 block w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-gray-300"
-                       placeholder="https://yourwebsite.com">
-            </div>
-
-            <!-- Comment Field -->
-            <div class="mb-4">
-                <label for="comment" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Comment</label>
-                <textarea id="comment" name="comment" rows="4"
-                          class="mt-1 block w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-gray-300"
-                          placeholder="Your message here..."></textarea>
-            </div>
-
-            <!-- Submit Button -->
-            <div>
-                <button type="submit"
-                        class="w-full px-4 py-2 bg-indigo-600 text-white font-semibold rounded-md shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400">
-                    Submit
-                </button>
-            </div>
-        </form>
+            <label for="comment" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your message</label>
+            <textarea name="comment" id="comment" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write your Reply here..."></textarea>
+        </x-form>
     </div>
 
 
@@ -124,10 +189,65 @@
 
     <script>
       document.addEventListener('DOMContentLoaded', (event) => {
-        document.querySelectorAll('pre code').forEach((block) => {
-        hljs.highlightElement(block);
-        });
-    });
+            document.querySelectorAll('pre code').forEach((block) => {
+            hljs.highlightElement(block);
+            });
+      });
+
+    function commentReply(comment,commentId){
+        let replyAction = document.querySelector('input[name="reply"]');
+        const actionChange = document.getElementById('actionChange');
+
+        // reply Id
+        if (replyAction) {
+            replyAction.value = commentId;
+        } else {
+            actionChange.innerHTML += '<input type="hidden" value='+commentId+' name="reply">';
+        }
+
+        // Close Message Icon
+        const commentClose = document.querySelector('#commentClose');
+        commentClose.classList.remove('hidden')
+
+        // Reply Message
+        const replyMessage = document.getElementById('replyMessage');
+        if (replyMessage) {
+            const newCommentHTML = `<div class="dark:text-white" data-comment-id="1">${comment}</div>`;
+            const existingComment = replyMessage.querySelector(`[data-comment-id="1"]`);
+
+            if (existingComment) {
+                existingComment.innerHTML = comment;
+            } else {
+                replyMessage.innerHTML += newCommentHTML;
+            }
+        }
+    }
+
+    // Close Comment
+    function closeComment(){
+        // Icon hidden
+        const commentClose = document.getElementById('commentClose');
+        commentClose.classList.add('hidden');
+
+        // form Input Delete
+        const replyAction = document.querySelector('input[name="reply"]');
+        if(replyAction){
+            replyAction.remove();
+        }
+
+        // Comment div delete
+        const replyMessage = document.querySelector(`[data-comment-id="1"]`);
+        if(replyMessage){
+            replyMessage.remove();
+        }
+    }
+
+    // Admin Comment Action
+    function showCommentAction(){
+        const showActionComment = document.getElementById('showActionComment');
+        showActionComment.classList.toggle('hidden');
+    }
+
     </script>
 @endsection
 

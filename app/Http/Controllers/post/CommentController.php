@@ -40,7 +40,7 @@ class CommentController extends Controller
         }
         $request->validate([
             'name' => 'required|string',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:comments,email',
             'comment' => 'required',
         ]);
 
@@ -52,8 +52,9 @@ class CommentController extends Controller
             'user_id' => Auth::user()->id,
         ]);
 
-        $comment->posts()->sync($postId);
-        return true;
+       $postComment = $comment->posts()->sync($postId);
+    //    return $postComment;
+        return $postComment ? redirect()->back()->with('success', 'Comment Successful') : redirect()->back()->with('error', 'Someting Went Wrong');
     }
 
     /**

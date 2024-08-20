@@ -44,6 +44,9 @@ Route::resource('comment', CommentController::class);
 Route::post('postComment/{postId}', [CommentController::class, 'postComment'])->name('postComment');
 
 
+
+
+
 // Other Route
 Route::get('/', [HomeController::class, 'home'])->name('home');
 
