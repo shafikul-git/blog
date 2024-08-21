@@ -30,37 +30,35 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-//
+        //
     }
 
     public function postComment(Request $request, $postId)
     {
-        if(!Auth::check()){
-            return redirect()->back()->with('error', 'Please Login Then Comment');
+        if (!Auth::check()) {
+            return redirect()->route('login')->with('please login then comment');
         }
         $request->validate([
             'name' => 'required|string',
-            'email' => 'required|email|unique:comments,email',
             'comment' => 'required',
         ]);
 
-        if($request->reply){
+        if ($request->reply) {
             $request->validate([
                 'reply' => 'required|numeric'
             ]);
         }
 
-       $comment = Comment::create([
+        $comment = Comment::create([
             'name' => $request->name,
-            'email' => $request->email,
             'website' => $request->website,
             'comment' => $request->comment,
             'reply_id' => $request->reply,
             'user_id' => Auth::user()->id,
         ]);
 
-       $postComment = $comment->posts()->sync($postId);
-    //    return $postComment;
+        $postComment = $comment->posts()->sync($postId);
+        //    return $postComment;
         return $postComment ? redirect()->back()->with('success', 'Comment Successful') : redirect()->back()->with('error', 'Someting Went Wrong');
     }
 
@@ -77,7 +75,8 @@ class CommentController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data = Comment::find($id);
+        return view('commentEdit', compact('data'));
     }
 
     /**
@@ -85,7 +84,21 @@ class CommentController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        if (!Auth::check()) {
+            return redirect()->route('login')->with('please login then comment');
+        }
+        $request->validate([
+            'name' => 'required|string',
+            'comment' => 'required',
+        ]);
+        $updateComment = Comment::where('id', $id)->update([
+            'name' => $request->name,
+            'website' => $request->website,
+            'comment' => $request->comment,
+        ]);
+
+        //    return $postComment;
+        return $updateComment ? redirect()->back()->with('success', 'Comment Update Successful') : redirect()->back()->with('error', 'Someting Went Wrong');
     }
 
     /**
@@ -93,6 +106,9 @@ class CommentController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $deleteComment = Comment::where('id', $id)->update(['status' => 'delete']);
+        return $deleteComment ? redirect()->back()->with('success', 'Comment Delete Successful') : redirect()->back()->with('success', 'Someting went wrong');
     }
 }
+
+//   Distroy  // $deleteComment = Comment::where('reply_id', $id)->orWhere('id', $id)->delete();

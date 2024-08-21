@@ -87,9 +87,11 @@
                             <span class="text-xs text-gray-500 dark:text-gray-400">{{ Carbon\Carbon::parse($comments->created_at)->diffForHumans() }}</span>
                         </div>
                         <!-- Comment Text -->
-                        <p class="mt-2 text-sm text-gray-600 dark:text-gray-300 break-all ">
-                            {{ $comments->comment }}
-                        </p>
+                        @if (!is_null($comments->status))
+                            <p class="text-red-500 font-bold text-xl capitalize">Comment {{ $comments->status }}</p>
+                        @else
+                            <p class="mt-2 text-sm text-gray-600 dark:text-gray-300 break-all "> {{ $comments->comment }} </p>
+                        @endif
                         <!-- Like and Reply Form -->
                         <div class="mt-4 flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400 gap-7">
                             @php
@@ -104,21 +106,21 @@
                             @endphp
                             <x-form action="{{ route('reaction', $action) }}"
                             :fields="[
-                                 [
+                                [
                                     'type' => 'hidden',
                                     'name' => 'commentId',
                                     'value' => $comments->id,
                                 ],
                             ]"
                             class="flex items-center space-x-1 hover:text-gray-800 dark:hover:text-white ">
-                                <button type="submit">
+                                <button type="submit" class=" inline-flex gap-2 ">
                                     @if ($action == 'like')
                                         <i class="fas fa-heart"></i>
                                     @else
                                         <i class="fa-solid fa-heart text-red-600"></i>
                                     @endif
+                                    <span>{{ $comments->comment_like }}</d>
                                 </button>
-                                <span>{{ $comments->comment_like }} Likes</span>
                             </x-form>
                             <button type="button" onclick="commentReply('{{ json_encode($comments->comment) }}',{{ $comments->id }})" class="hover:text-gray-800 dark:hover:text-white">Reply</button>
                         </div>
@@ -130,8 +132,10 @@
                         </button>
                         <!-- Dropdown Content -->
                         <div id="showActionComment" class="hidden absolute right-0 mt-2 w-32 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg shadow-lg z-10">
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600">Edit</a>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600">Remove</a>
+                            <a href="{{ route('comment.edit', $comments->id) }}" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600">Edit</a>
+                            <x-form action="{{ route('comment.destroy', $comments->id) }}" method="DELETE">
+                                <button type="submit" class="block w-full py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600">Remove</button>
+                            </x-form>
                             <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600">Report</a>
                         </div>
                     </div>
@@ -139,14 +143,12 @@
             </div>
 
             @if ($comments->replies)
-                @include('components.commentReply', ['data' => $comments->replies])
+                @include('components.commentReply', ['data' => $comments->replies, 'replyLabel' => 1])
             @endif
-
         @endforeach
-        <!-- Repeat for additional comments -->
     </div>
 
-
+<!-- Post Coment Form -->
     <div class="max-w-lg mx-auto p-6 bg-white dark:bg-gray-800 shadow-md rounded-lg">
         @php
             $inputStyle =
@@ -163,6 +165,7 @@
             </div>
         </div>
 
+
         <x-form id="actionChange" action="{{ route('postComment',  $singlePostData->id) }}" animationBtn="Submit" method="POST"
             :fields="[
                 [
@@ -172,17 +175,6 @@
                     'placeholder' => '',
                     'label' => [
                         'name' => 'Enter Name*',
-                        'class' => $labelClass,
-                    ],
-                    'class' => $inputStyle,
-                ],
-                [
-                    'type' => 'text',
-                    'name' => 'email',
-                    'id' => 'email',
-                    'placeholder' => '',
-                    'label' => [
-                        'name' => 'Enter Email*',
                         'class' => $labelClass,
                     ],
                     'class' => $inputStyle,
@@ -200,7 +192,7 @@
                 ],
             ]" class="max-w-full">
 
-            <label for="comment" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your message</label>
+            <label for="comment" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your message*</label>
             <textarea name="comment" id="comment" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write your Reply here..."></textarea>
         </x-form>
     </div>

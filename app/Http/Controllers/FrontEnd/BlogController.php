@@ -23,9 +23,8 @@ class BlogController extends Controller
     public function singlePost($slug){
         $singlePostData = Post::where('slug', $slug)->with(['comments' => function($query){
             $query->whereNull('reply_id') // Load only top-level comments
-                    ->orderBy('id', 'DESC')
                     ->with('replies'); // Eager load replies
-        }])->orderByDesc('id')->firstOrFail();
+        }])->firstOrFail();
 
         $suggestedPostStore = Session::put(['suggestedPost' => $slug]);
         // return $singlePostData;

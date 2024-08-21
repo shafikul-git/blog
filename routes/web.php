@@ -40,8 +40,8 @@ Route::resource('category', CategoryController::class)->middleware('auth');
 Route::resource('tag', TagController::class)->middleware('auth');
 
 // Post Comment Route
-Route::resource('comment', CommentController::class);
-Route::post('postComment/{postId}', [CommentController::class, 'postComment'])->name('postComment');
+Route::resource('blog/post/comment', CommentController::class);
+Route::post('blog/post/postComment/{postId}', [CommentController::class, 'postComment'])->name('postComment');
 
 
 
