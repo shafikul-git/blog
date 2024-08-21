@@ -1,7 +1,7 @@
 @extends('header')
 @section('title', $singlePostData->title)
 @section('otherConetent')
-
+{{-- {{ var_export(session()->all(), true) }} --}}
 {{-- Highlight code --}}
 <link rel="stylesheet" href="{{ asset('css/singlepost.css') }}">
 <style>
@@ -95,10 +95,18 @@
                         </p>
                         <!-- Like and Reply -->
                         <div class="mt-4 flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400">
-                            <button class="flex items-center space-x-1 hover:text-gray-800 dark:hover:text-white">
-                                <i class="fas fa-heart"></i>
-                                <span>11 Likes</span>
-                            </button>
+                            <x-form action="{{ route('reaction', 'dislike') }}"
+                            :fields="[
+                                 [
+                                    'type' => 'hidden',
+                                    'name' => 'commentId',
+                                    'value' => $comments->id,
+                                ],
+                            ]"
+                            class="flex items-center space-x-1 hover:text-gray-800 dark:hover:text-white">
+                                <button type="submit"><i class="fas fa-heart"></i></button>
+                                <span>{{ $comments->comment_like }} Likes</span>
+                            </x-form>
                             <button type="button" onclick="commentReply('{{ json_encode($comments->comment) }}',{{ $comments->id }})" class="hover:text-gray-800 dark:hover:text-white">Reply</button>
                         </div>
                     </div>

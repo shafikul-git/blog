@@ -47,6 +47,7 @@ Route::post('postComment/{postId}', [CommentController::class, 'postComment'])->
 
 
 
+
 // Other Route
 Route::get('/', [HomeController::class, 'home'])->name('home');
 
@@ -65,6 +66,7 @@ Route::prefix('contact')->name('contact.')->group(function (){
 Route::controller(BlogController::class)->group(function(){
     Route::get('blog', 'blog')->name('blog');
     Route::get('blog/{slug}', 'singlePost')->name('singlePost');
+    Route::post('reaction/{action}', 'reaction')->name('reaction');
 });
 
 // Category Controller & prefix Group
