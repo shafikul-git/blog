@@ -6,6 +6,7 @@ use App\Models\post\Comment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class CommentController extends Controller
 {
@@ -76,7 +77,9 @@ class CommentController extends Controller
     public function edit(string $id)
     {
         $data = Comment::find($id);
-        return view('commentEdit', compact('data'));
+        if(Gate::authorize('checkPermission', $data->user_id)){
+            return view('commentEdit', compact('data'));
+        }
     }
 
     /**
@@ -106,8 +109,11 @@ class CommentController extends Controller
      */
     public function destroy(string $id)
     {
-        $deleteComment = Comment::where('id', $id)->update(['status' => 'delete']);
-        return $deleteComment ? redirect()->back()->with('success', 'Comment Delete Successful') : redirect()->back()->with('success', 'Someting went wrong');
+        $deleteComment = Comment::find($id);
+        if(Gate::authorize('checkPermission', $deleteComment->user_id)){
+            $commentDelete = Comment::where('id', $id)->update(['status' => 'delete']);
+            return $commentDelete ? redirect()->back()->with('success', 'Comment Delete Successful') : redirect()->back()->with('success', 'Someting went wrong');
+        }
     }
 }
 

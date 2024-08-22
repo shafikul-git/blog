@@ -26,7 +26,7 @@ class BlogController extends Controller
                     ->with('replies'); // Eager load replies
         }])->firstOrFail();
 
-        $suggestedPostStore = Session::put(['suggestedPost' => $slug]);
+        Session::put(['suggestedPost' => $slug]);
         // return $singlePostData;
         return view('singlePost', compact('singlePostData'));
     }
