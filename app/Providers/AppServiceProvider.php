@@ -20,6 +20,10 @@ class AppServiceProvider extends ServiceProvider
             return $user->role === 'commentor';
         });
 
+        Gate::define('administrator', function (User $user){
+            return in_array($user->role, ['admin', 'editor', 'commentor']);
+        });
+
         Gate::define('checkPermission', function(User $user, $permission){
             return $user->id === $permission;
         });

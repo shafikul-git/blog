@@ -16,7 +16,7 @@ use App\Http\Controllers\post\CommentController;
 
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified', 'can:administrator'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -25,7 +25,7 @@ Route::middleware('auth')->group(function () {
 });
 
 // menu Route
-Route::resource('menu', MenuController::class)->middleware('auth');
+Route::resource('menu', MenuController::class)->middleware('can:AdminOrEditor');
 
 // User Route
 Route::resource('users', UserController::class)->middleware('auth');
