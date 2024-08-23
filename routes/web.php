@@ -42,8 +42,10 @@ Route::resource('tag', TagController::class)->middleware('auth');
 
 // Post Comment Route
 Route::resource('comment', CommentController::class)->middleware('auth');
-Route::post('postComment/{postId}', [CommentController::class, 'postComment'])->name('postComment')->middleware(AuthMiddleWare::class);
-Route::post('reaction/{action}', [CommentController::class, 'reaction'])->name('reaction')->middleware(AuthMiddleWare::class);
+Route::controller(CommentController::class)->group(function(){
+    Route::post('postComment/{postId}', 'postComment')->name('postComment')->middleware(AuthMiddleWare::class);
+    Route::post('reaction/{action}', 'reaction')->name('reaction')->middleware(AuthMiddleWare::class);
+});
 
 
 

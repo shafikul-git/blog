@@ -34,6 +34,9 @@ class AppServiceProvider extends ServiceProvider
         });
 
         Gate::define('checkPermission', function(User $user, $permissionId){
+            if(Gate::forUser($user)->allows('AdminAndEditor', $permissionId)){
+                return true;
+            }
             return $user->id === $permissionId;
         });
     }
