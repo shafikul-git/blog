@@ -52,7 +52,7 @@
                                         View profile
                                     </a>
                                 </li>
-                                @canany(['AdminOrEditor', 'commentor'])
+                                @canany(['AdminAndEditor', 'commentor'])
                                 <li
                                     class='py-2.5 px-5 flex items-center hover:bg-gray-100 text-[#333] text-sm cursor-pointer'>
                                     <a href="{{ route('dashboard') }}">

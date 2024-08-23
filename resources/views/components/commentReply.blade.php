@@ -58,12 +58,12 @@
                     </button>
                     <!-- Dropdown Content -->
                     <div id="showActionComment" class="hidden absolute right-0 mt-2 w-32 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg shadow-lg z-10">
-                        @can('checkPermission', $comments->user_id)
+                        @canany(['checkPermission', 'AdminAndEditor'], $comments->user_id)
                             <a href="{{ route('comment.edit', $comments->id) }}" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600">Edit</a>
                             <x-form action="{{ route('comment.destroy', $comments->id) }}" method="DELETE">
                                 <button type="submit" class="block w-full py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600">Remove</button>
                             </x-form>
-                        @endcan
+                        @endcanany
                         @canany('administrator')
                             <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600">Report</a>
                         @endcanany

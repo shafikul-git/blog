@@ -26,7 +26,7 @@ Route::middleware('auth')->group(function () {
 });
 
 // menu Route
-Route::resource('menu', MenuController::class)->middleware('can:AdminOrEditor');
+Route::resource('menu', MenuController::class)->middleware('can:AdminAndEditor');
 
 // User Route
 Route::resource('users', UserController::class)->middleware('auth');

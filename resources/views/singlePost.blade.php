@@ -122,7 +122,7 @@
                                     <span>{{ $comments->comment_like }}</d>
                                 </button>
                             </x-form>
-                            <button type="button" onclick="commentReply('{{ json_encode($comments->comment) }}',{{ $comments->id }})" class="hover:text-gray-800 dark:hover:text-white">Reply</button>
+                            <button type="button" onclick="commentReply(`{{ json_encode($comments->comment) }}`,{{ $comments->id }})" class="hover:text-gray-800 dark:hover:text-white">Reply</button>
                         </div>
                     </div>
                     <!-- Dropdown Menu Only Admin Or Editor -->
@@ -133,12 +133,12 @@
                             </button>
                             <!-- Dropdown Content -->
                             <div id="showActionComment" class="hidden absolute right-0 mt-2 w-32 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg shadow-lg z-10">
-                                @can('checkPermission', $comments->user_id)
+                                @canany(['checkPermission', 'AdminAndEditor'], $comments->user_id)
                                     <a href="{{ route('comment.edit', $comments->id) }}" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600">Edit</a>
                                     <x-form action="{{ route('comment.destroy', $comments->id) }}" method="DELETE">
                                         <button type="submit" class="block w-full py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600">Remove</button>
                                     </x-form>
-                                @endcan
+                                @endcanany
                                 @canany('administrator')
                                     <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600">Report</a>
                                 @endcanany
@@ -171,7 +171,11 @@
             </div>
         </div>
 
-
+        @php
+            function checkName(){
+                return Auth::check() ? Auth::user()->name : '' ;
+            }
+        @endphp
         <x-form id="actionChange" action="{{ route('postComment',  $singlePostData->id) }}" animationBtn="Submit" method="POST"
             :fields="[
                 [
@@ -179,6 +183,7 @@
                     'name' => 'name',
                     'id' => 'name',
                     'placeholder' => '',
+                    'value' => checkName(),
                     'label' => [
                         'name' => 'Enter Name*',
                         'class' => $labelClass,
