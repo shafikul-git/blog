@@ -127,9 +127,7 @@
                     </div>
                     <!-- Dropdown Menu Only Admin Or Editor -->
                     <div class="relative">
-                        @if (Route::has('login'))
-                        @auth
-
+                        @if (Auth::user())
                             <button class="text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-white" onclick="showCommentAction(event)">
                                 <i class="fas fa-ellipsis-h" ></i>
                             </button>
@@ -141,12 +139,10 @@
                                         <button type="submit" class="block w-full py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600">Remove</button>
                                     </x-form>
                                 @endcan
-                                @canany(['AdminOrEditor', 'commentor'])
+                                @canany('administrator')
                                     <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600">Report</a>
                                 @endcanany
                             </div>
-                        @endauth
-
                         @endif
                     </div>
                 </div>

@@ -13,6 +13,7 @@ use App\Http\Controllers\FrontEnd\ContactController;
 use App\Http\Controllers\post\PostController;
 use App\Http\Controllers\FrontEnd\HomeController;
 use App\Http\Controllers\post\CommentController;
+use App\Http\Middleware\AuthMiddleWare;
 
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
@@ -40,9 +41,9 @@ Route::resource('category', CategoryController::class)->middleware('auth');
 Route::resource('tag', TagController::class)->middleware('auth');
 
 // Post Comment Route
-Route::resource('comment', CommentController::class);
-Route::post('postComment/{postId}', [CommentController::class, 'postComment'])->name('postComment');
-
+Route::resource('comment', CommentController::class)->middleware('auth');
+Route::post('postComment/{postId}', [CommentController::class, 'postComment'])->name('postComment')->middleware(AuthMiddleWare::class);
+Route::post('reaction/{action}', [CommentController::class, 'reaction'])->name('reaction')->middleware(AuthMiddleWare::class);
 
 
 
@@ -66,7 +67,6 @@ Route::prefix('contact')->name('contact.')->group(function (){
 Route::controller(BlogController::class)->group(function(){
     Route::get('blog', 'blog')->name('blog');
     Route::get('blog/{slug}', 'singlePost')->name('singlePost');
-    Route::post('reaction/{action}', 'reaction')->name('reaction');
 });
 
 // Category Controller & prefix Group

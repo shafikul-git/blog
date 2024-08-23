@@ -24,8 +24,8 @@ class AppServiceProvider extends ServiceProvider
             return in_array($user->role, ['admin', 'editor', 'commentor']);
         });
 
-        Gate::define('checkPermission', function(User $user, $permission){
-            return $user->id === $permission;
+        Gate::define('checkPermission', function(User $user, $permissionId){
+            return $user->id === $permissionId;
         });
     }
 
