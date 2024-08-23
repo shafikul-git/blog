@@ -85,6 +85,10 @@ class CommentController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        if(!Gate::allows('checkPermission', Auth::user()->id)){
+            return redirect()->back()->with('error', 'No permetion Comment update');
+        }
+
         $request->validate([
             'name' => 'required|string',
             'comment' => 'required',
@@ -108,6 +112,8 @@ class CommentController extends Controller
         if (Gate::authorize('checkPermission', $deleteComment->user_id)) {
             $commentDelete = Comment::where('id', $id)->update(['status' => 'delete']);
             return $commentDelete ? redirect()->back()->with('success', 'Comment Delete Successful') : redirect()->back()->with('success', 'Someting went wrong');
+        } else{
+            return redirect()->back()->with('error', 'No permetion');
         }
     }
 

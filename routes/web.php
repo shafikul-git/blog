@@ -26,19 +26,19 @@ Route::middleware('auth')->group(function () {
 });
 
 // menu Route
-Route::resource('menu', MenuController::class)->middleware('can:AdminAndEditor');
+Route::resource('menu', MenuController::class)->middleware(['auth','verified','can:AdminAndEditor']);
 
 // User Route
-Route::resource('users', UserController::class)->middleware('auth');
+Route::resource('users', UserController::class)->middleware(['auth','verified','can:AdminAndEditor']);
 
 // Post Route
-Route::resource('post', PostController::class)->middleware('auth');
+Route::resource('post', PostController::class)->middleware(['auth','verified','can:AdminAndEditor']);
 
 // Category Route
-Route::resource('category', CategoryController::class)->middleware('auth');
+Route::resource('category', CategoryController::class)->middleware(['auth','verified','can:AdminAndEditor']);
 
 // Tag Route
-Route::resource('tag', TagController::class)->middleware('auth');
+Route::resource('tag', TagController::class)->middleware(['auth','verified','can:AdminAndEditor']);
 
 // Post Comment Route
 Route::resource('comment', CommentController::class)->middleware('auth');
@@ -46,8 +46,6 @@ Route::controller(CommentController::class)->group(function(){
     Route::post('postComment/{postId}', 'postComment')->name('postComment')->middleware(AuthMiddleWare::class);
     Route::post('reaction/{action}', 'reaction')->name('reaction')->middleware(AuthMiddleWare::class);
 });
-
-
 
 
 
