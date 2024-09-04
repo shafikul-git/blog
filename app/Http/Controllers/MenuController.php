@@ -6,6 +6,7 @@ use App\Models\Menu;
 use App\Models\SubMenu;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class MenuController extends Controller
 {
@@ -23,6 +24,9 @@ class MenuController extends Controller
      */
     public function create()
     {
+        // if(!Gate::allows(['admin', 'editor'])){
+        //     return abort(403, 'Not Allow This site');
+        // }
         $mainMenu = Menu::get();
         return view('admin.menu.add', compact('mainMenu'));
         // return $mainMenu;

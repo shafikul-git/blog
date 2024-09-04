@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
@@ -36,6 +37,9 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        if(!Gate::allows('AdminAndEditor')){
+            return abort(403, 'No Action You');
+        }
         $request->validate([
             'name' => 'required|max:255',
             'slug' => 'required|max:255',
@@ -80,6 +84,9 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        if(!Gate::allows('AdminAndEditor')){
+            return abort(403, 'No Action You');
+        }
         $request->validate([
             'name' => 'required|max:255',
             'slug' => 'required|max:255',
@@ -105,6 +112,9 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
+        if(!Gate::allows('AdminAndEditor')){
+            return abort(403, 'No Action You');
+        }
         $deleteData = Category::where('id', $id)->delete();
         return $deleteData ? redirect()->route('category.index')->with('success', 'Category Delete succesful') : redirect()->route('category.index')->with('error', 'Someting went wrong');
     }

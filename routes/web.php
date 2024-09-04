@@ -21,7 +21,7 @@ Route::get('user', function () {
 
 Route::get('admin', function () {
     return view('admin.dashboard');
-})->middleware(['auth', 'verified', 'roleManager:admin|editor'])->name('admin');
+})->middleware(['auth', 'verified', 'roleManager:admin|editor|commentor'])->name('admin');
 
 Route::get('editor', function () {
     return view('editor.dashboard');
@@ -46,19 +46,19 @@ Route::resource('menu', MenuController::class)->middleware(['auth','verified','c
 Route::resource('users', UserController::class)->middleware(['auth','verified','can:AdminAndEditor']);
 
 // Post Route
-Route::resource('post', PostController::class)->middleware(['auth','verified','can:AdminAndEditor']);
+Route::resource('post', PostController::class)->middleware(['auth','verified','can:administrator']);
 
 // Category Route
-Route::resource('category', CategoryController::class)->middleware(['auth','verified','can:AdminAndEditor']);
+Route::resource('category', CategoryController::class)->middleware(['auth','verified','can:administrator']);
 
 // Tag Route
-Route::resource('tag', TagController::class)->middleware(['auth','verified','can:AdminAndEditor']);
+Route::resource('tag', TagController::class)->middleware(['auth','verified','can:administrator']);
 
 // Post Comment Route
 Route::resource('comment', CommentController::class)->middleware('auth');
 Route::controller(CommentController::class)->group(function(){
-    Route::post('postComment/{postId}', 'postComment')->name('postComment')->middleware(AuthMiddleWare::class);
-    Route::post('reaction/{action}', 'reaction')->name('reaction')->middleware(AuthMiddleWare::class);
+    Route::post('postComment/{postId}', 'postComment')->name('postComment')->middleware('auth');
+    Route::post('reaction/{action}', 'reaction')->name('reaction')->middleware('auth');
 });
 
 

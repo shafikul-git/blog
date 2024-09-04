@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class TagController extends Controller
 {
@@ -34,6 +35,9 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
+        if (!Gate::allows('AdminAndEditor')) {
+            return abort(403, 'Not Permetion you');
+        }
         $request->validate([
             'name' => 'required|max:255',
             'slug' => 'required|max:255',
@@ -76,6 +80,9 @@ class TagController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        if (!Gate::allows('AdminAndEditor')) {
+            return abort(403, 'Not Permetion you');
+        }
         $request->validate([
             'name' => 'required|max:255',
             'slug' => 'required|max:255',
@@ -99,6 +106,9 @@ class TagController extends Controller
      */
     public function destroy(string $id)
     {
+        if (!Gate::allows('AdminAndEditor')) {
+            return abort(403, 'Not Permetion you');
+        }
         $deleteData = Tag::where('id', $id)->delete();
         return $deleteData ? redirect()->route('tag.index')->with('success', 'Tag Delete succesful') : redirect()->route('tag.index')->with('error', 'Someting went wrong');
     }

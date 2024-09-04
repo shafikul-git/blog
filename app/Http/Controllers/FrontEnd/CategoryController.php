@@ -12,9 +12,11 @@ class CategoryController extends Controller
         $allCategorys = Category::with(['users', 'posts' => function($query){
             $query->orderBy('id', 'DESC')->limit('4');
         }])->get();
+
         if($allCategorys->isEmpty()){
-            return abort(404);
+            return abort(404, 'No Content Found Database');
         }
+
         // return $allDataBlog;
         return view('categories', compact('allCategorys'));
     }

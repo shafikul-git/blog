@@ -217,66 +217,66 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 
     <script>
-      document.addEventListener('DOMContentLoaded', (event) => {
-            document.querySelectorAll('pre code').forEach((block) => {
-            hljs.highlightElement(block);
-            });
-      });
+        document.addEventListener('DOMContentLoaded', (event) => {
+                document.querySelectorAll('pre code').forEach((block) => {
+                hljs.highlightElement(block);
+                });
+        });
 
-    function commentReply(comment,commentId){
-        let replyAction = document.querySelector('input[name="reply"]');
-        const actionChange = document.getElementById('actionChange');
+        function commentReply(comment,commentId){
+            let replyAction = document.querySelector('input[name="reply"]');
+            const actionChange = document.getElementById('actionChange');
 
-        // reply Id
-        if (replyAction) {
-            replyAction.value = commentId;
-        } else {
-            actionChange.innerHTML += '<input type="hidden" value='+commentId+' name="reply">';
-        }
-
-        // Close Message Icon
-        const commentClose = document.querySelector('#commentClose');
-        commentClose.classList.remove('hidden')
-
-        // Reply Message
-        const replyMessage = document.getElementById('replyMessage');
-        if (replyMessage) {
-            const newCommentHTML = `<div class="dark:text-white" data-comment-id="1">${comment}</div>`;
-            const existingComment = replyMessage.querySelector(`[data-comment-id="1"]`);
-
-            if (existingComment) {
-                existingComment.innerHTML = comment;
+            // reply Id
+            if (replyAction) {
+                replyAction.value = commentId;
             } else {
-                replyMessage.innerHTML += newCommentHTML;
+                actionChange.innerHTML += '<input type="hidden" value='+commentId+' name="reply">';
+            }
+
+            // Close Message Icon
+            const commentClose = document.querySelector('#commentClose');
+            commentClose.classList.remove('hidden')
+
+            // Reply Message
+            const replyMessage = document.getElementById('replyMessage');
+            if (replyMessage) {
+                const newCommentHTML = `<div class="dark:text-white" data-comment-id="1">${comment}</div>`;
+                const existingComment = replyMessage.querySelector(`[data-comment-id="1"]`);
+
+                if (existingComment) {
+                    existingComment.innerHTML = comment;
+                } else {
+                    replyMessage.innerHTML += newCommentHTML;
+                }
             }
         }
-    }
 
-    // Close Comment
-    function closeComment(){
-        // Icon hidden
-        const commentClose = document.getElementById('commentClose');
-        commentClose.classList.add('hidden');
+        // Close Comment
+        function closeComment(){
+            // Icon hidden
+            const commentClose = document.getElementById('commentClose');
+            commentClose.classList.add('hidden');
 
-        // form Input Delete
-        const replyAction = document.querySelector('input[name="reply"]');
-        if(replyAction){
-            replyAction.remove();
+            // form Input Delete
+            const replyAction = document.querySelector('input[name="reply"]');
+            if(replyAction){
+                replyAction.remove();
+            }
+
+            // Comment div delete
+            const replyMessage = document.querySelector(`[data-comment-id="1"]`);
+            if(replyMessage){
+                replyMessage.remove();
+            }
         }
 
-        // Comment div delete
-        const replyMessage = document.querySelector(`[data-comment-id="1"]`);
-        if(replyMessage){
-            replyMessage.remove();
+        // Admin Comment Action
+        function showCommentAction(event){
+            const button = event.currentTarget;
+            const dropdown = button.nextElementSibling;
+            dropdown.classList.toggle('hidden');
         }
-    }
-
-    // Admin Comment Action
-    function showCommentAction(event){
-        const button = event.currentTarget;
-        const dropdown = button.nextElementSibling;
-        dropdown.classList.toggle('hidden');
-    }
 
     </script>
 @endsection
