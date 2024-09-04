@@ -15,9 +15,23 @@ use App\Http\Controllers\FrontEnd\HomeController;
 use App\Http\Controllers\post\CommentController;
 use App\Http\Middleware\AuthMiddleWare;
 
-Route::get('/dashboard', function () {
+Route::get('user', function () {
+    return view('profile.dashboard');
+})->middleware(['auth', 'verified', 'roleManager:user|admin'])->name('user');
+
+Route::get('admin', function () {
     return view('admin.dashboard');
-})->middleware(['auth', 'verified', 'can:administrator'])->name('dashboard');
+})->middleware(['auth', 'verified', 'roleManager:admin|editor'])->name('admin');
+
+Route::get('editor', function () {
+    return view('editor.dashboard');
+})->middleware(['auth', 'verified', 'roleManager:editor|admin'])->name('editor');
+
+Route::get('commentor', function () {
+    return view('commentor.dashboard');
+})->middleware(['auth', 'verified', 'roleManager:commentor|admin'])->name('commentor');
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -12,7 +12,8 @@
         href="https://img.freepik.com/premium-vector/blog-abstract-concept-vector-illustration_107173-25627.jpg"
         type="image/x-icon">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
+    {{-- <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script> --}}
+    <script src="{{ asset('css/tailwind.js') }}"></script>
     {{-- <link rel="stylesheet" href="{{ asset('css/style.css') }}"> --}}
 </head>
 

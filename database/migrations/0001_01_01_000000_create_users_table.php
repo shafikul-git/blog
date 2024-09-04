@@ -15,7 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->tinyInteger('role')->default(0)->comment('0: simple user | 1: Admin | 2: editor | 3: Commentor');
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('google_token')->nullable();
+            $table->string('fb_token')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
