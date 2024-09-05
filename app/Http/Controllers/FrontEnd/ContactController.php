@@ -27,8 +27,8 @@ class ContactController extends Controller
             // 'Street' => 'required|string',
             // 'City' => 'required|string',
             // 'Postcode' => 'required|string',
-            'phone' => 'required|string',
-            'Email' => 'required|string',
+            'phone' => 'required|integer',
+            'Email' => 'required|email',
             'message' => 'required|string',
         ]);
 

@@ -39,14 +39,14 @@
                 'class' => $inputStyle,
             ],
             [
-                'type' => 'number',
+                'type' => 'text',
                 'name' => 'phone',
                 'id' => 'phone',
                 'placeholder' => 'Phone No.',
                 'class' => $inputStyle,
             ],
             [
-                'type' => 'email',
+                'type' => 'text',
                 'name' => 'Email',
                 'id' => 'Email',
                 'placeholder' => 'Email',
@@ -54,7 +54,7 @@
             ],
         ]" class="mt-5">
             <textarea name="message" placeholder="Write Message"
-                class="px-2 pt-3 bg-transparent text-gray-300 w-full text-sm border-b border-gray-400 focus:border-yellow-400 outline-none"></textarea>
+                class="px-2 pt-3 bg-transparent text-gray-300 w-full text-sm border-b border-gray-400 focus:border-yellow-400 outline-none">{{ old('message') }}</textarea>
             @error('message')
                 <p class="text-red-600" style="text-shadow:3px 5px 4px black">{{ $message }}</p>
             @enderror
