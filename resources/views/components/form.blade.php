@@ -24,7 +24,7 @@
             <input type="{{ $field['type'] }}" name="{{ $field['name'] }}"
                 @if (isset($field['id'])) id="{{ $field['id'] }}" @endif
                 @if (isset($field['placeholder'])) placeholder="{{ $field['placeholder'] }}" @endif
-                @if (isset($field['value'])) value="{{ $field['value'] }}" 
+                @if (isset($field['value'])) value="{{ $field['value'] }}"
                 @else
                     value="{{ old($field['name']) }}" @endif
                 @if (isset($field['class'])) class="{{ $field['class'] }}" @endif />
@@ -34,11 +34,13 @@
                         <label for="{{ $field['id'] }}"
                             class="{{ $field['label']['class'] }}">{{ $field['label']['name'] }}</label>
 
-                        @error($field['name'])
-                            <p class="text-red-600" style="text-shadow:3px 5px 4px black">{{ $message }}</p>
-                        @enderror
+
                     @endif
-                @endif 
+                @endif
+
+                @error($field['name'])
+                <p class="text-red-600" style="text-shadow:3px 5px 4px black">{{ $message }}</p>
+            @enderror
         </div>
     @endforeach
 
@@ -67,5 +69,5 @@
             {!! $iconBtn !!}
         </button>
     @endif
-    
+
 </form>

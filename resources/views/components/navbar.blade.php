@@ -219,12 +219,10 @@
                         class='hover:text-[#007bff] {{ activeMenu($currentUrl, 'categories') }} font-semibold text-[15px] block'>Category
                     </a>
                 </li>
-                @canany(['admin', 'editor', 'commentor'])
-                    <li class='max-lg:border-b max-lg:px-3 max-lg:py-3'>
-                        <a href='{{ route('contact.index') }}'
-                            class='hover:text-[#007bff] {{ activeMenu($currentUrl, 'contact')  }} font-semibold text-[15px] block'>Contact</a>
-                    </li>
-                @endcanany
+                <li class='max-lg:border-b max-lg:px-3 max-lg:py-3'>
+                    <a href='{{ route('contact.index') }}'
+                        class='hover:text-[#007bff] {{ activeMenu($currentUrl, 'contact')  }} font-semibold text-[15px] block'>Contact</a>
+                </li>
 
                 <li class='max-lg:border-b max-lg:px-3 max-lg:py-3'>
                     <a href='javascript:void(0)'

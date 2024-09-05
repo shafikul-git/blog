@@ -75,6 +75,9 @@ Route::prefix('about')->group(function (){
 // Contact Prefix Group
 Route::prefix('contact')->name('contact.')->group(function (){
     Route::get('/', [ContactController::class, 'index'])->name('index');
+    Route::post('store', [ContactController::class, 'store'])->name('store');
+    Route::get('congratulations', [ContactController::class, 'congratulations'])->name('congratulations');
+    Route::post('subcribe', [ContactController::class, 'subcribe'])->name('subcribe');
 });
 
 // Blog Controller Groupp
