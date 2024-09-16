@@ -1,4 +1,5 @@
 <header class='shadow-md bg-white font-[sans-serif] tracking-wide relative z-50'>
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
     <section
         class='flex items-center flex-wrap lg:justify-center gap-4 py-3 sm:px-10 px-4 border-gray-200 border-b min-h-[75px]'>
         {{-- Left Side Top Menu --}}
@@ -13,8 +14,8 @@
         </div>
 
         {{-- Middle Side --}}
-        <a href="#" class="shrink-0"><img src="https://readymadeui.com/readymadeui.svg" alt="logo"
-                class='md:w-[170px] w-36' />
+        <a href="#" class="shrink-0">
+            <h2 class="font-extrabold text-5xl text-center meName animate-text">Md Shafikul Islam</h2>
         </a>
 
         {{-- Right Side Top Menu --}}

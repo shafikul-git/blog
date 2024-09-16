@@ -8,9 +8,8 @@
 
     <title>Blog - @yield('title')</title>
 
-   <link rel="shortcut icon" href="{{ asset('static-web/logo.png') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('static-file/logo.png') }}" type="image/x-icon">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-    <script src="{{ asset('css/tailwind.js') }}"></script>
     @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/tailwind.js', 'resources/js/fontawesome.js'])
 </head>
 
@@ -24,12 +23,12 @@
         @endif
     @endonce
 
-<script>
-    function alertClose(){
-        const alertClose = document.getElementById('alertClose');
-        alertClose.style.display = 'none';
-    }
-</script>
+    <script>
+        function alertClose() {
+            const alertClose = document.getElementById('alertClose');
+            alertClose.style.display = 'none';
+        }
+    </script>
 
 </body>
 

@@ -8,7 +8,7 @@ export default {
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
     ],
-
+    // darkMode: 'selector',
     theme: {
         extend: {
             fontFamily: {
@@ -17,5 +17,10 @@ export default {
         },
     },
 
-    plugins: [forms],
+    plugins: [
+        require('@tailwindcss/typography'),
+        require('@tailwindcss/forms'),
+        require('@tailwindcss/aspect-ratio'),
+        require('@tailwindcss/container-queries'),
+      ]
 };
