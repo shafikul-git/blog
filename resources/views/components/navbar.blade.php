@@ -15,7 +15,7 @@
 
         {{-- Middle Side --}}
         <a href="#" class="shrink-0">
-            <h2 class="font-extrabold text-5xl text-center meName animate-text">Md Shafikul Islam</h2>
+            <h2 class="font-extrabold text-4xl md:text-5xl text-center meName animate-text">Md Shafikul Islam</h2>
         </a>
 
         {{-- Right Side Top Menu --}}
@@ -54,13 +54,13 @@
                                     </a>
                                 </li>
                                 @canany(['AdminAndEditor', 'commentor'])
-                                <li
-                                    class='py-2.5 px-5 flex items-center hover:bg-gray-100 text-[#333] text-sm cursor-pointer'>
-                                    <a href="{{ route('admin') }}">
-                                        <i class="fa-regular fa-chart-bar w-4 h-4 mr-3"></i>
-                                        Dashboard
-                                    </a>
-                                </li>
+                                    <li
+                                        class='py-2.5 px-5 flex items-center hover:bg-gray-100 text-[#333] text-sm cursor-pointer'>
+                                        <a href="{{ route('admin') }}">
+                                            <i class="fa-regular fa-chart-bar w-4 h-4 mr-3"></i>
+                                            Dashboard
+                                        </a>
+                                    </li>
                                 @endcanany
                                 <li
                                     class='py-2.5 px-5 flex items-center hover:bg-gray-100 text-[#333] text-sm cursor-pointer'>
@@ -106,16 +106,17 @@
 
     <!-- Next Menu -->
     <div class='flex flex-wrap justify-center px-10 py-3 relative'>
-@php
-    $currentUrl = request()->path();
-    function activeMenu($url, $value){
-        if(strpos($url, $value) !== false){
-            return 'text-[#007bff]';
-        } else{
-            return 'text-gray-600';
-        }
-    }
-@endphp
+        @php
+            $currentUrl = request()->path();
+            function activeMenu($url, $value)
+            {
+                if (strpos($url, $value) !== false) {
+                    return 'text-[#007bff]';
+                } else {
+                    return 'text-gray-600';
+                }
+            }
+        @endphp
         <div id="collapseMenu"
             class='max-lg:hidden lg:!block max-lg:before:fixed max-lg:before:bg-black max-lg:before:opacity-40 max-lg:before:inset-0 max-lg:before:z-50'>
             <button id="toggleClose" class='lg:hidden fixed top-2 right-4 z-[100] rounded-full bg-white p-3'>
@@ -208,7 +209,7 @@
                 </li>
                 <li class='max-lg:border-b max-lg:px-3 max-lg:py-3'>
                     <a href='{{ route('blog') }}'
-                        class='{{ activeMenu($currentUrl, 'blog')}} hover:text-[#007bff] font-semibold text-[15px] block'>Blog
+                        class='{{ activeMenu($currentUrl, 'blog') }} hover:text-[#007bff] font-semibold text-[15px] block'>Blog
                     </a>
                 </li>
                 <li class='max-lg:border-b max-lg:px-3 max-lg:py-3'>
@@ -222,7 +223,7 @@
                 </li>
                 <li class='max-lg:border-b max-lg:px-3 max-lg:py-3'>
                     <a href='{{ route('contact.index') }}'
-                        class='hover:text-[#007bff] {{ activeMenu($currentUrl, 'contact')  }} font-semibold text-[15px] block'>Contact</a>
+                        class='hover:text-[#007bff] {{ activeMenu($currentUrl, 'contact') }} font-semibold text-[15px] block'>Contact</a>
                 </li>
 
                 <li class='max-lg:border-b max-lg:px-3 max-lg:py-3'>
@@ -241,10 +242,14 @@
         </div>
 
         <!-- Mobie Menu -->
-        <div id="toggleOpen" class='flex ml-auto lg:hidden'>
-            <button>
-                <i class="fa-solid fa-bars w-7 h-7 text-2xl"></i>
-            </button>
+        <div class="flex justify-between w-full">
+            <input type="search" name="search" id="" class="lg:hidden">
+
+            <div id="toggleOpen" class='flex ml-auto lg:hidden '>
+                <button>
+                    <i class="fa-solid fa-bars w-7 h-7 text-2xl"></i>
+                </button>
+            </div>
         </div>
     </div>
 </header>
