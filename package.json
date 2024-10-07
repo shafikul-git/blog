@@ -18,11 +18,14 @@
     },
     "dependencies": {
         "@splidejs/splide": "^4.1.4",
+        "@splidejs/splide-extension-video": "^0.8.0",
         "@tailwindcss/aspect-ratio": "^0.4.2",
         "@tailwindcss/container-queries": "^0.1.1",
         "@tailwindcss/typography": "^0.5.15",
         "@tiptap/core": "^2.6.4",
         "@tiptap/pm": "^2.6.4",
-        "@tiptap/starter-kit": "^2.6.4"
+        "@tiptap/starter-kit": "^2.6.4",
+        "glightbox": "^3.3.0",
+        "hc-sticky": "^2.2.7"
     }
 }

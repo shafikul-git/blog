@@ -11,7 +11,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="{{ asset('css/theme.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/frontend.css') }}">
 </head>
 
 <body>
@@ -27,7 +27,7 @@
         @endif
     @endonce
 
-    <script src="{{ asset('js/theme.js') }}"></script>
+    <script src="{{ asset('js/frontend.js') }}"></script>
 
 </body>
 
