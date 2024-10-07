@@ -1,659 +1,1120 @@
-@extends('header')
+@extends('layouts.frontendLayout')
 @section('title', 'Home')
-@section('otherConetent')
+@section('frontEnd')
 
-    <!-- Nav Section -->
-    <x-navbar></x-navbar>
-
-    <!-- Top first -->
-    <div class="mx-auto mt-12 grid max-w-lg gap-5 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:max-w-none">
-        <x-card></x-card>
-        <x-card></x-card>
-        <x-card></x-card>
-    </div>
-
-
-    <!-- All Card section -->
-    <div class="relative bg-gray-50 px-6 pt-16 pb-20 lg:px-8 lg:pt-24 lg:pb-28 dark:bg-gray-900">
-        <div class="absolute inset-0">
-            <div class="h-1/3 bg-white sm:h-2/3 dark:bg-gray-800"></div>
-        </div>
-        <div class="relative mx-auto max-w-7xl">
-            <div class="text-center">
-                <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl">Column me neatly.
-                </h2>
-                <p class="mx-auto mt-3 max-w-2xl text-xl text-gray-500 dark:text-gray-400 sm:mt-4">
-                    This is your life and it's ending one minute @ a time...</p>
-            </div>
-            <div class="mx-auto mt-12 grid max-w-lg gap-5 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:max-w-none">
-                <x-card></x-card>
-                <x-card></x-card>
-                <x-card></x-card>
-                <x-card></x-card>
-                <x-card></x-card>
+    <!-- =========={ MAIN }==========  -->
+    <main id="content">
+        <!-- advertisement -->
+        <div class="bg-gray-50 py-4 hidden">
+            <div class="xl:container mx-auto px-3 sm:px-4 xl:px-2">
+                <div class="mx-auto table text-center text-sm">
+                    <a class="uppercase" href="#">Advertisement</a>
+                    <a href="#">
+                        <img src="{{ asset('img/ads/ads_728.jpg') }}" alt="advertisement area">
+                        {{-- <img src="src/img/ads/ads_728.jpg" alt="advertisement area"> --}}
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
 
-
-
-
-
-
-
-    <div class="relative">
-        <div class="px-4 sm:px-10">
-            <div class="mt-16 max-w-4xl mx-auto text-center relative z-10">
-                <h1 class="md:text-6xl text-4xl font-extrabold mb-6 md:!leading-[75px]">Build Landing Pages with Typeform
-                    Integration</h1>
-                <p class="text-base">Embark on a gastronomic journey with our curated dishes, delivered promptly to your
-                    doorstep. Elevate your dining experience today. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </p>
-                <div class="mt-10">
-                    <button class='px-6 py-3 rounded-xl text-white bg-cyan-900 transition-all hover:bg-cyan-800'>Get started
-                        today</button>
-                </div>
-            </div>
-            <hr class="my-12 border-gray-300" />
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 items-center">
-                <img src="https://readymadeui.com/google-logo.svg" class="w-28 mx-auto" alt="google-logo" />
-                <img src="https://readymadeui.com/facebook-logo.svg" class="w-28 mx-auto" alt="facebook-logo" />
-                <img src="https://readymadeui.com/linkedin-logo.svg" class="w-28 mx-auto" alt="linkedin-logo" />
-                <img src="https://readymadeui.com/pinterest-logo.svg" class="w-28 mx-auto" alt="pinterest-logo" />
-            </div>
-        </div>
-        <img src="https://readymadeui.com/bg-effect.svg" class="absolute inset-0 w-full h-full" />
-    </div>
-
-    <div class="px-4 sm:px-10">
-        <div class="mt-32 max-w-7xl mx-auto">
-            <div class="mb-16 max-w-2xl text-center mx-auto">
-                <h2 class="md:text-4xl text-3xl font-extrabold mb-6">Our Features</h2>
-                <p class="mt-6">Qui elit labore in nisi dolore tempor anim laboris ipsum ad ad consequat id. Dolore et
-                    sint
-                    mollit in nisi tempor culpa consectetur.</p>
-            </div>
-            <div class="grid lg:grid-cols-3 md:grid-cols-2 max-md:max-w-lg mx-auto gap-8">
-                <div class="sm:p-6 p-4 flex bg-white rounded-md border shadow-[0_14px_40px_-11px_rgba(93,96,127,0.2)]">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                        class="w-12 h-12 mr-6 bg-blue-50 p-3 rounded-md shrink-0" viewBox="0 0 32 32">
-                        <path
-                            d="M28.068 12h-.128a.934.934 0 0 1-.864-.6.924.924 0 0 1 .2-1.01l.091-.091a2.938 2.938 0 0 0 0-4.147l-1.511-1.51a2.935 2.935 0 0 0-4.146 0l-.091.091A.956.956 0 0 1 20 4.061v-.129A2.935 2.935 0 0 0 17.068 1h-2.136A2.935 2.935 0 0 0 12 3.932v.129a.956.956 0 0 1-1.614.668l-.086-.091a2.935 2.935 0 0 0-4.146 0l-1.516 1.51a2.938 2.938 0 0 0 0 4.147l.091.091a.935.935 0 0 1 .185 1.035.924.924 0 0 1-.854.579h-.128A2.935 2.935 0 0 0 1 14.932v2.136A2.935 2.935 0 0 0 3.932 20h.128a.934.934 0 0 1 .864.6.924.924 0 0 1-.2 1.01l-.091.091a2.938 2.938 0 0 0 0 4.147l1.51 1.509a2.934 2.934 0 0 0 4.147 0l.091-.091a.936.936 0 0 1 1.035-.185.922.922 0 0 1 .579.853v.129A2.935 2.935 0 0 0 14.932 31h2.136A2.935 2.935 0 0 0 20 28.068v-.129a.956.956 0 0 1 1.614-.668l.091.091a2.935 2.935 0 0 0 4.146 0l1.511-1.509a2.938 2.938 0 0 0 0-4.147l-.091-.091a.935.935 0 0 1-.185-1.035.924.924 0 0 1 .854-.58h.128A2.935 2.935 0 0 0 31 17.068v-2.136A2.935 2.935 0 0 0 28.068 12ZM29 17.068a.933.933 0 0 1-.932.932h-.128a2.956 2.956 0 0 0-2.083 5.028l.09.091a.934.934 0 0 1 0 1.319l-1.511 1.509a.932.932 0 0 1-1.318 0l-.09-.091A2.957 2.957 0 0 0 18 27.939v.129a.933.933 0 0 1-.932.932h-2.136a.933.933 0 0 1-.932-.932v-.129a2.951 2.951 0 0 0-5.028-2.082l-.091.091a.934.934 0 0 1-1.318 0l-1.51-1.509a.934.934 0 0 1 0-1.319l.091-.091A2.956 2.956 0 0 0 4.06 18h-.128A.933.933 0 0 1 3 17.068v-2.136A.933.933 0 0 1 3.932 14h.128a2.956 2.956 0 0 0 2.083-5.028l-.09-.091a.933.933 0 0 1 0-1.318l1.51-1.511a.932.932 0 0 1 1.318 0l.09.091A2.957 2.957 0 0 0 14 4.061v-.129A.933.933 0 0 1 14.932 3h2.136a.933.933 0 0 1 .932.932v.129a2.956 2.956 0 0 0 5.028 2.082l.091-.091a.932.932 0 0 1 1.318 0l1.51 1.511a.933.933 0 0 1 0 1.318l-.091.091A2.956 2.956 0 0 0 27.94 14h.128a.933.933 0 0 1 .932.932Z"
-                            data-original="#000000" />
-                        <path d="M16 9a7 7 0 1 0 7 7 7.008 7.008 0 0 0-7-7Zm0 12a5 5 0 1 1 5-5 5.006 5.006 0 0 1-5 5Z"
-                            data-original="#000000" />
-                    </svg>
-                    <div>
-                        <h3 class="text-xl font-semibold mb-2">Customization</h3>
-                        <p>Tailor our product to suit your needs Tailor our product to suit your needs.</p>
+        <!-- hero big grid -->
+        <div class="bg-white py-6">
+            <div class="xl:container mx-auto px-3 sm:px-4 xl:px-2">
+                <!-- big grid 1 -->
+                <div class="flex flex-row flex-wrap">
+                    <!--Start left cover-->
+                    <div class="flex-shrink max-w-full w-full lg:w-1/2 pb-1 lg:pb-0 lg:pr-1">
+                        <div class="relative hover-img max-h-98 overflow-hidden">
+                            <a href="#">
+                                <img class="max-w-full w-full mx-auto h-auto" src="{{ asset('img/dummy/img1.jpg') }}"
+                                    alt="Image description">
+                            </a>
+                            <div class="absolute px-5 pt-8 pb-5 bottom-0 w-full bg-gradient-cover">
+                                <a href="#">
+                                    <h2 class="text-3xl font-bold capitalize text-white mb-3">Amazon Shoppers Are Ditching
+                                        Designer Belts
+                                        for This Best-Selling</h2>
+                                </a>
+                                <p class="text-gray-100 hidden sm:inline-block">This is a wider card with supporting text
+                                    below as a
+                                    natural lead-in to additional content. This very helpfull for generate default content..
+                                </p>
+                                <div class="pt-2">
+                                    <div class="text-gray-100">
+                                        <div class="inline-block h-3 border-l-2 border-red-600 mr-2"></div>Europe
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="sm:p-6 p-4 flex bg-white rounded-md border">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                        class="w-12 h-12 mr-6 bg-blue-50 p-3 rounded-md shrink-0" viewBox="0 0 682.667 682.667">
-                        <defs>
-                            <clipPath id="a" clipPathUnits="userSpaceOnUse">
-                                <path d="M0 512h512V0H0Z" data-original="#000000" />
-                            </clipPath>
-                        </defs>
-                        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                            stroke-miterlimit="10" stroke-width="40" clip-path="url(#a)"
-                            transform="matrix(1.33 0 0 -1.33 0 682.667)">
-                            <path
-                                d="M256 492 60 410.623v-98.925C60 183.674 137.469 68.38 256 20c118.53 48.38 196 163.674 196 291.698v98.925z"
-                                data-original="#000000" />
-                            <path d="M178 271.894 233.894 216 334 316.105" data-original="#000000" />
-                        </g>
-                    </svg>
-                    <div>
-                        <h3 class="text-xl font-semibold mb-2">Security</h3>
-                        <p>Your data is protected by the latest security measures.</p>
-                    </div>
-                </div>
-                <div class="sm:p-6 p-4 flex bg-white rounded-md border">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                        class="w-12 h-12 mr-6 bg-blue-50 p-3 rounded-md shrink-0" viewBox="0 0 512.001 512.001">
-                        <path
-                            d="M271.029 0c-33.091 0-61 27.909-61 61s27.909 61 61 61 60-27.909 60-61-26.909-61-60-61zm66.592 122c-16.485 18.279-40.096 30-66.592 30-26.496 0-51.107-11.721-67.592-30-14.392 15.959-23.408 36.866-23.408 60v15c0 8.291 6.709 15 15 15h151c8.291 0 15-6.709 15-15v-15c0-23.134-9.016-44.041-23.408-60zM144.946 460.404 68.505 307.149c-7.381-14.799-25.345-20.834-40.162-13.493l-19.979 9.897c-7.439 3.689-10.466 12.73-6.753 20.156l90 180c3.701 7.423 12.704 10.377 20.083 6.738l19.722-9.771c14.875-7.368 20.938-25.417 13.53-40.272zM499.73 247.7c-12.301-9-29.401-7.2-39.6 3.9l-82 100.8c-5.7 6-16.5 9.6-22.2 9.6h-69.901c-8.401 0-15-6.599-15-15s6.599-15 15-15h60c16.5 0 30-13.5 30-30s-13.5-30-30-30h-78.6c-7.476 0-11.204-4.741-17.1-9.901-23.209-20.885-57.949-30.947-93.119-22.795-19.528 4.526-32.697 12.415-46.053 22.993l-.445-.361-21.696 19.094L174.28 452h171.749c28.2 0 55.201-13.5 72.001-36l87.999-126c9.9-13.201 7.2-32.399-6.299-42.3z"
-                            data-original="#000000" />
-                    </svg>
-                    <div>
-                        <h3 class="text-xl font-semibold mb-2">Support</h3>
-                        <p>Tailor our product to suit your needs 24/7 customer support for all your inquiries.</p>
-                    </div>
-                </div>
-                <div class="sm:p-6 p-4 flex bg-white rounded-md border">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                        class="w-12 h-12 mr-6 bg-blue-50 p-3 rounded-md shrink-0" viewBox="0 0 24 24">
-                        <g fill-rule="evenodd" clip-rule="evenodd">
-                            <path
-                                d="M17.03 8.97a.75.75 0 0 1 0 1.06l-4.2 4.2a.75.75 0 0 1-1.154-.114l-1.093-1.639L8.03 15.03a.75.75 0 0 1-1.06-1.06l3.2-3.2a.75.75 0 0 1 1.154.114l1.093 1.639L15.97 8.97a.75.75 0 0 1 1.06 0z"
-                                data-original="#000000" />
-                            <path
-                                d="M13.75 9.5a.75.75 0 0 1 .75-.75h2a.75.75 0 0 1 .75.75v2a.75.75 0 0 1-1.5 0v-1.25H14.5a.75.75 0 0 1-.75-.75z"
-                                data-original="#000000" />
-                            <path
-                                d="M3.095 3.095C4.429 1.76 6.426 1.25 9 1.25h6c2.574 0 4.57.51 5.905 1.845C22.24 4.429 22.75 6.426 22.75 9v6c0 2.574-.51 4.57-1.845 5.905C19.571 22.24 17.574 22.75 15 22.75H9c-2.574 0-4.57-.51-5.905-1.845C1.76 19.571 1.25 17.574 1.25 15V9c0-2.574.51-4.57 1.845-5.905zm1.06 1.06C3.24 5.071 2.75 6.574 2.75 9v6c0 2.426.49 3.93 1.405 4.845.916.915 2.419 1.405 4.845 1.405h6c2.426 0 3.93-.49 4.845-1.405.915-.916 1.405-2.419 1.405-4.845V9c0-2.426-.49-3.93-1.405-4.845C18.929 3.24 17.426 2.75 15 2.75H9c-2.426 0-3.93.49-4.845 1.405z"
-                                data-original="#000000" />
-                        </g>
-                    </svg>
-                    <div>
-                        <h3 class="text-xl font-semibold mb-2">Performance</h3>
-                        <p>Experience blazing-fast performance with our product.</p>
-                    </div>
-                </div>
-                <div class="sm:p-6 p-4 flex bg-white rounded-md border">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                        class="w-12 h-12 mr-6 bg-blue-50 p-3 rounded-md shrink-0" viewBox="0 0 504.69 504.69">
-                        <path
-                            d="M252.343 262.673c-49.32 0-89.447-40.127-89.447-89.447s40.127-89.447 89.447-89.447 89.447 40.127 89.447 89.447-40.121 89.447-89.447 89.447zm0-158.235c-37.926 0-68.787 30.861-68.787 68.787s30.861 68.787 68.787 68.787 68.787-30.861 68.787-68.787-30.855-68.787-68.787-68.787z"
-                            data-original="#000000" />
-                        <path
-                            d="M391.787 405.309c-5.645 0-10.253-4.54-10.325-10.201-.883-70.306-58.819-127.503-129.15-127.503-49.264 0-93.543 27.405-115.561 71.52-8.724 17.473-13.269 36.31-13.517 55.988-.072 5.702-4.757 10.273-10.459 10.201s-10.273-4.757-10.201-10.459c.289-22.814 5.568-44.667 15.691-64.955 25.541-51.164 76.907-82.95 134.047-82.95 81.581 0 148.788 66.349 149.81 147.905.072 5.702-4.494 10.392-10.201 10.459-.046-.005-.087-.005-.134-.005z"
-                            data-original="#000000" />
-                        <path
-                            d="M252.343 463.751c-116.569 0-211.408-94.834-211.408-211.408 0-116.569 94.839-211.408 211.408-211.408 116.574 0 211.408 94.839 211.408 211.408 0 116.574-94.834 211.408-211.408 211.408zm0-402.156c-105.18 0-190.748 85.568-190.748 190.748s85.568 190.748 190.748 190.748 190.748-85.568 190.748-190.748S357.523 61.595 252.343 61.595zM71.827 90.07 14.356 32.599c-4.034-4.034-4.034-10.573 0-14.607 4.029-4.034 10.573-4.034 14.607 0l57.466 57.471c4.034 4.034 3.951 10.49 0 14.607-3.792 3.951-11.039 3.698-14.602 0z"
-                            data-original="#000000" />
-                        <path
-                            d="M14.717 92.254a10.332 10.332 0 0 1-10.299-9.653L.023 15.751a10.317 10.317 0 0 1 2.929-7.908 10.2 10.2 0 0 1 7.851-3.089L77.56 7.796c5.697.258 10.108 5.093 9.85 10.79s-5.041 10.154-10.79 9.85l-55.224-2.521 3.641 55.327c.377 5.692-3.936 10.614-9.628 10.986a7.745 7.745 0 0 1-.692.026zm403.541-2.184c-4.256-3.796-4.034-10.573 0-14.607l58.116-58.116c4.034-4.034 10.573-4.034 14.607 0s4.034 10.573 0 14.607L432.864 90.07c-4.085 3.951-9.338 4.7-14.606 0z"
-                            data-original="#000000" />
-                        <path
-                            d="M489.974 92.254a9.85 9.85 0 0 1-.687-.021c-5.697-.372-10.01-5.294-9.633-10.986l3.641-55.327-55.224 2.515c-5.511.238-10.526-4.147-10.79-9.85-.258-5.702 4.153-10.531 9.85-10.79l66.757-3.042c2.934-.134 5.79.992 7.851 3.089s3.12 4.974 2.929 7.908l-4.401 66.85c-.361 5.465-4.896 9.654-10.293 9.654zM11.711 489.339c-3.791-4.266-4.034-10.573 0-14.607l60.115-60.11c4.029-4.034 10.578-4.034 14.607 0 4.034 4.034 4.034 10.573 0 14.607l-60.115 60.11c-3.827 3.884-11.156 3.884-14.607 0z"
-                            data-original="#000000" />
-                        <path
-                            d="M10.327 499.947a10.33 10.33 0 0 1-7.376-3.104 10.312 10.312 0 0 1-2.929-7.902l4.401-66.85c.372-5.697 5.191-10.036 10.986-9.633 5.692.377 10.005 5.294 9.628 10.986l-3.641 55.332 55.224-2.515c5.645-.191 10.531 4.153 10.79 9.85.258 5.697-4.153 10.526-9.85 10.79l-66.763 3.037c-.155.004-.31.009-.47.009zm465.639-13.01-57.708-57.708c-4.034-4.034-4.034-10.573 0-14.607s10.573-4.034 14.607 0l57.708 57.708c4.034 4.034 3.962 10.5 0 14.607-3.817 3.951-10.062 3.951-14.607 0z"
-                            data-original="#000000" />
-                        <path
-                            d="M494.359 499.947c-.155 0-.315-.005-.47-.01l-66.757-3.042c-5.702-.263-10.108-5.088-9.85-10.79.263-5.702 5.113-9.984 10.79-9.85l55.219 2.515-3.641-55.332c-.372-5.692 3.941-10.609 9.633-10.986 5.625-.398 10.609 3.946 10.986 9.633l4.401 66.85a10.33 10.33 0 0 1-2.929 7.902 10.323 10.323 0 0 1-7.382 3.11z"
-                            data-original="#000000" />
-                    </svg>
-                    <div>
-                        <h3 class="text-xl font-semibold mb-2">Global Reach</h3>
-                        <p>Tailor our product to suit your needs Expand your reach with our global network.</p>
-                    </div>
-                </div>
-                <div class="sm:p-6 p-4 flex bg-white rounded-md border">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                        class="w-12 h-12 mr-6 bg-blue-50 p-3 rounded-md shrink-0" viewBox="0 0 682.667 682.667">
-                        <defs>
-                            <clipPath id="a" clipPathUnits="userSpaceOnUse">
-                                <path d="M0 512h512V0H0Z" data-original="#000000" />
-                            </clipPath>
-                        </defs>
-                        <g fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="30"
-                            clip-path="url(#a)" transform="matrix(1.33 0 0 -1.33 0 682.667)">
-                            <path
-                                d="M226 15v60c0 16.568-13.432 30-30 30H76c-16.568 0-30-13.432-30-30V15Zm-45 165c0-24.853-20.147-45-45-45s-45 20.147-45 45 20.147 45 45 45 45-20.147 45-45ZM466 15v60c0 16.568-13.432 30-30 30H316c-16.568 0-30-13.432-30-30V15Zm-45 165c0-24.853-20.147-45-45-45s-45 20.147-45 45 20.147 45 45 45 45-20.147 45-45Zm-75 167v-50.294L286 347h-60.002L166 296.706V347h-15c-41.421 0-75 33.579-75 75s33.579 75 75 75h210c41.421 0 75-33.579 75-75s-33.579-75-75-75Zm-105 75h30m-90 0h30m90 0h30"
-                                data-original="#000000" />
-                        </g>
-                    </svg>
-                    <div>
-                        <h3 class="text-xl font-semibold mb-2">Communication</h3>
-                        <p>Tailor our product to suit your needs Seamless communication for your team.</p>
+
+                    <!--Start box news-->
+                    <div class="flex-shrink max-w-full w-full lg:w-1/2">
+                        <div class="box-one flex flex-row flex-wrap">
+                            <article class="flex-shrink max-w-full w-full sm:w-1/2">
+                                <div class="relative hover-img max-h-48 overflow-hidden">
+                                    <a href="#">
+                                        <img class="max-w-full w-full mx-auto h-auto"
+                                            src="{{ asset('img/dummy/img2.jpg') }}" alt="Image description">
+                                    </a>
+                                    <div class="absolute px-4 pt-7 pb-4 bottom-0 w-full bg-gradient-cover">
+                                        <a href="#">
+                                            <h2 class="text-lg font-bold capitalize leading-tight text-white mb-1">News
+                                                magazines are becoming
+                                                obsolete, replaced by gadgets</h2>
+                                        </a>
+                                        <div class="pt-1">
+                                            <div class="text-gray-100">
+                                                <div class="inline-block h-3 border-l-2 border-red-600 mr-2"></div>Techno
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="flex-shrink max-w-full w-full sm:w-1/2">
+                                <div class="relative hover-img max-h-48 overflow-hidden">
+                                    <a href="#">
+                                        <img class="max-w-full w-full mx-auto h-auto"
+                                            src="{{ asset('img/dummy/img3.jpg') }}" alt="Image description">
+                                    </a>
+                                    <div class="absolute px-4 pt-7 pb-4 bottom-0 w-full bg-gradient-cover">
+                                        <a href="#">
+                                            <h2 class="text-lg font-bold capitalize leading-tight text-white mb-1">
+                                                Minimalist designs are
+                                                starting to be popular with the next generation</h2>
+                                        </a>
+                                        <div class="pt-1">
+                                            <div class="text-gray-100">
+                                                <div class="inline-block h-3 border-l-2 border-red-600 mr-2"></div>
+                                                Architecture
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="flex-shrink max-w-full w-full sm:w-1/2">
+                                <div class="relative hover-img max-h-48 overflow-hidden">
+                                    <a href="#">
+                                        <img class="max-w-full w-full mx-auto h-auto"
+                                            src="{{ asset('img/dummy/img4.jpg') }}" alt="Image description">
+                                    </a>
+                                    <div class="absolute px-4 pt-7 pb-4 bottom-0 w-full bg-gradient-cover">
+                                        <a href="#">
+                                            <h2 class="text-lg font-bold capitalize leading-tight text-white mb-1">Tips for
+                                                decorating the
+                                                interior of the living room</h2>
+                                        </a>
+                                        <div class="pt-1">
+                                            <div class="text-gray-100">
+                                                <div class="inline-block h-3 border-l-2 border-red-600 mr-2"></div>Interior
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="flex-shrink max-w-full w-full sm:w-1/2">
+                                <div class="relative hover-img max-h-48 overflow-hidden">
+                                    <a href="#">
+                                        <img class="max-w-full w-full mx-auto h-auto"
+                                            src="{{ asset('img/dummy/img5.jpg') }}" alt="Image description">
+                                    </a>
+                                    <div class="absolute px-4 pt-7 pb-4 bottom-0 w-full bg-gradient-cover">
+                                        <a href="#">
+                                            <h2 class="text-lg font-bold capitalize leading-tight text-white mb-1">Online
+                                                taxi users are
+                                                increasing drastically ahead of the new year</h2>
+                                        </a>
+                                        <div class="pt-1">
+                                            <div class="text-gray-100">
+                                                <div class="inline-block h-3 border-l-2 border-red-600 mr-2"></div>Lifestyle
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="mt-32 bg-white rounded-md px-4 py-12">
-            <div class="grid md:grid-cols-2 justify-center items-center gap-10 max-w-7xl mx-auto">
-                <div class="max-md:text-center">
-                    <h2 class="md:text-4xl text-3xl font-extrabold mb-6">Unlock Premium Features</h2>
-                    <p>Veniam proident aute magna anim excepteur et ex consectetur velit ullamco veniam minim aute sit. Elit
-                        occaecat officia et laboris Lorem minim. Officia do aliqua adipisicing ullamco in.</p>
-                    <button type="button"
-                        class="px-6 py-3 rounded-xl text-white bg-cyan-900 transition-all hover:bg-cyan-800 mt-10">
-                        Try it today
-                    </button>
-                </div>
-                <div>
-                    <img src="https://www.faria.org/wp-content/uploads/2021/03/activity-management.png"
-                        alt="Premium Benefits" class="w-full mx-auto" />
+        <!-- block news -->
+        <div class="bg-white">
+            <div class="xl:container mx-auto px-3 sm:px-4 xl:px-2">
+                <div class="flex flex-row flex-wrap">
+                    <!-- Left -->
+                    <div class="flex-shrink max-w-full w-full lg:w-2/3 overflow-hidden">
+                        <div class="w-full py-3">
+                            <h2 class="text-gray-800 text-2xl font-bold">
+                                <span class="inline-block h-5 border-l-3 border-red-600 mr-2"></span>Europe
+                            </h2>
+                        </div>
+                        <div class="flex flex-row flex-wrap -mx-3">
+                            <div
+                                class="flex-shrink max-w-full w-full sm:w-1/3 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100">
+                                <div class="flex flex-row sm:block hover-img">
+                                    <a href="">
+                                        <img class="max-w-full w-full mx-auto" src="{{ asset('img/dummy/img6.jpg') }}"
+                                            alt="alt title">
+                                    </a>
+                                    <div class="py-0 sm:py-3 pl-3 sm:pl-0">
+                                        <h3 class="text-lg font-bold leading-tight mb-2">
+                                            <a href="#">5 Tips to Save Money Booking Your Next Hotel Room</a>
+                                        </h3>
+                                        <p class="hidden md:block text-gray-600 leading-tight mb-1">This is a wider card
+                                            with supporting
+                                            text below as a natural lead-in to additional content.</p>
+                                        <a class="text-gray-500" href="#"><span
+                                                class="inline-block h-3 border-l-2 border-red-600 mr-2"></span>Europe</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="flex-shrink max-w-full w-full sm:w-1/3 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100">
+                                <div class="flex flex-row sm:block hover-img">
+                                    <a href="">
+                                        <img class="max-w-full w-full mx-auto" src="{{ asset('img/dummy/img7.jpg') }}"
+                                            alt="alt title">
+                                    </a>
+                                    <div class="py-0 sm:py-3 pl-3 sm:pl-0">
+                                        <h3 class="text-lg font-bold leading-tight mb-2">
+                                            <a href="#">5 Tips to Save Money Booking Your Next Hotel Room</a>
+                                        </h3>
+                                        <p class="hidden md:block text-gray-600 leading-tight mb-1">This is a wider card
+                                            with supporting
+                                            text below as a natural lead-in to additional content.</p>
+                                        <a class="text-gray-500" href="#"><span
+                                                class="inline-block h-3 border-l-2 border-red-600 mr-2"></span>Europe</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="flex-shrink max-w-full w-full sm:w-1/3 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100">
+                                <div class="flex flex-row sm:block hover-img">
+                                    <a href="">
+                                        <img class="max-w-full w-full mx-auto" src="{{ asset('img/dummy/img8.jpg') }}"
+                                            alt="alt title">
+                                    </a>
+                                    <div class="py-0 sm:py-3 pl-3 sm:pl-0">
+                                        <h3 class="text-lg font-bold leading-tight mb-2">
+                                            <a href="#">5 Tips to Save Money Booking Your Next Hotel Room</a>
+                                        </h3>
+                                        <p class="hidden md:block text-gray-600 leading-tight mb-1">This is a wider card
+                                            with supporting
+                                            text below as a natural lead-in to additional content.</p>
+                                        <a class="text-gray-500" href="#"><span
+                                                class="inline-block h-3 border-l-2 border-red-600 mr-2"></span>Europe</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="flex-shrink max-w-full w-full sm:w-1/3 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100">
+                                <div class="flex flex-row sm:block hover-img">
+                                    <a href="">
+                                        <img class="max-w-full w-full mx-auto" src="{{ asset('img/dummy/img9.jpg') }}"
+                                            alt="alt title">
+                                    </a>
+                                    <div class="py-0 sm:py-3 pl-3 sm:pl-0">
+                                        <h3 class="text-lg font-bold leading-tight mb-2">
+                                            <a href="#">5 Tips to Save Money Booking Your Next Hotel Room</a>
+                                        </h3>
+                                        <p class="hidden md:block text-gray-600 leading-tight mb-1">This is a wider card
+                                            with supporting
+                                            text below as a natural lead-in to additional content.</p>
+                                        <a class="text-gray-500" href="#"><span
+                                                class="inline-block h-3 border-l-2 border-red-600 mr-2"></span>Europe</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="flex-shrink max-w-full w-full sm:w-1/3 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100">
+                                <div class="flex flex-row sm:block hover-img">
+                                    <a href="">
+                                        <img class="max-w-full w-full mx-auto" src="{{ asset('img/dummy/img10.jpg') }}"
+                                            alt="alt title">
+                                    </a>
+                                    <div class="py-0 sm:py-3 pl-3 sm:pl-0">
+                                        <h3 class="text-lg font-bold leading-tight mb-2">
+                                            <a href="#">5 Tips to Save Money Booking Your Next Hotel Room</a>
+                                        </h3>
+                                        <p class="hidden md:block text-gray-600 leading-tight mb-1">This is a wider card
+                                            with supporting
+                                            text below as a natural lead-in to additional content.</p>
+                                        <a class="text-gray-500" href="#"><span
+                                                class="inline-block h-3 border-l-2 border-red-600 mr-2"></span>Europe</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="flex-shrink max-w-full w-full sm:w-1/3 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100">
+                                <div class="flex flex-row sm:block hover-img">
+                                    <a href="">
+                                        <img class="max-w-full w-full mx-auto" src="{{ asset('img/dummy/img11.jpg') }}"
+                                            alt="alt title">
+                                    </a>
+                                    <div class="py-0 sm:py-3 pl-3 sm:pl-0">
+                                        <h3 class="text-lg font-bold leading-tight mb-2">
+                                            <a href="#">5 Tips to Save Money Booking Your Next Hotel Room</a>
+                                        </h3>
+                                        <p class="hidden md:block text-gray-600 leading-tight mb-1">This is a wider card
+                                            with supporting
+                                            text below as a natural lead-in to additional content.</p>
+                                        <a class="text-gray-500" href="#"><span
+                                                class="inline-block h-3 border-l-2 border-red-600 mr-2"></span>Europe</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- right -->
+                    <div class="flex-shrink max-w-full w-full lg:w-1/3 lg:pl-8 lg:pt-14 lg:pb-8 order-first lg:order-last">
+                        <div class="w-full bg-gray-50 h-full">
+                            <div class="text-sm py-6 sticky">
+                                <div class="w-full text-center">
+                                    <a class="uppercase" href="#">Advertisement</a>
+                                    <a href="#">
+                                        <img class="mx-auto" src="{{ asset('img/ads/250.jpg') }}"
+                                            alt="advertisement area">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="mt-32">
-            <div class="mb-16 text-center">
-                <h2 class="md:text-4xl text-3xl font-extrabold">What our happy client say</h2>
-            </div>
-            <div class="grid md:grid-cols-3 md:py-16 gap-8 max-w-7xl max-md:max-w-lg mx-auto relative">
-                <div
-                    class="bg-blue-100 lg:max-w-[70%] max-w-[80%] h-full w-full inset-0 mx-auto rounded-3xl absolute max-md:hidden">
-                </div>
-                <div class="h-auto lg:p-6 p-4 rounded-md mx-auto bg-white relative max-md:shadow-md">
-                    <div>
-                        <img src="https://readymadeui.com/profile_2.webp" class="w-12 h-12 rounded-full" />
-                        <h4 class="whitespace-nowrap font-semibold mt-2">John Doe</h4>
-                        <p class="mt-1 text-xs">Founder of Rubik</p>
-                    </div>
-                    <div class="mt-4">
-                        <p>The service was amazing. I never had to wait that long for my food.
-                            The staff was friendly and attentive, and the delivery was impressively prompt.</p>
-                    </div>
-                </div>
-                <div class="h-auto lg:p-6 p-4 rounded-md mx-auto bg-white relative max-md:shadow-md">
-                    <div>
-                        <img src="https://readymadeui.com/profile_3.webp" class="w-12 h-12 rounded-full" />
-                        <h4 class="whitespace-nowrap font-semibold mt-2">Mark Adair</h4>
-                        <p class="mt-1 text-xs">Founder of Alpha</p>
-                    </div>
-                    <div class="mt-4">
-                        <p>The service was amazing. I never had to wait that long for my food.
-                            The staff was friendly and attentive, and the delivery was impressively prompt.</p>
-                    </div>
-                </div>
-                <div class="h-auto lg:p-6 p-4 rounded-md mx-auto bg-white relative max-md:shadow-md">
-                    <div>
-                        <img src="https://readymadeui.com/profile_4.webp" class="w-12 h-12 rounded-full" />
-                        <h4 class="whitespace-nowrap font-semibold mt-2">Simon Konecki</h4>
-                        <p class="mt-1 text-xs">Founder of Labar</p>
-                    </div>
-                    <div class="mt-4">
-                        <p>The service was amazing. I never had to wait that long for my food.
-                            The staff was friendly and attentive, and the delivery was impressively prompt.</p>
+        <!-- slider news -->
+        <div class="relative bg-gray-50"
+            style="background-image: url('{{ asset('img/bg.jpg') }}');background-size: cover;background-position: center center;background-attachment: fixed">
+            <div class="bg-black bg-opacity-70">
+                <div class="xl:container mx-auto px-3 sm:px-4 xl:px-2">
+                    <div class="flex flex-row flex-wrap">
+                        <div class="flex-shrink max-w-full w-full py-12 overflow-hidden">
+                            <div class="w-full py-3">
+                                <h2 class="text-white text-2xl font-bold text-shadow-black">
+                                    <span class="inline-block h-5 border-l-3 border-red-600 mr-2"></span>American
+                                </h2>
+                            </div>
+                            <div id="post-carousel" class="splide post-carousel">
+                                <div class="splide__track">
+                                    <ul class="splide__list">
+                                        <li class="splide__slide">
+                                            <div class="w-full pb-3">
+                                                <div class="hover-img bg-white">
+                                                    <a href="">
+                                                        <img class="max-w-full w-full mx-auto"
+                                                            src="{{ asset('img/dummy/img14.jpg') }}" alt="alt title">
+                                                    </a>
+                                                    <div class="py-3 px-6">
+                                                        <h3 class="text-lg font-bold leading-tight mb-2">
+                                                            <a href="#">5 Tips to Save Money Booking Your Next Hotel
+                                                                Room</a>
+                                                        </h3>
+                                                        <a class="text-gray-500" href="#"><span
+                                                                class="inline-block h-3 border-l-2 border-red-600 mr-2"></span>Europe</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="splide__slide">
+                                            <div class="w-full pb-3">
+                                                <div class="hover-img bg-white">
+                                                    <a href="">
+                                                        <img class="max-w-full w-full mx-auto"
+                                                            src="{{ asset('img/dummy/img15.jpg') }}" alt="alt title">
+                                                    </a>
+                                                    <div class="py-3 px-6">
+                                                        <h3 class="text-lg font-bold leading-tight mb-2">
+                                                            <a href="#">5 Tips to Save Money Booking Your Next Hotel
+                                                                Room</a>
+                                                        </h3>
+                                                        <a class="text-gray-500" href="#"><span
+                                                                class="inline-block h-3 border-l-2 border-red-600 mr-2"></span>Europe</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="splide__slide">
+                                            <div class="w-full pb-3">
+                                                <div class="hover-img bg-white">
+                                                    <a href="">
+                                                        <img class="max-w-full w-full mx-auto"
+                                                            src="{{ asset('img/dummy/img16.jpg') }}" alt="alt title">
+                                                    </a>
+                                                    <div class="py-3 px-6">
+                                                        <h3 class="text-lg font-bold leading-tight mb-2">
+                                                            <a href="#">5 Tips to Save Money Booking Your Next Hotel
+                                                                Room</a>
+                                                        </h3>
+                                                        <a class="text-gray-500" href="#"><span
+                                                                class="inline-block h-3 border-l-2 border-red-600 mr-2"></span>Europe</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="splide__slide">
+                                            <div class="w-full pb-3">
+                                                <div class="hover-img bg-white">
+                                                    <a href="">
+                                                        <img class="max-w-full w-full mx-auto"
+                                                            src="{{ asset('img/dummy/img17.jpg') }}" alt="alt title">
+                                                    </a>
+                                                    <div class="py-3 px-6">
+                                                        <h3 class="text-lg font-bold leading-tight mb-2">
+                                                            <a href="#">5 Tips to Save Money Booking Your Next Hotel
+                                                                Room</a>
+                                                        </h3>
+                                                        <a class="text-gray-500" href="#"><span
+                                                                class="inline-block h-3 border-l-2 border-red-600 mr-2"></span>Europe</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="splide__slide">
+                                            <div class="w-full pb-3">
+                                                <div class="hover-img bg-white">
+                                                    <a href="">
+                                                        <img class="max-w-full w-full mx-auto"
+                                                            src="{{ asset('img/dummy/img18.jpg') }}" alt="alt title">
+                                                    </a>
+                                                    <div class="py-3 px-6">
+                                                        <h3 class="text-lg font-bold leading-tight mb-2">
+                                                            <a href="#">5 Tips to Save Money Booking Your Next Hotel
+                                                                Room</a>
+                                                        </h3>
+                                                        <a class="text-gray-500" href="#"><span
+                                                                class="inline-block h-3 border-l-2 border-red-600 mr-2"></span>Europe</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="splide__slide">
+                                            <div class="w-full pb-3">
+                                                <div class="hover-img bg-white">
+                                                    <a href="">
+                                                        <img class="max-w-full w-full mx-auto"
+                                                            src="{{ asset('img/dummy/img1.jpg') }}" alt="alt title">
+                                                    </a>
+                                                    <div class="py-3 px-6">
+                                                        <h3 class="text-lg font-bold leading-tight mb-2">
+                                                            <a href="#">5 Tips to Save Money Booking Your Next Hotel
+                                                                Room</a>
+                                                        </h3>
+                                                        <a class="text-gray-500" href="#"><span
+                                                                class="inline-block h-3 border-l-2 border-red-600 mr-2"></span>Europe</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="mt-32 max-w-7xl mx-auto">
-            <div class="text-center">
-                <h2 class="md:text-4xl text-3xl font-extrabold">Choose a Subscription</h2>
-            </div>
-            <div class="grid lg:grid-cols-3 md:grid-cols-2 gap-8 mt-16 max-md:max-w-lg max-md:mx-auto">
-                <div class="bg-white rounded sm:p-6 p-4">
-                    <h3 class="text-xl font-semibold">Free</h3>
-                    <p class="mt-2">Ideal for individuals who need quick access to basic features.</p>
-                    <div class="mt-6">
-                        <h2 class="text-4xl font-semibold">$0<span class="text-gray-500 ml-2 text-[15px]">/ Month</span>
-                        </h2>
-                        <button type="button"
-                            class="w-full mt-6 px-6 py-3 rounded-xl text-white bg-cyan-900 transition-all hover:bg-cyan-800">Get
-                            Started</button>
+        <!-- block news -->
+        <div class="bg-white py-6">
+            <div class="xl:container mx-auto px-3 sm:px-4 xl:px-2">
+                <div class="flex flex-row flex-wrap">
+                    <div class="flex-shrink max-w-full w-full overflow-hidden">
+                        <div class="w-full py-3">
+                            <h2 class="text-gray-800 text-2xl font-bold">
+                                <span class="inline-block h-5 border-l-3 border-red-600 mr-2"></span>Africa
+                            </h2>
+                        </div>
+                        <div class="flex flex-row flex-wrap -mx-3">
+                            <div
+                                class="flex-shrink max-w-full w-full sm:w-1/3 lg:w-1/4 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100">
+                                <div class="flex flex-row sm:block hover-img">
+                                    <a href="">
+                                        <img class="max-w-full w-full mx-auto" src="{{ asset('img/dummy/img19.jpg') }}"
+                                            alt="alt title">
+                                    </a>
+                                    <div class="py-0 sm:py-3 pl-3 sm:pl-0">
+                                        <h3 class="text-lg font-bold leading-tight mb-2">
+                                            <a href="#">5 Tips to Save Money Booking Your Next Hotel Room</a>
+                                        </h3>
+                                        <p class="hidden md:block text-gray-600 leading-tight mb-1">This is a wider card
+                                            with supporting
+                                            text below as a natural lead-in to additional content.</p>
+                                        <a class="text-gray-500" href="#"><span
+                                                class="inline-block h-3 border-l-2 border-red-600 mr-2"></span>Europe</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="flex-shrink max-w-full w-full sm:w-1/3 lg:w-1/4 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100">
+                                <div class="flex flex-row sm:block hover-img">
+                                    <a href="">
+                                        <img class="max-w-full w-full mx-auto" src="{{ asset('img/dummy/img20.jpg') }}"
+                                            alt="alt title">
+                                    </a>
+                                    <div class="py-0 sm:py-3 pl-3 sm:pl-0">
+                                        <h3 class="text-lg font-bold leading-tight mb-2">
+                                            <a href="#">5 Tips to Save Money Booking Your Next Hotel Room</a>
+                                        </h3>
+                                        <p class="hidden md:block text-gray-600 leading-tight mb-1">This is a wider card
+                                            with supporting
+                                            text below as a natural lead-in to additional content.</p>
+                                        <a class="text-gray-500" href="#"><span
+                                                class="inline-block h-3 border-l-2 border-red-600 mr-2"></span>Europe</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="flex-shrink max-w-full w-full sm:w-1/3 lg:w-1/4 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100">
+                                <div class="flex flex-row sm:block hover-img">
+                                    <a href="">
+                                        <img class="max-w-full w-full mx-auto" src="{{ asset('img/dummy/img21.jpg') }}"
+                                            alt="alt title">
+                                    </a>
+                                    <div class="py-0 sm:py-3 pl-3 sm:pl-0">
+                                        <h3 class="text-lg font-bold leading-tight mb-2">
+                                            <a href="#">5 Tips to Save Money Booking Your Next Hotel Room</a>
+                                        </h3>
+                                        <p class="hidden md:block text-gray-600 leading-tight mb-1">This is a wider card
+                                            with supporting
+                                            text below as a natural lead-in to additional content.</p>
+                                        <a class="text-gray-500" href="#"><span
+                                                class="inline-block h-3 border-l-2 border-red-600 mr-2"></span>Europe</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="flex-shrink max-w-full w-full sm:w-1/3 lg:w-1/4 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100">
+                                <div class="flex flex-row sm:block hover-img">
+                                    <a href="">
+                                        <img class="max-w-full w-full mx-auto" src="{{ asset('img/dummy/img22.jpg') }}"
+                                            alt="alt title">
+                                    </a>
+                                    <div class="py-0 sm:py-3 pl-3 sm:pl-0">
+                                        <h3 class="text-lg font-bold leading-tight mb-2">
+                                            <a href="#">5 Tips to Save Money Booking Your Next Hotel Room</a>
+                                        </h3>
+                                        <p class="hidden md:block text-gray-600 leading-tight mb-1">This is a wider card
+                                            with supporting
+                                            text below as a natural lead-in to additional content.</p>
+                                        <a class="text-gray-500" href="#"><span
+                                                class="inline-block h-3 border-l-2 border-red-600 mr-2"></span>Europe</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="flex-shrink max-w-full w-full sm:w-1/3 lg:w-1/4 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100">
+                                <div class="flex flex-row sm:block hover-img">
+                                    <a href="">
+                                        <img class="max-w-full w-full mx-auto" src="{{ asset('img/dummy/img23.jpg') }}"
+                                            alt="alt title">
+                                    </a>
+                                    <div class="py-0 sm:py-3 pl-3 sm:pl-0">
+                                        <h3 class="text-lg font-bold leading-tight mb-2">
+                                            <a href="#">5 Tips to Save Money Booking Your Next Hotel Room</a>
+                                        </h3>
+                                        <p class="hidden md:block text-gray-600 leading-tight mb-1">This is a wider card
+                                            with supporting
+                                            text below as a natural lead-in to additional content.</p>
+                                        <a class="text-gray-500" href="#"><span
+                                                class="inline-block h-3 border-l-2 border-red-600 mr-2"></span>Europe</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="flex-shrink max-w-full w-full sm:w-1/3 lg:w-1/4 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100">
+                                <div class="flex flex-row sm:block hover-img">
+                                    <a href="">
+                                        <img class="max-w-full w-full mx-auto" src="{{ asset('img/dummy/img24.jpg') }}"
+                                            alt="alt title">
+                                    </a>
+                                    <div class="py-0 sm:py-3 pl-3 sm:pl-0">
+                                        <h3 class="text-lg font-bold leading-tight mb-2">
+                                            <a href="#">5 Tips to Save Money Booking Your Next Hotel Room</a>
+                                        </h3>
+                                        <p class="hidden md:block text-gray-600 leading-tight mb-1">This is a wider card
+                                            with supporting
+                                            text below as a natural lead-in to additional content.</p>
+                                        <a class="text-gray-500" href="#"><span
+                                                class="inline-block h-3 border-l-2 border-red-600 mr-2"></span>Europe</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="flex-shrink max-w-full w-full sm:w-1/3 lg:w-1/4 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100">
+                                <div class="flex flex-row sm:block hover-img">
+                                    <a href="">
+                                        <img class="max-w-full w-full mx-auto" src="{{ asset('img/dummy/img25.jpg') }}"
+                                            alt="alt title">
+                                    </a>
+                                    <div class="py-0 sm:py-3 pl-3 sm:pl-0">
+                                        <h3 class="text-lg font-bold leading-tight mb-2">
+                                            <a href="#">5 Tips to Save Money Booking Your Next Hotel Room</a>
+                                        </h3>
+                                        <p class="hidden md:block text-gray-600 leading-tight mb-1">This is a wider card
+                                            with supporting
+                                            text below as a natural lead-in to additional content.</p>
+                                        <a class="text-gray-500" href="#"><span
+                                                class="inline-block h-3 border-l-2 border-red-600 mr-2"></span>Europe</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="flex-shrink max-w-full w-full sm:w-1/3 lg:w-1/4 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100">
+                                <div class="flex flex-row sm:block hover-img">
+                                    <a href="">
+                                        <img class="max-w-full w-full mx-auto" src="{{ asset('img/dummy/img26.jpg') }}"
+                                            alt="alt title">
+                                    </a>
+                                    <div class="py-0 sm:py-3 pl-3 sm:pl-0">
+                                        <h3 class="text-lg font-bold leading-tight mb-2">
+                                            <a href="#">5 Tips to Save Money Booking Your Next Hotel Room</a>
+                                        </h3>
+                                        <p class="hidden md:block text-gray-600 leading-tight mb-1">This is a wider card
+                                            with supporting
+                                            text below as a natural lead-in to additional content.</p>
+                                        <a class="text-gray-500" href="#"><span
+                                                class="inline-block h-3 border-l-2 border-red-600 mr-2"></span>Europe</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="mt-6">
-                        <h4 class="text-base font-bold mb-4">Plan Includes</h4>
-                        <ul class="space-y-5">
-                            <li class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" class="mr-4 fill-green-500"
-                                    viewBox="0 0 24 24">
-                                    <path
-                                        d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z"
-                                        data-original="#000000" />
-                                </svg>
-                                50 Image generations
+                </div>
+            </div>
+        </div>
+
+        <!-- block news -->
+        <div class="bg-gray-50 py-6">
+            <div class="xl:container mx-auto px-3 sm:px-4 xl:px-2">
+                <div class="flex flex-row flex-wrap">
+                    <!-- Left -->
+                    <div class="flex-shrink max-w-full w-full lg:w-2/3  overflow-hidden">
+                        <div class="w-full py-3">
+                            <h2 class="text-gray-800 text-2xl font-bold">
+                                <span class="inline-block h-5 border-l-3 border-red-600 mr-2"></span>Asian
+                            </h2>
+                        </div>
+                        <div class="flex flex-row flex-wrap -mx-3">
+                            <div class="flex-shrink max-w-full w-full px-3 pb-5">
+                                <div class="relative hover-img max-h-98 overflow-hidden">
+                                    <!--thumbnail-->
+                                    <a href="#">
+                                        <img class="max-w-full w-full mx-auto h-auto"
+                                            src="{{ asset('img/dummy/img2.jpg') }}" alt="Image description">
+                                    </a>
+                                    <div class="absolute px-5 pt-8 pb-5 bottom-0 w-full bg-gradient-cover">
+                                        <!--title-->
+                                        <a href="#">
+                                            <h2 class="text-3xl font-bold capitalize text-white mb-3">Amazon Shoppers Are
+                                                Ditching Designer
+                                                Belts for This Best-Selling</h2>
+                                        </a>
+                                        <p class="text-gray-100 hidden sm:inline-block">This is a wider card with
+                                            supporting text below as a
+                                            natural lead-in to additional content. This very helpfull for generate default
+                                            content..</p>
+                                        <!-- author and date -->
+                                        <div class="pt-2">
+                                            <div class="text-gray-100">
+                                                <div class="inline-block h-3 border-l-2 border-red-600 mr-2"></div>Europe
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div
+                                class="flex-shrink max-w-full w-full sm:w-1/3 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100">
+                                <div class="flex flex-row sm:block hover-img">
+                                    <a href="">
+                                        <img class="max-w-full w-full mx-auto" src="{{ asset('img/dummy/img27.jpg') }}"
+                                            alt="alt title">
+                                    </a>
+                                    <div class="py-0 sm:py-3 pl-3 sm:pl-0">
+                                        <h3 class="text-lg font-bold leading-tight mb-2">
+                                            <a href="#">5 Tips to Save Money Booking Your Next Hotel Room</a>
+                                        </h3>
+                                        <p class="hidden md:block text-gray-600 leading-tight mb-1">This is a wider card
+                                            with supporting
+                                            text below as a natural lead-in to additional content.</p>
+                                        <a class="text-gray-500" href="#"><span
+                                                class="inline-block h-3 border-l-2 border-red-600 mr-2"></span>Europe</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="flex-shrink max-w-full w-full sm:w-1/3 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100">
+                                <div class="flex flex-row sm:block hover-img">
+                                    <a href="">
+                                        <img class="max-w-full w-full mx-auto" src="{{ asset('img/dummy/img3.jpg') }}"
+                                            alt="alt title">
+                                    </a>
+                                    <div class="py-0 sm:py-3 pl-3 sm:pl-0">
+                                        <h3 class="text-lg font-bold leading-tight mb-2">
+                                            <a href="#">5 Tips to Save Money Booking Your Next Hotel Room</a>
+                                        </h3>
+                                        <p class="hidden md:block text-gray-600 leading-tight mb-1">This is a wider card
+                                            with supporting
+                                            text below as a natural lead-in to additional content.</p>
+                                        <a class="text-gray-500" href="#"><span
+                                                class="inline-block h-3 border-l-2 border-red-600 mr-2"></span>Europe</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="flex-shrink max-w-full w-full sm:w-1/3 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100">
+                                <div class="flex flex-row sm:block hover-img">
+                                    <a href="">
+                                        <img class="max-w-full w-full mx-auto" src="{{ asset('img/dummy/img4.jpg') }}"
+                                            alt="alt title">
+                                    </a>
+                                    <div class="py-0 sm:py-3 pl-3 sm:pl-0">
+                                        <h3 class="text-lg font-bold leading-tight mb-2">
+                                            <a href="#">5 Tips to Save Money Booking Your Next Hotel Room</a>
+                                        </h3>
+                                        <p class="hidden md:block text-gray-600 leading-tight mb-1">This is a wider card
+                                            with supporting
+                                            text below as a natural lead-in to additional content.</p>
+                                        <a class="text-gray-500" href="#"><span
+                                                class="inline-block h-3 border-l-2 border-red-600 mr-2"></span>Europe</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="flex-shrink max-w-full w-full sm:w-1/3 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100">
+                                <div class="flex flex-row sm:block hover-img">
+                                    <a href="">
+                                        <img class="max-w-full w-full mx-auto" src="{{ asset('img/dummy/img5.jpg') }}"
+                                            alt="alt title">
+                                    </a>
+                                    <div class="py-0 sm:py-3 pl-3 sm:pl-0">
+                                        <h3 class="text-lg font-bold leading-tight mb-2">
+                                            <a href="#">5 Tips to Save Money Booking Your Next Hotel Room</a>
+                                        </h3>
+                                        <p class="hidden md:block text-gray-600 leading-tight mb-1">This is a wider card
+                                            with supporting
+                                            text below as a natural lead-in to additional content.</p>
+                                        <a class="text-gray-500" href="#"><span
+                                                class="inline-block h-3 border-l-2 border-red-600 mr-2"></span>Europe</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="flex-shrink max-w-full w-full sm:w-1/3 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100">
+                                <div class="flex flex-row sm:block hover-img">
+                                    <a href="">
+                                        <img class="max-w-full w-full mx-auto" src="{{ asset('img/dummy/img6.jpg') }}"
+                                            alt="alt title">
+                                    </a>
+                                    <div class="py-0 sm:py-3 pl-3 sm:pl-0">
+                                        <h3 class="text-lg font-bold leading-tight mb-2">
+                                            <a href="#">5 Tips to Save Money Booking Your Next Hotel Room</a>
+                                        </h3>
+                                        <p class="hidden md:block text-gray-600 leading-tight mb-1">This is a wider card
+                                            with supporting
+                                            text below as a natural lead-in to additional content.</p>
+                                        <a class="text-gray-500" href="#"><span
+                                                class="inline-block h-3 border-l-2 border-red-600 mr-2"></span>Europe</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="flex-shrink max-w-full w-full sm:w-1/3 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100">
+                                <div class="flex flex-row sm:block hover-img">
+                                    <a href="">
+                                        <img class="max-w-full w-full mx-auto" src="{{ asset('img/dummy/img7.jpg') }}"
+                                            alt="alt title">
+                                    </a>
+                                    <div class="py-0 sm:py-3 pl-3 sm:pl-0">
+                                        <h3 class="text-lg font-bold leading-tight mb-2">
+                                            <a href="#">5 Tips to Save Money Booking Your Next Hotel Room</a>
+                                        </h3>
+                                        <p class="hidden md:block text-gray-600 leading-tight mb-1">This is a wider card
+                                            with supporting
+                                            text below as a natural lead-in to additional content.</p>
+                                        <a class="text-gray-500" href="#"><span
+                                                class="inline-block h-3 border-l-2 border-red-600 mr-2"></span>Europe</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- right -->
+                    <div class="flex-shrink max-w-full w-full lg:w-1/3 lg:pl-8 lg:pt-14 lg:pb-8 order-first lg:order-last">
+                        <div class="w-full bg-white">
+                            <div class="mb-6">
+                                <div class="p-4 bg-gray-100">
+                                    <h2 class="text-lg font-bold">Most Popular</h2>
+                                </div>
+                                <ul class="post-number">
+                                    <li class="border-b border-gray-100 hover:bg-gray-50">
+                                        <a class="text-lg font-bold px-6 py-3 flex flex-row items-center"
+                                            href="#">Why the world would end
+                                            without political polls</a>
+                                    </li>
+                                    <li class="border-b border-gray-100 hover:bg-gray-50">
+                                        <a class="text-lg font-bold px-6 py-3 flex flex-row items-center"
+                                            href="#">Meet The Man Who Designed
+                                            The Ducati Monster</a>
+                                    </li>
+                                    <li class="border-b border-gray-100 hover:bg-gray-50">
+                                        <a class="text-lg font-bold px-6 py-3 flex flex-row items-center"
+                                            href="#">2020 Audi R8 Spyder spy
+                                            shots release</a>
+                                    </li>
+                                    <li class="border-b border-gray-100 hover:bg-gray-50">
+                                        <a class="text-lg font-bold px-6 py-3 flex flex-row items-center"
+                                            href="#">Lamborghini makes Huracán
+                                            GT3 racer faster for 2019</a>
+                                    </li>
+                                    <li class="border-b border-gray-100 hover:bg-gray-50">
+                                        <a class="text-lg font-bold px-6 py-3 flex flex-row items-center"
+                                            href="#">ZF plans $14 billion
+                                            autonomous vehicle push, concept van</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="text-sm py-6 sticky">
+                            <div class="w-full text-center">
+                                <a class="uppercase" href="#">Advertisement</a>
+                                <a href="#">
+                                    <img class="mx-auto" src="{{ asset('img/ads/250.jpg') }}" alt="advertisement area">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- block news -->
+        <div class="bg-gray-50 py-6">
+            <div class="xl:container mx-auto px-3 sm:px-4 xl:px-2">
+                <div class="flex flex-row flex-wrap">
+                    <!-- post -->
+                    <div class="flex-shrink max-w-full w-full lg:w-2/3 overflow-hidden">
+                        <div class="w-full py-3">
+                            <h2 class="text-gray-800 text-2xl font-bold">
+                                <span class="inline-block h-5 border-l-3 border-red-600 mr-2"></span>Latest news
+                            </h2>
+                        </div>
+                        <div class="flex flex-row flex-wrap -mx-3">
+                            <div class="flex-shrink max-w-full w-full px-3 pb-5">
+                                <div class="relative hover-img max-h-98 overflow-hidden">
+                                    <!--thumbnail-->
+                                    <a href="#">
+                                        <img class="max-w-full w-full mx-auto h-auto"
+                                            src="{{ asset('img/dummy/img15.jpg') }}" alt="Image description">
+                                    </a>
+                                    <div class="absolute px-5 pt-8 pb-5 bottom-0 w-full bg-gradient-cover">
+                                        <!--title-->
+                                        <a href="#">
+                                            <h2 class="text-3xl font-bold capitalize text-white mb-3">Amazon Shoppers Are
+                                                Ditching Designer
+                                                Belts for This Best-Selling</h2>
+                                        </a>
+                                        <p class="text-gray-100 hidden sm:inline-block">This is a wider card with
+                                            supporting text below as a
+                                            natural lead-in to additional content. This very helpfull for generate default
+                                            content..</p>
+                                        <!-- author and date -->
+                                        <div class="pt-2">
+                                            <div class="text-gray-100">
+                                                <div class="inline-block h-3 border-l-2 border-red-600 mr-2"></div>Europe
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div
+                                class="flex-shrink max-w-full w-full sm:w-1/3 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100">
+                                <div class="flex flex-row sm:block hover-img">
+                                    <a href="">
+                                        <img class="max-w-full w-full mx-auto" src="{{ asset('img/dummy/img24.jpg') }}"
+                                            alt="alt title">
+                                    </a>
+                                    <div class="py-0 sm:py-3 pl-3 sm:pl-0">
+                                        <h3 class="text-lg font-bold leading-tight mb-2">
+                                            <a href="#">5 Tips to Save Money Booking Your Next Hotel Room</a>
+                                        </h3>
+                                        <p class="hidden md:block text-gray-600 leading-tight mb-1">This is a wider card
+                                            with supporting
+                                            text below as a natural lead-in to additional content.</p>
+                                        <a class="text-gray-500" href="#"><span
+                                                class="inline-block h-3 border-l-2 border-red-600 mr-2"></span>Europe</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="flex-shrink max-w-full w-full sm:w-1/3 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100">
+                                <div class="flex flex-row sm:block hover-img">
+                                    <a href="">
+                                        <img class="max-w-full w-full mx-auto" src="{{ asset('img/dummy/img7.jpg') }}"
+                                            alt="alt title">
+                                    </a>
+                                    <div class="py-0 sm:py-3 pl-3 sm:pl-0">
+                                        <h3 class="text-lg font-bold leading-tight mb-2">
+                                            <a href="#">5 Tips to Save Money Booking Your Next Hotel Room</a>
+                                        </h3>
+                                        <p class="hidden md:block text-gray-600 leading-tight mb-1">This is a wider card
+                                            with supporting
+                                            text below as a natural lead-in to additional content.</p>
+                                        <a class="text-gray-500" href="#"><span
+                                                class="inline-block h-3 border-l-2 border-red-600 mr-2"></span>Europe</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="flex-shrink max-w-full w-full sm:w-1/3 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100">
+                                <div class="flex flex-row sm:block hover-img">
+                                    <a href="">
+                                        <img class="max-w-full w-full mx-auto" src="{{ asset('img/dummy/img17.jpg') }}"
+                                            alt="alt title">
+                                    </a>
+                                    <div class="py-0 sm:py-3 pl-3 sm:pl-0">
+                                        <h3 class="text-lg font-bold leading-tight mb-2">
+                                            <a href="#">5 Tips to Save Money Booking Your Next Hotel Room</a>
+                                        </h3>
+                                        <p class="hidden md:block text-gray-600 leading-tight mb-1">This is a wider card
+                                            with supporting
+                                            text below as a natural lead-in to additional content.</p>
+                                        <a class="text-gray-500" href="#"><span
+                                                class="inline-block h-3 border-l-2 border-red-600 mr-2"></span>Europe</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="flex-shrink max-w-full w-full sm:w-1/3 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100">
+                                <div class="flex flex-row sm:block hover-img">
+                                    <a href="">
+                                        <img class="max-w-full w-full mx-auto" src="{{ asset('img/dummy/img25.jpg') }}"
+                                            alt="alt title">
+                                    </a>
+                                    <div class="py-0 sm:py-3 pl-3 sm:pl-0">
+                                        <h3 class="text-lg font-bold leading-tight mb-2">
+                                            <a href="#">5 Tips to Save Money Booking Your Next Hotel Room</a>
+                                        </h3>
+                                        <p class="hidden md:block text-gray-600 leading-tight mb-1">This is a wider card
+                                            with supporting
+                                            text below as a natural lead-in to additional content.</p>
+                                        <a class="text-gray-500" href="#"><span
+                                                class="inline-block h-3 border-l-2 border-red-600 mr-2"></span>Europe</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="flex-shrink max-w-full w-full sm:w-1/3 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100">
+                                <div class="flex flex-row sm:block hover-img">
+                                    <a href="">
+                                        <img class="max-w-full w-full mx-auto" src="{{ asset('img/dummy/img12.jpg') }}"
+                                            alt="alt title">
+                                    </a>
+                                    <div class="py-0 sm:py-3 pl-3 sm:pl-0">
+                                        <h3 class="text-lg font-bold leading-tight mb-2">
+                                            <a href="#">5 Tips to Save Money Booking Your Next Hotel Room</a>
+                                        </h3>
+                                        <p class="hidden md:block text-gray-600 leading-tight mb-1">This is a wider card
+                                            with supporting
+                                            text below as a natural lead-in to additional content.</p>
+                                        <a class="text-gray-500" href="#"><span
+                                                class="inline-block h-3 border-l-2 border-red-600 mr-2"></span>Europe</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="flex-shrink max-w-full w-full sm:w-1/3 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100">
+                                <div class="flex flex-row sm:block hover-img">
+                                    <a href="">
+                                        <img class="max-w-full w-full mx-auto" src="{{ asset('img/dummy/img8.jpg') }}"
+                                            alt="alt title">
+                                    </a>
+                                    <div class="py-0 sm:py-3 pl-3 sm:pl-0">
+                                        <h3 class="text-lg font-bold leading-tight mb-2">
+                                            <a href="#">5 Tips to Save Money Booking Your Next Hotel Room</a>
+                                        </h3>
+                                        <p class="hidden md:block text-gray-600 leading-tight mb-1">This is a wider card
+                                            with supporting
+                                            text below as a natural lead-in to additional content.</p>
+                                        <a class="text-gray-500" href="#"><span
+                                                class="inline-block h-3 border-l-2 border-red-600 mr-2"></span>Europe</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- sidebar -->
+                    <div class="flex-shrink max-w-full w-full lg:w-1/3 lg:pr-8 lg:pt-14 lg:pb-8 order-first">
+                        <div class="w-full bg-white">
+                            <div class="mb-6">
+                                <div class="p-4 bg-gray-100">
+                                    <h2 class="text-lg font-bold">Most Popular</h2>
+                                </div>
+                                <ul class="post-number">
+                                    <li class="border-b border-gray-100 hover:bg-gray-50">
+                                        <a class="text-lg font-bold px-6 py-3 flex flex-row items-center"
+                                            href="#">Why the world would end
+                                            without political polls</a>
+                                    </li>
+                                    <li class="border-b border-gray-100 hover:bg-gray-50">
+                                        <a class="text-lg font-bold px-6 py-3 flex flex-row items-center"
+                                            href="#">Meet The Man Who Designed
+                                            The Ducati Monster</a>
+                                    </li>
+                                    <li class="border-b border-gray-100 hover:bg-gray-50">
+                                        <a class="text-lg font-bold px-6 py-3 flex flex-row items-center"
+                                            href="#">2020 Audi R8 Spyder spy
+                                            shots release</a>
+                                    </li>
+                                    <li class="border-b border-gray-100 hover:bg-gray-50">
+                                        <a class="text-lg font-bold px-6 py-3 flex flex-row items-center"
+                                            href="#">Lamborghini makes Huracán
+                                            GT3 racer faster for 2019</a>
+                                    </li>
+                                    <li class="border-b border-gray-100 hover:bg-gray-50">
+                                        <a class="text-lg font-bold px-6 py-3 flex flex-row items-center"
+                                            href="#">ZF plans $14 billion
+                                            autonomous vehicle push, concept van</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="text-sm py-6 sticky">
+                            <div class="w-full text-center">
+                                <a class="uppercase" href="#">Advertisement</a>
+                                <a href="#">
+                                    <img class="mx-auto" src="{{ asset('img/ads/250.jpg') }}" alt="advertisement area">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main><!-- end main -->
+
+
+
+
+
+    <!-- =========={ FOOTER }==========  -->
+    <footer class="bg-black text-gray-400">
+        <!--Footer content-->
+        <div id="footer-content" class="relative pt-8 xl:pt-16 pb-6 xl:pb-12">
+            <div class="xl:container mx-auto px-3 sm:px-4 xl:px-2 overflow-hidden">
+                <div class="flex flex-wrap flex-row lg:justify-between -mx-3">
+                    <div class="flex-shrink max-w-full w-full lg:w-2/5 px-3 lg:pr-16">
+                        <div class="flex items-center mb-2">
+                            <span class="text-3xl leading-normal mb-2 font-bold text-gray-100 mt-2">TailNews</span>
+                            <!-- <img src="src/img-min/logo.png" alt="LOGO"> -->
+                        </div>
+                        <p>Tailwind News Template for build great newspapper, magazine and news portal.</p>
+                        <ul class="space-x-3 mt-6 mb-6 Lg:mb-0">
+                            <!--facebook-->
+                            <li class="inline-block">
+                                <a target="_blank" class="hover:text-gray-100" rel="noopener noreferrer"
+                                    href="https://facebook.com" title="Facebook">
+                                    <!-- <i class="fab fa-facebook fa-2x"></i> -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem"
+                                        viewBox="0 0 512 512">
+                                        <path fill="currentColor"
+                                            d="M455.27,32H56.73A24.74,24.74,0,0,0,32,56.73V455.27A24.74,24.74,0,0,0,56.73,480H256V304H202.45V240H256V189c0-57.86,40.13-89.36,91.82-89.36,24.73,0,51.33,1.86,57.51,2.68v60.43H364.15c-28.12,0-33.48,13.3-33.48,32.9V240h67l-8.75,64H330.67V480h124.6A24.74,24.74,0,0,0,480,455.27V56.73A24.74,24.74,0,0,0,455.27,32Z">
+                                        </path>
+                                    </svg>
+                                </a>
                             </li>
-                            <li class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" class="mr-4 fill-green-500"
-                                    viewBox="0 0 24 24">
-                                    <path
-                                        d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z"
-                                        data-original="#000000" />
-                                </svg>
-                                500 Credits
+                            <!--twitter-->
+                            <li class="inline-block">
+                                <a target="_blank" class="hover:text-gray-100" rel="noopener noreferrer"
+                                    href="https://twitter.com" title="Twitter">
+                                    <!-- <i class="fab fa-twitter fa-2x"></i> -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem"
+                                        viewBox="0 0 512 512">
+                                        <path fill="currentColor"
+                                            d="M496,109.5a201.8,201.8,0,0,1-56.55,15.3,97.51,97.51,0,0,0,43.33-53.6,197.74,197.74,0,0,1-62.56,23.5A99.14,99.14,0,0,0,348.31,64c-54.42,0-98.46,43.4-98.46,96.9a93.21,93.21,0,0,0,2.54,22.1,280.7,280.7,0,0,1-203-101.3A95.69,95.69,0,0,0,36,130.4C36,164,53.53,193.7,80,211.1A97.5,97.5,0,0,1,35.22,199v1.2c0,47,34,86.1,79,95a100.76,100.76,0,0,1-25.94,3.4,94.38,94.38,0,0,1-18.51-1.8c12.51,38.5,48.92,66.5,92.05,67.3A199.59,199.59,0,0,1,39.5,405.6,203,203,0,0,1,16,404.2,278.68,278.68,0,0,0,166.74,448c181.36,0,280.44-147.7,280.44-275.8,0-4.2-.11-8.4-.31-12.5A198.48,198.48,0,0,0,496,109.5Z">
+                                        </path>
+                                    </svg>
+                                </a>
                             </li>
-                            <li class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" class="mr-4 fill-green-500"
-                                    viewBox="0 0 24 24">
-                                    <path
-                                        d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z"
-                                        data-original="#000000" />
-                                </svg>
-                                Monthly 100 Credits Free
+                            <!--youtube-->
+                            <li class="inline-block">
+                                <a target="_blank" class="hover:text-gray-100" rel="noopener noreferrer"
+                                    href="https://youtube.com" title="Youtube">
+                                    <!-- <i class="fab fa-youtube fa-2x"></i> -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem"
+                                        viewBox="0 0 512 512">
+                                        <path fill="currentColor"
+                                            d="M508.64,148.79c0-45-33.1-81.2-74-81.2C379.24,65,322.74,64,265,64H247c-57.6,0-114.2,1-169.6,3.6-40.8,0-73.9,36.4-73.9,81.4C1,184.59-.06,220.19,0,255.79q-.15,53.4,3.4,106.9c0,45,33.1,81.5,73.9,81.5,58.2,2.7,117.9,3.9,178.6,3.8q91.2.3,178.6-3.8c40.9,0,74-36.5,74-81.5,2.4-35.7,3.5-71.3,3.4-107Q512.24,202.29,508.64,148.79ZM207,353.89V157.39l145,98.2Z">
+                                        </path>
+                                    </svg>
+                                </a>
                             </li>
-                            <li class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" class="mr-4 fill-green-500"
-                                    viewBox="0 0 24 24">
-                                    <path
-                                        d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z"
-                                        data-original="#000000" />
-                                </svg>
-                                Customer Support
-                            </li>
-                            <li class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" class="mr-4 fill-green-500"
-                                    viewBox="0 0 24 24">
-                                    <path
-                                        d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z"
-                                        data-original="#000000" />
-                                </svg>
-                                Dedicated Server
-                            </li>
-                            <li class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" class="mr-4 fill-green-500"
-                                    viewBox="0 0 24 24">
-                                    <path
-                                        d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z"
-                                        data-original="#000000" />
-                                </svg>
-                                Priority Generations
-                            </li>
-                            <li class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" class="mr-4 fill-green-500"
-                                    viewBox="0 0 24 24">
-                                    <path
-                                        d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z"
-                                        data-original="#000000" />
-                                </svg>
-                                50GB Cloud Storage
-                            </li>
+                            <!--instagram-->
+                            <li class="inline-block">
+                                <a target="_blank" class="hover:text-gray-100" rel="noopener noreferrer"
+                                    href="https://instagram.com" title="Instagram">
+                                    <!-- <i class="fab fa-instagram fa-2x"></i> -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem"
+                                        viewBox="0 0 512 512">
+                                        <path fill="currentColor"
+                                            d="M349.33,69.33a93.62,93.62,0,0,1,93.34,93.34V349.33a93.62,93.62,0,0,1-93.34,93.34H162.67a93.62,93.62,0,0,1-93.34-93.34V162.67a93.62,93.62,0,0,1,93.34-93.34H349.33m0-37.33H162.67C90.8,32,32,90.8,32,162.67V349.33C32,421.2,90.8,480,162.67,480H349.33C421.2,480,480,421.2,480,349.33V162.67C480,90.8,421.2,32,349.33,32Z">
+                                        </path>
+                                        <path fill="currentColor"
+                                            d="M377.33,162.67a28,28,0,1,1,28-28A27.94,27.94,0,0,1,377.33,162.67Z">
+                                        </path>
+                                        <path fill="currentColor"
+                                            d="M256,181.33A74.67,74.67,0,1,1,181.33,256,74.75,74.75,0,0,1,256,181.33M256,144A112,112,0,1,0,368,256,112,112,0,0,0,256,144Z">
+                                        </path>
+                                    </svg>
+                                </a>
+                            </li><!--end instagram-->
                         </ul>
                     </div>
-                </div>
-                <div class="bg-blue-600 rounded sm:p-6 p-4 text-white shadow-lg shadow-blue-300">
-                    <h3 class="text-xl font-semibold">Professional</h3>
-                    <p class="mt-2">Ideal for individuals who who need advanced features and tools for client work.</p>
-                    <div class="mt-6">
-                        <h2 class="text-4xl font-semibold">$25<span class="text-gray-200 ml-2 text-[15px]">/ Month</span>
-                        </h2>
-                        <button type="button"
-                            class="w-full mt-6 px-6 py-3 rounded-xl text-black bg-white transition-all hover:bg-gray-100">Get
-                            Started</button>
-                    </div>
-                    <div class="mt-6">
-                        <h4 class="text-base font-bold mb-4">Plan Includes</h4>
-                        <ul class="space-y-5">
-                            <li class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" class="mr-4 fill-white"
-                                    viewBox="0 0 24 24">
-                                    <path
-                                        d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z"
-                                        data-original="#000000" />
-                                </svg>
-                                500 Image generations
-                            </li>
-                            <li class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" class="mr-4 fill-white"
-                                    viewBox="0 0 24 24">
-                                    <path
-                                        d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z"
-                                        data-original="#000000" />
-                                </svg>
-                                300 Credits
-                            </li>
-                            <li class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" class="mr-4 fill-white"
-                                    viewBox="0 0 24 24">
-                                    <path
-                                        d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z"
-                                        data-original="#000000" />
-                                </svg>
-                                Monthly 1000 Credits Free
-                            </li>
-                            <li class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" class="mr-4 fill-white"
-                                    viewBox="0 0 24 24">
-                                    <path
-                                        d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z"
-                                        data-original="#000000" />
-                                </svg>
-                                Customer Support
-                            </li>
-                            <li class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" class="mr-4 fill-white"
-                                    viewBox="0 0 24 24">
-                                    <path
-                                        d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z"
-                                        data-original="#000000" />
-                                </svg>
-                                Dedicated Server
-                            </li>
-                            <li class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" class="mr-4 fill-white"
-                                    viewBox="0 0 24 24">
-                                    <path
-                                        d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z"
-                                        data-original="#000000" />
-                                </svg>
-                                Priority Generations
-                            </li>
-                            <li class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" class="mr-4 fill-white"
-                                    viewBox="0 0 24 24">
-                                    <path
-                                        d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z"
-                                        data-original="#000000" />
-                                </svg>
-                                500GB Cloud Storage
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="bg-white rounded sm:p-6 p-4">
-                    <h3 class="text-xl font-semibold">Enterprise</h3>
-                    <p class="mt-2">Ideal for businesses who need personalized services and security for large teams.</p>
-                    <div class="mt-6">
-                        <h2 class="text-4xl font-semibold">$100<span class="text-gray-500 ml-2 text-[15px]">/ Month</span>
-                        </h2>
-                        <button type="button"
-                            class="w-full mt-6 px-6 py-3 rounded-xl text-white bg-cyan-900 transition-all hover:bg-cyan-800">Get
-                            Started</button>
-                    </div>
-                    <div class="mt-6">
-                        <h4 class="text-base font-bold mb-4">Plan Includes</h4>
-                        <ul class="space-y-5">
-                            <li class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" class="mr-4 fill-green-500"
-                                    viewBox="0 0 24 24">
-                                    <path
-                                        d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z"
-                                        data-original="#000000" />
-                                </svg>
-                                5000 Image generations
-                            </li>
-                            <li class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" class="mr-4 fill-green-500"
-                                    viewBox="0 0 24 24">
-                                    <path
-                                        d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z"
-                                        data-original="#000000" />
-                                </svg>
-                                10000 Credits
-                            </li>
-                            <li class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" class="mr-4 fill-green-500"
-                                    viewBox="0 0 24 24">
-                                    <path
-                                        d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z"
-                                        data-original="#000000" />
-                                </svg>
-                                Monthly 2000 Credits Free
-                            </li>
-                            <li class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" class="mr-4 fill-green-500"
-                                    viewBox="0 0 24 24">
-                                    <path
-                                        d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z"
-                                        data-original="#000000" />
-                                </svg>
-                                Customer Support
-                            </li>
-                            <li class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" class="mr-4 fill-green-500"
-                                    viewBox="0 0 24 24">
-                                    <path
-                                        d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z"
-                                        data-original="#000000" />
-                                </svg>
-                                Dedicated Server
-                            </li>
-                            <li class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" class="mr-4 fill-green-500"
-                                    viewBox="0 0 24 24">
-                                    <path
-                                        d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z"
-                                        data-original="#000000" />
-                                </svg>
-                                Priority Generations
-                            </li>
-                            <li class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" class="mr-4 fill-green-500"
-                                    viewBox="0 0 24 24">
-                                    <path
-                                        d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z"
-                                        data-original="#000000" />
-                                </svg>
-                                1000GB Cloud Storage
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="mt-32">
-            <div class="sm:max-w-7xl max-w-sm mx-auto">
-                <div class="text-center">
-                    <h2 class="md:text-4xl text-3xl font-extrabold">Meet our team</h2>
-                    <p class="mt-6">Meet our team of professionals to serve you.</p>
-                </div>
-                <div class="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-x-8 gap-y-20 text-center mt-32">
-                    <div class="bg-gray-200 relative rounded">
-                        <img src="https://readymadeui.com/team-1.webp"
-                            class="w-32 h-32 rounded-full inline-block -mt-12" />
-                        <div class="py-6">
-                            <h4 class="text-base font-semibold">John Doe</h4>
-                            <p class="text-xs mt-1">Software Engineer</p>
-                            <div class="space-x-4 mt-6">
-                                <button type="button"
-                                    class="w-7 h-7 inline-flex items-center justify-center rounded-full border-none outline-none bg-gray-100 hover:bg-gray-200">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="12px" fill="#000"
-                                        viewBox="0 0 155.139 155.139">
-                                        <path
-                                            d="M89.584 155.139V84.378h23.742l3.562-27.585H89.584V39.184c0-7.984 2.208-13.425 13.67-13.425l14.595-.006V1.08C115.325.752 106.661 0 96.577 0 75.52 0 61.104 12.853 61.104 36.452v20.341H37.29v27.585h23.814v70.761h28.48z"
-                                            data-original="#010002" />
-                                    </svg>
-                                </button>
-                                <button type="button"
-                                    class="w-7 h-7 inline-flex items-center justify-center rounded-full border-none outline-none  bg-gray-100 hover:bg-gray-200">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="12px" fill="#000"
-                                        viewBox="0 0 512 512">
-                                        <path
-                                            d="M512 97.248c-19.04 8.352-39.328 13.888-60.48 16.576 21.76-12.992 38.368-33.408 46.176-58.016-20.288 12.096-42.688 20.64-66.56 25.408C411.872 60.704 384.416 48 354.464 48c-58.112 0-104.896 47.168-104.896 104.992 0 8.32.704 16.32 2.432 23.936-87.264-4.256-164.48-46.08-216.352-109.792-9.056 15.712-14.368 33.696-14.368 53.056 0 36.352 18.72 68.576 46.624 87.232-16.864-.32-33.408-5.216-47.424-12.928v1.152c0 51.008 36.384 93.376 84.096 103.136-8.544 2.336-17.856 3.456-27.52 3.456-6.72 0-13.504-.384-19.872-1.792 13.6 41.568 52.192 72.128 98.08 73.12-35.712 27.936-81.056 44.768-130.144 44.768-8.608 0-16.864-.384-25.12-1.44C46.496 446.88 101.6 464 161.024 464c193.152 0 298.752-160 298.752-298.688 0-4.64-.16-9.12-.384-13.568 20.832-14.784 38.336-33.248 52.608-54.496z"
-                                            data-original="#03a9f4" />
-                                    </svg>
-                                </button>
-                                <button type="button"
-                                    class="w-7 h-7 inline-flex items-center justify-center rounded-full border-none outline-none  bg-gray-100 hover:bg-gray-200">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="14px" fill="#000"
-                                        viewBox="0 0 24 24">
-                                        <path
-                                            d="M23.994 24v-.001H24v-8.802c0-4.306-.927-7.623-5.961-7.623-2.42 0-4.044 1.328-4.707 2.587h-.07V7.976H8.489v16.023h4.97v-7.934c0-2.089.396-4.109 2.983-4.109 2.549 0 2.587 2.384 2.587 4.243V24zM.396 7.977h4.976V24H.396zM2.882 0C1.291 0 0 1.291 0 2.882s1.291 2.909 2.882 2.909 2.882-1.318 2.882-2.909A2.884 2.884 0 0 0 2.882 0z"
-                                            data-original="#0077b5" />
-                                    </svg>
-                                </button>
+                    <div class="flex-shrink max-w-full w-full lg:w-3/5 px-3">
+                        <div class="flex flex-wrap flex-row">
+                            <div class="flex-shrink max-w-full w-1/2 md:w-1/4 mb-6 lg:mb-0">
+                                <h4 class="text-base leading-normal mb-3 uppercase text-gray-100">Product</h4>
+                                <ul>
+                                    <li class="py-1 hover:text-white"><a href="#">Landing</a></li>
+                                    <li class="py-1 hover:text-white"><a href="#">Pages</a></li>
+                                    <li class="py-1 hover:text-white"><a href="#">Sections</a></li>
+                                    <li class="py-1 hover:text-white"><a href="#">Sign Up</a></li>
+                                    <li class="py-1 hover:text-white"><a href="#">Login</a></li>
+                                </ul>
                             </div>
-                        </div>
-                    </div>
-                    <div class="bg-gray-200 relative rounded">
-                        <img src="https://readymadeui.com/team-2.webp"
-                            class="w-32 h-32 rounded-full inline-block -mt-12" />
-                        <div class="py-6">
-                            <h4 class="text-base font-semibold">Mark Adair</h4>
-                            <p class="text-xs mt-1">Software Engineer</p>
-                            <div class="space-x-4 mt-6">
-                                <button type="button"
-                                    class="w-7 h-7 inline-flex items-center justify-center rounded-full border-none outline-none bg-gray-100 hover:bg-gray-200">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="12px" fill="#000"
-                                        viewBox="0 0 155.139 155.139">
-                                        <path
-                                            d="M89.584 155.139V84.378h23.742l3.562-27.585H89.584V39.184c0-7.984 2.208-13.425 13.67-13.425l14.595-.006V1.08C115.325.752 106.661 0 96.577 0 75.52 0 61.104 12.853 61.104 36.452v20.341H37.29v27.585h23.814v70.761h28.48z"
-                                            data-original="#010002" />
-                                    </svg>
-                                </button>
-                                <button type="button"
-                                    class="w-7 h-7 inline-flex items-center justify-center rounded-full border-none outline-none  bg-gray-100 hover:bg-gray-200">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="12px" fill="#000"
-                                        viewBox="0 0 512 512">
-                                        <path
-                                            d="M512 97.248c-19.04 8.352-39.328 13.888-60.48 16.576 21.76-12.992 38.368-33.408 46.176-58.016-20.288 12.096-42.688 20.64-66.56 25.408C411.872 60.704 384.416 48 354.464 48c-58.112 0-104.896 47.168-104.896 104.992 0 8.32.704 16.32 2.432 23.936-87.264-4.256-164.48-46.08-216.352-109.792-9.056 15.712-14.368 33.696-14.368 53.056 0 36.352 18.72 68.576 46.624 87.232-16.864-.32-33.408-5.216-47.424-12.928v1.152c0 51.008 36.384 93.376 84.096 103.136-8.544 2.336-17.856 3.456-27.52 3.456-6.72 0-13.504-.384-19.872-1.792 13.6 41.568 52.192 72.128 98.08 73.12-35.712 27.936-81.056 44.768-130.144 44.768-8.608 0-16.864-.384-25.12-1.44C46.496 446.88 101.6 464 161.024 464c193.152 0 298.752-160 298.752-298.688 0-4.64-.16-9.12-.384-13.568 20.832-14.784 38.336-33.248 52.608-54.496z"
-                                            data-original="#03a9f4" />
-                                    </svg>
-                                </button>
-                                <button type="button"
-                                    class="w-7 h-7 inline-flex items-center justify-center rounded-full border-none outline-none  bg-gray-100 hover:bg-gray-200">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="14px" fill="#000"
-                                        viewBox="0 0 24 24">
-                                        <path
-                                            d="M23.994 24v-.001H24v-8.802c0-4.306-.927-7.623-5.961-7.623-2.42 0-4.044 1.328-4.707 2.587h-.07V7.976H8.489v16.023h4.97v-7.934c0-2.089.396-4.109 2.983-4.109 2.549 0 2.587 2.384 2.587 4.243V24zM.396 7.977h4.976V24H.396zM2.882 0C1.291 0 0 1.291 0 2.882s1.291 2.909 2.882 2.909 2.882-1.318 2.882-2.909A2.884 2.884 0 0 0 2.882 0z"
-                                            data-original="#0077b5" />
-                                    </svg>
-                                </button>
+                            <div class="flex-shrink max-w-full w-1/2 md:w-1/4 mb-6 lg:mb-0">
+                                <h4 class="text-base leading-normal mb-3 uppercase text-gray-100">Support</h4>
+                                <ul>
+                                    <li class="py-1 hover:text-white"><a href="#">Documentation</a></li>
+                                    <li class="py-1 hover:text-white"><a href="#">Changelog</a></li>
+                                    <li class="py-1 hover:text-white"><a href="#">Tools</a></li>
+                                    <li class="py-1 hover:text-white"><a href="#">Icons</a></li>
+                                </ul>
                             </div>
-                        </div>
-                    </div>
-                    <div class="bg-gray-200 relative rounded">
-                        <img src="https://readymadeui.com/team-3.webp"
-                            class="w-32 h-32 rounded-full inline-block -mt-12" />
-                        <div class="py-6">
-                            <h4 class="text-base font-semibold">Simon Konecki</h4>
-                            <p class="text-xs mt-1">Web Designer</p>
-                            <div class="space-x-4 mt-6">
-                                <button type="button"
-                                    class="w-7 h-7 inline-flex items-center justify-center rounded-full border-none outline-none bg-gray-100 hover:bg-gray-200">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="12px" fill="#000"
-                                        viewBox="0 0 155.139 155.139">
-                                        <path
-                                            d="M89.584 155.139V84.378h23.742l3.562-27.585H89.584V39.184c0-7.984 2.208-13.425 13.67-13.425l14.595-.006V1.08C115.325.752 106.661 0 96.577 0 75.52 0 61.104 12.853 61.104 36.452v20.341H37.29v27.585h23.814v70.761h28.48z"
-                                            data-original="#010002" />
-                                    </svg>
-                                </button>
-                                <button type="button"
-                                    class="w-7 h-7 inline-flex items-center justify-center rounded-full border-none outline-none  bg-gray-100 hover:bg-gray-200">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="12px" fill="#000"
-                                        viewBox="0 0 512 512">
-                                        <path
-                                            d="M512 97.248c-19.04 8.352-39.328 13.888-60.48 16.576 21.76-12.992 38.368-33.408 46.176-58.016-20.288 12.096-42.688 20.64-66.56 25.408C411.872 60.704 384.416 48 354.464 48c-58.112 0-104.896 47.168-104.896 104.992 0 8.32.704 16.32 2.432 23.936-87.264-4.256-164.48-46.08-216.352-109.792-9.056 15.712-14.368 33.696-14.368 53.056 0 36.352 18.72 68.576 46.624 87.232-16.864-.32-33.408-5.216-47.424-12.928v1.152c0 51.008 36.384 93.376 84.096 103.136-8.544 2.336-17.856 3.456-27.52 3.456-6.72 0-13.504-.384-19.872-1.792 13.6 41.568 52.192 72.128 98.08 73.12-35.712 27.936-81.056 44.768-130.144 44.768-8.608 0-16.864-.384-25.12-1.44C46.496 446.88 101.6 464 161.024 464c193.152 0 298.752-160 298.752-298.688 0-4.64-.16-9.12-.384-13.568 20.832-14.784 38.336-33.248 52.608-54.496z"
-                                            data-original="#03a9f4" />
-                                    </svg>
-                                </button>
-                                <button type="button"
-                                    class="w-7 h-7 inline-flex items-center justify-center rounded-full border-none outline-none  bg-gray-100 hover:bg-gray-200">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="14px" fill="#000"
-                                        viewBox="0 0 24 24">
-                                        <path
-                                            d="M23.994 24v-.001H24v-8.802c0-4.306-.927-7.623-5.961-7.623-2.42 0-4.044 1.328-4.707 2.587h-.07V7.976H8.489v16.023h4.97v-7.934c0-2.089.396-4.109 2.983-4.109 2.549 0 2.587 2.384 2.587 4.243V24zM.396 7.977h4.976V24H.396zM2.882 0C1.291 0 0 1.291 0 2.882s1.291 2.909 2.882 2.909 2.882-1.318 2.882-2.909A2.884 2.884 0 0 0 2.882 0z"
-                                            data-original="#0077b5" />
-                                    </svg>
-                                </button>
+                            <div class="flex-shrink max-w-full w-1/2 md:w-1/4 mb-6 lg:mb-0">
+                                <h4 class="text-base leading-normal mb-3 uppercase text-gray-100">Includes</h4>
+                                <ul>
+                                    <li class="py-1 hover:text-white"><a href="#">Utilities</a></li>
+                                    <li class="py-1 hover:text-white"><a href="#">Components</a></li>
+                                    <li class="py-1 hover:text-white"><a href="#">Example code</a></li>
+                                    <li class="py-1 hover:text-white"><a href="#">Updates</a></li>
+                                </ul>
                             </div>
-                        </div>
-                    </div>
-                    <div class="bg-gray-200 relative rounded">
-                        <img src="https://readymadeui.com/team-6.webp"
-                            class="w-32 h-32 rounded-full inline-block -mt-12" />
-                        <div class="py-6">
-                            <h4 class="text-base font-semibold">Eleanor</h4>
-                            <p class="text-xs mt-1">Web Designer</p>
-                            <div class="space-x-4 mt-6">
-                                <button type="button"
-                                    class="w-7 h-7 inline-flex items-center justify-center rounded-full border-none outline-none bg-gray-100 hover:bg-gray-200">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="12px" fill="#000"
-                                        viewBox="0 0 155.139 155.139">
-                                        <path
-                                            d="M89.584 155.139V84.378h23.742l3.562-27.585H89.584V39.184c0-7.984 2.208-13.425 13.67-13.425l14.595-.006V1.08C115.325.752 106.661 0 96.577 0 75.52 0 61.104 12.853 61.104 36.452v20.341H37.29v27.585h23.814v70.761h28.48z"
-                                            data-original="#010002" />
-                                    </svg>
-                                </button>
-                                <button type="button"
-                                    class="w-7 h-7 inline-flex items-center justify-center rounded-full border-none outline-none  bg-gray-100 hover:bg-gray-200">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="12px" fill="#000"
-                                        viewBox="0 0 512 512">
-                                        <path
-                                            d="M512 97.248c-19.04 8.352-39.328 13.888-60.48 16.576 21.76-12.992 38.368-33.408 46.176-58.016-20.288 12.096-42.688 20.64-66.56 25.408C411.872 60.704 384.416 48 354.464 48c-58.112 0-104.896 47.168-104.896 104.992 0 8.32.704 16.32 2.432 23.936-87.264-4.256-164.48-46.08-216.352-109.792-9.056 15.712-14.368 33.696-14.368 53.056 0 36.352 18.72 68.576 46.624 87.232-16.864-.32-33.408-5.216-47.424-12.928v1.152c0 51.008 36.384 93.376 84.096 103.136-8.544 2.336-17.856 3.456-27.52 3.456-6.72 0-13.504-.384-19.872-1.792 13.6 41.568 52.192 72.128 98.08 73.12-35.712 27.936-81.056 44.768-130.144 44.768-8.608 0-16.864-.384-25.12-1.44C46.496 446.88 101.6 464 161.024 464c193.152 0 298.752-160 298.752-298.688 0-4.64-.16-9.12-.384-13.568 20.832-14.784 38.336-33.248 52.608-54.496z"
-                                            data-original="#03a9f4" />
-                                    </svg>
-                                </button>
-                                <button type="button"
-                                    class="w-7 h-7 inline-flex items-center justify-center rounded-full border-none outline-none  bg-gray-100 hover:bg-gray-200">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="14px" fill="#000"
-                                        viewBox="0 0 24 24">
-                                        <path
-                                            d="M23.994 24v-.001H24v-8.802c0-4.306-.927-7.623-5.961-7.623-2.42 0-4.044 1.328-4.707 2.587h-.07V7.976H8.489v16.023h4.97v-7.934c0-2.089.396-4.109 2.983-4.109 2.549 0 2.587 2.384 2.587 4.243V24zM.396 7.977h4.976V24H.396zM2.882 0C1.291 0 0 1.291 0 2.882s1.291 2.909 2.882 2.909 2.882-1.318 2.882-2.909A2.884 2.884 0 0 0 2.882 0z"
-                                            data-original="#0077b5" />
-                                    </svg>
-                                </button>
+                            <div class="flex-shrink max-w-full w-1/2 md:w-1/4 mb-6 lg:mb-0">
+                                <h4 class="text-base leading-normal mb-3 uppercase text-gray-100">Legal</h4>
+                                <ul>
+                                    <li class="py-1 hover:text-white "><a href="#">Privacy
+                                            Policy</a></li>
+                                    <li class="py-1 hover:text-white"><a href="#">Terms of Use</a></li>
+                                    <li class="py-1 hover:text-white"><a href="#">License</a></li>
+                                    <li class="py-1 hover:text-white"><a href="#">GDPR</a></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -661,14 +1122,40 @@
             </div>
         </div>
 
-        <div class="bg-white mt-32 px-4 py-12 ">
-            <x-contact></x-contact>
-        </div>
+        <!--Start footer copyright-->
+        <div class="footer-dark">
+            <div class="container py-4 border-t border-gray-200 border-opacity-10">
+                <div class="row">
+                    <div class="col-12 col-md text-center">
+                        <p class="d-block my-3">Copyright © Your Company | All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div><!--End footer copyright-->
+    </footer><!-- end footer -->
 
-    </div>
 
 
-    <!-- Footer Section -->
-    <x-footer></x-footer>
+
+
+
+
+
+
+
+
+    <!-- =========={ SCROLL TO TOP }==========  -->
+    <a href="#"
+        class="back-top fixed p-4 rounded bg-gray-100 border border-gray-100 text-gray-500 dark:bg-gray-900 dark:border-gray-800 right-4 bottom-4 hidden"
+        aria-label="Scroll To Top">
+        <svg width="1rem" height="1rem" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M8 3.5a.5.5 0 01.5.5v9a.5.5 0 01-1 0V4a.5.5 0 01.5-.5z" clip-rule="evenodd">
+            </path>
+            <path fill-rule="evenodd"
+                d="M7.646 2.646a.5.5 0 01.708 0l3 3a.5.5 0 01-.708.708L8 3.707 5.354 6.354a.5.5 0 11-.708-.708l3-3z"
+                clip-rule="evenodd"></path>
+        </svg>
+    </a>
+
 
 @endsection
