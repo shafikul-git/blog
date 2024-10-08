@@ -1,4 +1,4 @@
-@extends('header')
+@extends('layouts.frontendLayout')
 @section('title', 'Home')
 @section('otherConetent')
     <link rel="stylesheet" href="{{ asset('css/theme.css') }}">
