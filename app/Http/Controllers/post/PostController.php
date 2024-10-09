@@ -26,7 +26,7 @@ class PostController extends Controller
         $allData = $query->with(['categories', 'tags'])->paginate(10)->appends(['search' => $search]);
         // return $allData;
         return view('admin.post.all', compact('allData'));
-          // if ($categoryId = request()->input('category_id')) {
+        // if ($categoryId = request()->input('category_id')) {
         //     $query->whereHas('categories', function($q) use ($categoryId) {
         //         $q->where('id', $categoryId);
         //     });
@@ -47,7 +47,8 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        if(!Gate::allows('AdminAndEditor')){
+        // return $request;
+        if (!Gate::allows('AdminAndEditor')) {
             return abort(403);
         }
         $request->validate([
@@ -86,6 +87,7 @@ class PostController extends Controller
             $path = $file->storeAs('post', uniqid() . time() . '.' . $fileEx, 'public');
         }
 
+        // return $this->slugCreate($request->slug);
         // Post
         $post = Post::create([
             'title' => $request->title,
@@ -122,7 +124,7 @@ class PostController extends Controller
                 );
                 array_push($categoryIds, $category->id);
             }
-        } else{
+        } else {
             $category = Category::updateOrCreate(
                 [
                     'name' => 'uncategory',
@@ -188,7 +190,7 @@ class PostController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        if(!Gate::allows('AdminAndEditor')){
+        if (!Gate::allows('AdminAndEditor')) {
             return abort(403);
         }
         $request->validate([
@@ -245,7 +247,7 @@ class PostController extends Controller
      */
     public function destroy(string $id)
     {
-        if(!Gate::allows('AdminAndEditor')){
+        if (!Gate::allows('AdminAndEditor')) {
             return abort(403);
         }
         $fileName = Post::find($id);
@@ -266,10 +268,16 @@ class PostController extends Controller
     // Create Slug
     private function slugCreate($value)
     {
-        // Replace non-alphanumeric characters with hyphens
-        $cleanedString = preg_replace('/[^a-zA-Z0-9]/', '-', $value);
-        // Remove multiple hyphens (optional)
+        // Remove special characters except for letters (all languages) and numbers
+        $cleanedString = preg_replace('/[^\p{L}\p{N}\s]/u', '', $value);
+
+        // Replace spaces with hyphens
+        $cleanedString = preg_replace('/\s+/', '-', $cleanedString);
+
+        // Convert multiple hyphens into a single hyphen
         $cleanedString = preg_replace('/-+/', '-', $cleanedString);
-        return trim($cleanedString, '-');
+
+        // Return the cleaned string, trimmed of extra hyphens and convert to lowercase
+        return strtolower(trim($cleanedString, '-'));
     }
 }

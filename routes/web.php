@@ -93,6 +93,11 @@ Route::prefix('categories')->name('categories.')->controller(FrontEndCategoryCon
 });
 
 
+Route::controller(HomeController::class)->group(function(){
+    Route::get('all-post', 'heroSection')->name('heroSection');
+});
+
+
 
 
 
