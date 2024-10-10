@@ -14,7 +14,7 @@
 <div {{ $attributes }}>
     <div class="{{ $blockClass }}">
         <a href="{{ route('singlePost', $slug) }}">
-            <img class="max-w-full w-full mx-auto" src="{{ asset('storage/' . $img) }}" alt="{{ $alt }}">
+            <img class="max-w-full w-full mx-auto" src="{{ $img ? asset('storage/' . $img) : 'https://cdn.pixabay.com/photo/2023/11/02/05/23/woman-8359670_1280.png' }}" alt="{{ $alt ? $alt : 'no caption' }}">
         </a>
         <div class="{{ $contentBlockClass }}">
             <h3 class="text-lg font-bold leading-tight mb-2">

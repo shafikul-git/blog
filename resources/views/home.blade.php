@@ -69,7 +69,7 @@
 
     <!-- slider news -->
     <div class="relative bg-gray-50"
-        style="background-image: url('src/img/bg.jpg');background-size: cover;background-position: center center;background-attachment: fixed">
+        style="background-image: url('https://cdn.pixabay.com/photo/2020/01/12/12/18/pixelated-4759868_1280.jpg');background-size: cover;background-position: center center;background-attachment: fixed">
         <div class="bg-black bg-opacity-70">
             <div class="xl:container mx-auto px-3 sm:px-4 xl:px-2">
                 <div class="flex flex-row flex-wrap">
@@ -212,6 +212,7 @@
                         </h2>
                     </div>
                     <div class="flex flex-row flex-wrap -mx-3" id="africa">
+
                         {{-- <x-card
                             class="flex-shrink max-w-full w-full sm:w-1/3 lg:w-1/4 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100"
                             blockClass="flex flex-row sm:block hover-img" contentBlockClass="py-0 sm:py-3 pl-3 sm:pl-0">
@@ -455,17 +456,28 @@
 
                 allData.forEach(element => {
                     content += `
-                            <x-card
-                                class="flex-shrink max-w-full w-full sm:w-1/3 lg:w-1/4 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100"
-                                blockClass="flex flex-row sm:block hover-img"
-                                contentBlockClass="py-0 sm:py-3 pl-3 sm:pl-0"
-                                img="${element.featured_image}"
-                                alt="${element.alt_name}"
-                                heading="${element.title}"
-                                content="${element.content}"
-                                postTime="${element.created_at}"
-                            >
-                            </x-card>
+                              <x-cards class="flex-shrink max-w-full w-full sm:w-1/3 lg:w-1/4 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100">
+                                <div class="flex flex-row sm:block hover-img">
+                                    <a >
+                                        <img class="max-w-full w-full mx-auto" src="storage/${element.featured_image}" alt="">
+                                    </a>
+                                    <div class="py-0 sm:py-3 pl-3 sm:pl-0">
+                                        <h3 class="text-lg font-bold leading-tight mb-2">
+                                            <a href="#">
+                                                ${cutText(element.title)}
+                                            </a>
+                                        </h3>
+                                        <p class="hidden md:block text-gray-600 leading-tight mb-1">
+                                                ${cutText(element.content)}
+                                        </p>
+                                        <a class="text-gray-500" href="#">
+                                            <span class="inline-block h-3 border-l-2 border-red-600 mr-2">
+                                            </span>
+                                            Europe
+                                        </a>
+                                    </div>
+                                </div>
+                            </x-cards>
                         `;
                 });
 
@@ -476,4 +488,12 @@
         .catch(function(error) {
             console.error(error);
         });
+
+
+
+    function cutText(text) {
+        const plainText = text.replace(/<\/?[^>]+(>|$)/g, "");
+
+        return plainText.length > 10 ? plainText.substring(0, 10) + '...' : plainText;
+    }
 </script>

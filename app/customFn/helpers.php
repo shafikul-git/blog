@@ -7,6 +7,6 @@ if (!function_exists('stringSortCut')) {
         $words = explode(' ', $mainContent);
         $cutWord = array_slice($words, $start, $end);
         $content = implode(' ', $cutWord);
-        return count($words) < $end ? $content : $content . ' ...';
+        return count($words) > $end ? $content : $content . ' ...';
     }
 }
