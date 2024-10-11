@@ -14,8 +14,6 @@ class HomeController extends Controller
 
     public function heroSection(){
         $allPost = Post::all();
-        return response()->json([
-            'data' => $allPost,
-        ]);
+        return view('home', compact('allPost'));
     }
 }
