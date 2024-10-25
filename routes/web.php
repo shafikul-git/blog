@@ -63,9 +63,6 @@ Route::controller(CommentController::class)->group(function(){
 
 
 
-// Other Route
-Route::get('/', [HomeController::class, 'home'])->name('home');
-
 // About Prefix Group
 Route::prefix('about')->group(function (){
     Route::get('/', [AboutController::class, 'about'])->name('about');
@@ -94,7 +91,9 @@ Route::prefix('categories')->name('categories.')->controller(FrontEndCategoryCon
 
 
 Route::controller(HomeController::class)->group(function(){
+    Route::get('/', 'home')->name('home');
     Route::get('all-post', 'heroSection')->name('heroSection');
+    Route::get('spacific-category-post/{categoryName}', 'spacificCategoryPost')->name('spacificCategoryPost');
 });
 
 

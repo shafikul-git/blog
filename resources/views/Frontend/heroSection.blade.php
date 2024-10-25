@@ -4,7 +4,9 @@
         <div class="flex flex-row flex-wrap">
             <!--Start left cover-->
             <div class="flex-shrink max-w-full w-full lg:w-1/2 pb-1 lg:pb-0 lg:pr-1" id="heroSectionFirst">
-               
+                <div class="relative hover-img max-h-98 overflow-hidden">
+                   <x-contentloder/>
+                </div>
             </div>
 
             <!--Start box news-->
@@ -18,6 +20,12 @@
     </div>
 </div>
 
+
+@php
+// $categoryName = 'candidate';
+
+@endphp
+
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
     const lodingText = document.querySelector('.lodingText');
@@ -25,6 +33,7 @@
     const heroSectionFirst = document.getElementById('heroSectionFirst')
     let heroFristContent = null;
 
+    
     lodingText.innerHTML = 'Loding ... ';
     const singlePostRoute = "{{ route('singlePost', ':slug') }}";
 
@@ -87,5 +96,21 @@
         lodingText.innerHTML = 'Error API ... ';
         console.log(err);
     })
+
+    
+    @foreach ($categoryNames as $categoryName)
+        axios.get("{{ route('spacificCategoryPost', $categoryName) }}")
+        .then(response => {
+            console.log(response.data);
+            
+        })
+        .catch(error => {
+            console.log('api error ' + error);
+            
+        })
+    @endforeach
+    
+   
+
 
 </script>

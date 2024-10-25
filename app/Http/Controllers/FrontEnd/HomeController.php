@@ -11,7 +11,8 @@ class HomeController extends Controller
 {
     public function home()
     {
-        return view('home');
+        $categoryNames = ['candidate', 'select few'];
+        return view('home', compact('categoryNames'));
     }
 
     public function heroSection()
@@ -39,13 +40,24 @@ class HomeController extends Controller
         return response()->json(['data' => $returnVal]);
     }
 
-    private function cutString($string, $count){
+    public function spacificCategoryPost($cateogryName)
+    {
+    //    $post = Post::with(['categories' => function ($query) use($cateogryName)  {
+    //     $query->where('name', $cateogryName);
+    //    }])->get();
+    $post = Post::whereHas('categories', function ($query) use ($cateogryName) {
+        $query->where('name', $cateogryName);
+    })->with('categories')->get();
+       return response()->json(['data'=> $post]);
+    }
 
+    private function cutString($string, $count)
+    {
         $content = strip_tags($string);
         $content = trim($content);
 
         $words = explode(' ', $content);
         $countWord = count($words);
-        return ($countWord > $count) ? implode(' ', array_slice($words, 0, $count)) . '...' :  $contents = implode(' ', $words); 
+        return ($countWord > $count) ? implode(' ', array_slice($words, 0, $count)) . '...' :  $contents = implode(' ', $words);
     }
 }
