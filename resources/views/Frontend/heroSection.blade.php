@@ -40,11 +40,20 @@
                 }
                 const postUrl = singlePostRoute.replace(':slug', element.post.slug);
 
+                 // Check if featured_image is a full URL
+                 const isExternalImage = element.post.featured_image.startsWith('https://') || 
+                                        element.post.featured_image.startsWith('http://') || 
+                                        element.post.featured_image.startsWith('www.');
+
+                const imageUrl = isExternalImage 
+                    ? element.post.featured_image 
+                    : `{{ asset('storage/${element.post.featured_image}') }}`;
+                    
                 allContent.innerHTML += `
                  <article class="flex-shrink max-w-full w-full sm:w-1/2">
                         <div class="relative hover-img max-h-48 overflow-hidden">
                             <a href="${postUrl}">
-                                <img class="max-w-full w-full mx-auto h-auto" src="{{ asset('storage/${element.post.featured_image}') }}"
+                               <img class="max-w-full w-full mx-auto h-auto" src="${imageUrl}"
                                     alt="${element.post.alt_name}">
                             </a>
                             <div class="absolute px-4 pt-7 pb-4 bottom-0 w-full bg-gradient-cover">
