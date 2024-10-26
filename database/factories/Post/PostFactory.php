@@ -30,7 +30,7 @@ class PostFactory extends Factory
             'featured_image' => $this->faker->imageUrl(640, 480, 'posts', true),
             'alt_name' => $this->faker->words(3, true),
             'published_at' => $this->faker->dateTimeBetween('-1 years', 'now'),
-            'author_id' => \App\Models\User::factory(), // Assumes you have a User model
+            'author_id' => \App\Models\User::factory(), 
         ];
     }
 }
