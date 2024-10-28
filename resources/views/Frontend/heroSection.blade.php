@@ -49,12 +49,21 @@
                 }
                 const postUrl = singlePostRoute.replace(':slug', element.post.slug);
 
+                 // Check if featured_image is a full URL
+                 const isExternalImage = element.post.featured_image.startsWith('https://') || 
+                                        element.post.featured_image.startsWith('http://') || 
+                                        element.post.featured_image.startsWith('www.');
+
+                const imageUrl = isExternalImage 
+                    ? element.post.featured_image 
+                    : `{{ asset('storage/${element.post.featured_image}') }}`;
+                    
                 allContent.innerHTML += `
                  <article class="flex-shrink max-w-full w-full sm:w-1/2">
                         <div class="relative hover-img max-h-48 overflow-hidden">
                             <a href="${postUrl}">
-                                <img class="max-w-full w-full mx-auto h-auto" src="{{ asset('storage/${element.post.featured_image}') }}"
-                                    alt="${element.post.alt_name}">
+                               <img class="max-w-full w-full mx-auto h-auto" src="${imageUrl}"
+                                    alt="${element.post.alt_name}" Loding="lazy">
                             </a>
                             <div class="absolute px-4 pt-7 pb-4 bottom-0 w-full bg-gradient-cover">
                                 <a href="${postUrl}">
@@ -72,11 +81,20 @@
             });
 
             const FirstPostUrl = singlePostRoute.replace(':slug', heroFristContent.post.slug);
+              // Check if featured_image is a full URL
+              const isExternalImage = heroFristContent.post.featured_image.startsWith('https://') || 
+              heroFristContent.post.featured_image.startsWith('http://') || 
+              heroFristContent.post.featured_image.startsWith('www.');
+
+                const bigImage = isExternalImage 
+                    ? heroFristContent.post.featured_image 
+                    : `{{ asset('storage/${heroFristContent.post.featured_image}') }}`;
+                    
             heroSectionFirst.innerHTML = `
              <div class="relative hover-img max-h-98 overflow-hidden">
                     <a href="${FirstPostUrl}">
-                        <img class="max-w-full w-full mx-auto h-auto" src="{{ asset('storage/${heroFristContent.post.featured_image}') }}""
-                            alt="${heroFristContent.post.alt_name}">
+                        <img class="max-w-full w-full mx-auto h-auto" src="${bigImage}"
+                            alt="${heroFristContent.post.alt_name}" Loding="lazy">
                     </a>
                     <div class="absolute px-5 pt-8 pb-5 bottom-0 w-full bg-gradient-cover">
                         <a href="${FirstPostUrl}">

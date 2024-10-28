@@ -17,7 +17,14 @@ class DatabaseSeeder extends Seeder
 
         User::factory()->create([
             'name' => 'Test User',
-            'email' => 'test@example.com',
+            'email' => fake()->unique()->email(),
+        ]);
+
+        $this->call([
+            CategorySeeder::class,
+            TagSeeder::class,
+            PostSeeder::class, // Ensure PostSeeder is here to seed posts
+            PostTagCategorySeeder::class,
         ]);
     }
 }

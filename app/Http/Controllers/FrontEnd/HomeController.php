@@ -22,6 +22,22 @@ class HomeController extends Controller
         }])->limit(5)->get();
 
         $returnVal = $heroSection->map(function ($item) {
+            if($item->posts->isEmpty()){
+                return [
+                    'category' => [
+                    'name' => 'demo Name',
+                    'slug' => '#'
+                    ],
+                    'post' => [
+                        'title' => 'demo title',
+                        'slug' => '#',
+                        'featured_image' => 'https://via.placeholder.com/640x480.png/00dd22?text=posts+omnis',
+                        'alt_name' => 'demo',
+                        'published_at' => '2024-10-26T01:37:36.000000Z',
+                        'content' => 'demo content'
+                    ]
+                ];
+            }
             return [
                 'category' => [
                     'name' => $item->name,
