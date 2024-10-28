@@ -19,35 +19,7 @@
                             <span class="inline-block h-5 border-l-3 border-red-600 mr-2"></span>Europe
                         </h2>
                     </div>
-                    <div class="flex flex-row flex-wrap -mx-3">
-
-
-                        <x-card
-                            class="flex-shrink max-w-full w-full sm:w-1/3 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100"
-                            blockClass="flex flex-row sm:block hover-img" contentBlockClass="py-0 sm:py-3 pl-3 sm:pl-0">
-                        </x-card>
-                        <x-card
-                            class="flex-shrink max-w-full w-full sm:w-1/3 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100"
-                            blockClass="flex flex-row sm:block hover-img" contentBlockClass="py-0 sm:py-3 pl-3 sm:pl-0">
-                        </x-card>
-                        <x-card
-                            class="flex-shrink max-w-full w-full sm:w-1/3 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100"
-                            blockClass="flex flex-row sm:block hover-img" contentBlockClass="py-0 sm:py-3 pl-3 sm:pl-0">
-                        </x-card>
-                        <x-card
-                            class="flex-shrink max-w-full w-full sm:w-1/3 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100"
-                            blockClass="flex flex-row sm:block hover-img" contentBlockClass="py-0 sm:py-3 pl-3 sm:pl-0">
-                        </x-card>
-                        <x-card
-                            class="flex-shrink max-w-full w-full sm:w-1/3 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100"
-                            blockClass="flex flex-row sm:block hover-img" contentBlockClass="py-0 sm:py-3 pl-3 sm:pl-0">
-                        </x-card>
-                        <x-card
-                            class="flex-shrink max-w-full w-full sm:w-1/3 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100"
-                            blockClass="flex flex-row sm:block hover-img" contentBlockClass="py-0 sm:py-3 pl-3 sm:pl-0">
-                        </x-card>
-
-                    </div>
+                        @include('Frontend.firstCategoryCard', ['data' => $categoryNames['firstCategoryCard']])
                 </div>
                 <!-- right -->
                 <div class="flex-shrink max-w-full w-full lg:w-1/3 lg:pl-8 lg:pt-14 lg:pb-8 order-first lg:order-last">
@@ -445,3 +417,20 @@
 
 @endsection
 
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    // const firstCategoryCard = document.getElementById('firstCategoryCard')
+
+    // @foreach ($categoryNames as $categoryName)
+    //     axios.get("{{ route('spacificCategoryPost', $categoryName) }}")
+    //     .then(response => {
+    //         console.log(response.data);
+            
+    //     })
+    //     .catch(error => {
+    //         console.log('api error ' + error);
+            
+    //     })
+    // @endforeach
+    
+</script>

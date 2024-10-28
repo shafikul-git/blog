@@ -2,19 +2,21 @@
 
 namespace App\Http\Controllers\FrontEnd;
 
+use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\post\Post;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
 {
     public function home()
     {
-        $categoryNames = ['candidate', 'select few'];
+        $categoryNames = ['firstCategoryCard' => 'candidate', 'secondCategoryCard' =>  'select few'];
         return view('home', compact('categoryNames'));
     }
 
+
+    // Hero Section
     public function heroSection()
     {
         $heroSection = Category::with(['posts' => function ($query) {
@@ -22,11 +24,11 @@ class HomeController extends Controller
         }])->limit(5)->get();
 
         $returnVal = $heroSection->map(function ($item) {
-            if($item->posts->isEmpty()){
+            if ($item->posts->isEmpty()) {
                 return [
                     'category' => [
-                    'name' => 'demo Name',
-                    'slug' => '#'
+                        'name' => 'demo Name',
+                        'slug' => '#'
                     ],
                     'post' => [
                         'title' => 'demo title',
@@ -56,17 +58,60 @@ class HomeController extends Controller
         return response()->json(['data' => $returnVal]);
     }
 
+
+    // SPacific Post Category
     public function spacificCategoryPost($cateogryName)
     {
-    //    $post = Post::with(['categories' => function ($query) use($cateogryName)  {
-    //     $query->where('name', $cateogryName);
-    //    }])->get();
-    $post = Post::whereHas('categories', function ($query) use ($cateogryName) {
-        $query->where('name', $cateogryName);
-    })->with('categories')->get();
-       return response()->json(['data'=> $post]);
+        $post = Post::whereHas('categories', function ($query) use ($cateogryName) {
+            $query->where('name', $cateogryName);
+        })->with('categories')->limit(6)->get();
+
+        $returnVal = $post->map(function ($item) {
+            if ($item->categories->isEmpty()) {
+                return [
+                    'category' => [
+                        'name' => 'demo Name',
+                        'slug' => '#'
+                    ],
+                    'post' => [
+                        'title' => 'Not Title Found',
+                        'slug' => '#',
+                        'featured_image' => 'https://via.placeholder.com/640x480.png/00dd22?text=posts+omnis',
+                        'alt_name' => 'No alt_name Found',
+                        'meta_title' => 'Not meta_title Found',
+                        'meta_keywords' => 'Not meta_keywords Found',
+                        'author_id' => 'Not author_id Found',
+                        'meta_description' => 'Not meta_description Found',
+                        'published_at' => '2024-10-26T01:37:36.000000Z',
+                        'content' => 'Not content Found'
+                    ]
+                ];
+            }
+            return [
+                'category' => [
+                    'name' => $item->categories[0]->name,
+                    'slug' => $item->categories[0]->slug
+                ],
+                'post' => [
+                    'title' => $this->cutString($item->title, 5),
+                    'slug' => $item->slug,
+                    'featured_image' => $item->featured_image,
+                    'alt_name' => $item->alt_name,
+                    'meta_title' => $item->meta_title,
+                    'meta_keywords' => $item->meta_keywords,
+                    'author_id' => $item->author_id,
+                    'meta_description' => $item->meta_description,
+                    'published_at' => $item->published_at,
+                    'content' => $this->cutString($item->content, 5)
+                ]
+            ];
+        });
+
+        return response()->json(['data' => $returnVal]);
     }
 
+
+    // String CUt Function
     private function cutString($string, $count)
     {
         $content = strip_tags($string);

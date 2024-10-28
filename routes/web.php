@@ -40,23 +40,23 @@ Route::middleware('auth')->group(function () {
 });
 
 // menu Route
-Route::resource('menu', MenuController::class)->middleware(['auth','verified','can:AdminAndEditor']);
+Route::resource('menu', MenuController::class)->middleware(['auth', 'verified', 'can:AdminAndEditor']);
 
 // User Route
-Route::resource('users', UserController::class)->middleware(['auth','verified','can:AdminAndEditor']);
+Route::resource('users', UserController::class)->middleware(['auth', 'verified', 'can:AdminAndEditor']);
 
 // Post Route
-Route::resource('post', PostController::class)->middleware(['auth','verified','can:administrator']);
+Route::resource('post', PostController::class)->middleware(['auth', 'verified', 'can:administrator']);
 
 // Category Route
-Route::resource('category', CategoryController::class)->middleware(['auth','verified','can:administrator']);
+Route::resource('category', CategoryController::class)->middleware(['auth', 'verified', 'can:administrator']);
 
 // Tag Route
-Route::resource('tag', TagController::class)->middleware(['auth','verified','can:administrator']);
+Route::resource('tag', TagController::class)->middleware(['auth', 'verified', 'can:administrator']);
 
 // Post Comment Route
 Route::resource('comment', CommentController::class)->middleware('auth');
-Route::controller(CommentController::class)->group(function(){
+Route::controller(CommentController::class)->group(function () {
     Route::post('postComment/{postId}', 'postComment')->name('postComment')->middleware('auth');
     Route::post('reaction/{action}', 'reaction')->name('reaction')->middleware('auth');
 });
@@ -64,13 +64,13 @@ Route::controller(CommentController::class)->group(function(){
 
 
 // About Prefix Group
-Route::prefix('about')->group(function (){
+Route::prefix('about')->group(function () {
     Route::get('/', [AboutController::class, 'about'])->name('about');
     // Route::get('/{id}', [AboutController::class, 'ohter'])->name('ohter');
 });
 
 // Contact Prefix Group
-Route::prefix('contact')->name('contact.')->group(function (){
+Route::prefix('contact')->name('contact.')->group(function () {
     Route::get('/', [ContactController::class, 'index'])->name('index');
     Route::post('store', [ContactController::class, 'store'])->name('store');
     Route::get('congratulations', [ContactController::class, 'congratulations'])->name('congratulations');
@@ -78,19 +78,23 @@ Route::prefix('contact')->name('contact.')->group(function (){
 });
 
 // Blog Controller Groupp
-Route::controller(BlogController::class)->group(function(){
+Route::controller(BlogController::class)->group(function () {
     Route::get('blog', 'blog')->name('blog');
+
+    // Check card component then change url
     Route::get('blog/{slug}', 'singlePost')->name('singlePost');
 });
 
 // Category Controller & prefix Group
 Route::prefix('categories')->name('categories.')->controller(FrontEndCategoryController::class)->group(function () {
     Route::get('/', 'index')->name('index');
+
+    // Check card component then change url
     Route::get('/{slug}', 'signleCateogry')->name('signleCateogry');
 });
 
 
-Route::controller(HomeController::class)->group(function(){
+Route::controller(HomeController::class)->group(function () {
     Route::get('/', 'home')->name('home');
     Route::get('all-post', 'heroSection')->name('heroSection');
     Route::get('spacific-category-post/{categoryName}', 'spacificCategoryPost')->name('spacificCategoryPost');
@@ -100,4 +104,4 @@ Route::controller(HomeController::class)->group(function(){
 
 
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

@@ -116,18 +116,7 @@
     })
 
     
-    @foreach ($categoryNames as $categoryName)
-        axios.get("{{ route('spacificCategoryPost', $categoryName) }}")
-        .then(response => {
-            console.log(response.data);
-            
-        })
-        .catch(error => {
-            console.log('api error ' + error);
-            
-        })
-    @endforeach
-    
+  
    
 
 
