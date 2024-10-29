@@ -50,11 +50,11 @@
                         <div class="w-full py-3">
                             <h2 class="text-white text-2xl font-bold text-shadow-black capitalize">
                                 <span class="inline-block h-5 border-l-3 border-red-600 mr-2"></span>
-                                {{ $categoryNames['secondCategoryCard'] }}
+                                {{ $categoryNames['sliderCategory'] }}
                             </h2>
                         </div>
 
-                        @include('Frontend.sliderCategory', ['data' => $categoryNames['secondCategoryCard']])
+                        @include('Frontend.sliderCategory', ['data' => $categoryNames['sliderCategory']])
                     </div>
                 </div>
             </div>
@@ -90,10 +90,10 @@
                     <div class="w-full py-3">
                         <h2 class="text-gray-800 text-2xl font-bold capitalize">
                             <span class="inline-block h-5 border-l-3 border-red-600 mr-2"></span>
-                            {{ $categoryNames['secondCategoryCard'] }}
+                            {{ $categoryNames['threadCategoryCard'] }}
                         </h2>
                     </div>
-                    @include('Frontend.threadCategoryCard', ['data' => $categoryNames['secondCategoryCard']])
+                    @include('Frontend.threadCategoryCard', ['data' => $categoryNames['threadCategoryCard']])
                   
                 </div>
                 <!-- right -->
@@ -158,10 +158,10 @@
                     <div class="w-full py-3">
                         <h2 class="text-gray-800 text-2xl font-bold capitalize">
                             <span class="inline-block h-5 border-l-3 border-red-600 mr-2"></span>
-                            {{ $categoryNames['secondCategoryCard'] }}
+                            {{ $categoryNames['fourCategoryCard'] }}
                         </h2>
                     </div>
-                    @include('Frontend.fourCategoryCard', ['data' => $categoryNames['secondCategoryCard']])
+                    @include('Frontend.fourCategoryCard', ['data' => $categoryNames['fourCategoryCard']])
 
                 </div>
                 <!-- sidebar -->

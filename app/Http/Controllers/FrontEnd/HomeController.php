@@ -2,16 +2,24 @@
 
 namespace App\Http\Controllers\FrontEnd;
 
-use App\Http\Controllers\Controller;
+use App\Models\Setting;
 use App\Models\Category;
 use App\Models\post\Post;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
 {
     public function home()
     {
-        $categoryNames = ['firstCategoryCard' => 'candidate', 'secondCategoryCard' =>  'select few'];
+        $settings = Setting::whereIn('key_name', ['firstCategoryCard', 'secondCategoryCard', 'threadCategoryCard', 'fourCategoryCard', 'sliderCategory'])->get();
+        $categoryNames = [];
+        foreach($settings as $setting){
+            array_push($categoryNames, [
+                $categoryNames[$setting->key_name] = $setting->value,
+            ]);
+        }
+        // return $categoryNames;
         return view('home', compact('categoryNames'));
     }
 

@@ -13,6 +13,7 @@ use App\Http\Controllers\FrontEnd\ContactController;
 use App\Http\Controllers\post\PostController;
 use App\Http\Controllers\FrontEnd\HomeController;
 use App\Http\Controllers\post\CommentController;
+use App\Http\Controllers\SettingController;
 use App\Http\Middleware\AuthMiddleWare;
 
 Route::get('user', function () {
@@ -93,7 +94,7 @@ Route::prefix('categories')->name('categories.')->controller(FrontEndCategoryCon
     Route::get('/{slug}', 'signleCateogry')->name('signleCateogry');
 });
 
-
+// Home Work All
 Route::controller(HomeController::class)->group(function () {
     Route::get('/', 'home')->name('home');
     Route::get('all-post', 'heroSection')->name('heroSection');
@@ -101,6 +102,11 @@ Route::controller(HomeController::class)->group(function () {
 });
 
 
+// Admin Seting Page
+Route::middleware('auth')->controller(SettingController::class)->name('setting.')->group(function () {
+    Route::get('setting', 'index')->name('index');
+    Route::post('store-data', 'store')->name('store');
+});
 
 
 
