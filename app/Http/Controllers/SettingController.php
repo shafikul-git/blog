@@ -11,7 +11,7 @@ class SettingController extends Controller
     public function index()
     {
         $categorys = Category::all(['name']);
-        $settings = Setting::whereIn('key_name', ['firstCategoryCard', 'secondCategoryCard', 'threadCategoryCard', 'fourCategoryCard', 'sliderCategory'])->get();
+        $settings = Setting::whereIn('key_name', ['firstCategoryCard', 'secondCategoryCard', 'threadCategoryCard', 'fourCategoryCard', 'sliderCategoryCard'])->get();
 
         // return $settings;
         return view('admin.setting.index', compact(['categorys','settings']));
@@ -31,8 +31,8 @@ class SettingController extends Controller
         if ($request->has('fourCategoryCard')) {
             $request->validate(['fourCategoryCard' => 'required|string',]);
         }
-        if ($request->has('sliderCategory')) {
-            $request->validate(['sliderCategory' => 'required|string',]);
+        if ($request->has('sliderCategoryCard')) {
+            $request->validate(['sliderCategoryCard' => 'required|string',]);
         }
 
         foreach ($request->all() as $key => $value) {

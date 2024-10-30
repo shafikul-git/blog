@@ -50,11 +50,11 @@
                         <div class="w-full py-3">
                             <h2 class="text-white text-2xl font-bold text-shadow-black capitalize">
                                 <span class="inline-block h-5 border-l-3 border-red-600 mr-2"></span>
-                                {{ $categoryNames['sliderCategory'] }}
+                                {{ $categoryNames['sliderCategoryCard'] }}
                             </h2>
                         </div>
 
-                        @include('Frontend.sliderCategory', ['data' => $categoryNames['sliderCategory']])
+                        @include('Frontend.sliderCategoryCard', ['data' => $categoryNames['sliderCategoryCard']])
                     </div>
                 </div>
             </div>

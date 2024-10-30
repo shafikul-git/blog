@@ -12,7 +12,7 @@ class HomeController extends Controller
 {
     public function home()
     {
-        $settings = Setting::whereIn('key_name', ['firstCategoryCard', 'secondCategoryCard', 'threadCategoryCard', 'fourCategoryCard', 'sliderCategory'])->get();
+        $settings = Setting::whereIn('key_name', ['firstCategoryCard', 'secondCategoryCard', 'threadCategoryCard', 'fourCategoryCard', 'sliderCategoryCard'])->get();
         $categoryNames = [];
         foreach($settings as $setting){
             array_push($categoryNames, [

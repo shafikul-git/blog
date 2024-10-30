@@ -15,7 +15,19 @@
 <div {{ $attributes }}>
     <div class="{{ $blockClass }}">
         <a href="{{ url('blog/'. $slug) }}">
-            <img class="max-w-full w-full mx-auto" src="{{ $img ? asset('storage/' . $img) : 'https://cdn.pixabay.com/photo/2023/11/02/05/23/woman-8359670_1280.png' }}" alt="{{ $alt ? $alt : 'no caption' }}">
+            <img class="max-w-full w-full mx-auto" 
+            @php
+                if (!$img) {
+                    echo "src='https://cdn.pixabay.com/photo/2019/12/24/09/54/the-gargoyle-4716390_1280.jpg'";
+                } elseif (preg_match('/^(https?:\/\/|www\.)/', $img)) {
+                    echo "src='" . $img . "'";
+                } else {
+                    echo "src='" . asset('storage/' . $img) . "'";
+                }
+            @endphp
+        
+            alt="{{ $alt ? $alt : 'no caption' }}" 
+            loding="lazy">
         </a>
         <div class="{{ $contentBlockClass }}">
             <h3 class="text-lg font-bold leading-tight mb-2">

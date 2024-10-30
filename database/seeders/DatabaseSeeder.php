@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             TagSeeder::class,
             PostSeeder::class, // Ensure PostSeeder is here to seed posts
             PostTagCategorySeeder::class,
+            SettingSeeder::class,
         ]);
     }
 }
