@@ -112,3 +112,6 @@
         </ul>
     </div>
 </div>
+
+
+@vite(['resources/js/splideSlider.js'])

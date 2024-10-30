@@ -1,7 +1,5 @@
 <div class="flex flex-row flex-wrap -mx-3" id="firstCategoryCard"></div>
 
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
 <script>
     const firstCategoryCard = document.getElementById('firstCategoryCard')
 

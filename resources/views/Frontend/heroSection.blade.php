@@ -20,13 +20,6 @@
     </div>
 </div>
 
-
-@php
-// $categoryName = 'candidate';
-
-@endphp
-
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
     const lodingText = document.querySelector('.lodingText');
     const allContent = document.getElementById('allContent')
@@ -114,10 +107,5 @@
         lodingText.innerHTML = 'Error API ... ';
         console.log(err);
     })
-
-    
-  
-   
-
 
 </script>
